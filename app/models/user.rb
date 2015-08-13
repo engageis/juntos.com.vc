@@ -22,8 +22,9 @@ class User < ActiveRecord::Base
     :doc1, :doc2, :doc3, :doc4, :doc5, :doc6, :doc7, :doc8, :doc9, :doc10, :doc11, :doc12, :doc13, :staff,
     :job_title, :birth_date, :admin
 
+  STAFFS = {team: 1, financial_board: 2, technical_board: 4, advice_board: 8}
   enum access_type: [:individual, :legal_entity]
-  enum staff: [:team, :financial_board, :technical_board, :advice_board]
+  # enum staff: {team: 1, financial_board: 2, technical_board: 4, advice_board: 8}
   enum gender: [:male, :female]
 
   mount_uploader :uploaded_image, UserUploader
@@ -259,7 +260,7 @@ class User < ActiveRecord::Base
   end
 
   def self.staff_array
-    staffs.map do |name, value|
+    STAFFS.map do |name, value|
       [User.human_attribute_name("staff/#{name}"), name]
     end
   end
