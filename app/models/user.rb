@@ -24,7 +24,6 @@ class User < ActiveRecord::Base
 
   STAFFS = {team: 1, financial_board: 2, technical_board: 4, advice_board: 8}
   enum access_type: [:individual, :legal_entity]
-  # enum staff: {team: 1, financial_board: 2, technical_board: 4, advice_board: 8}
   enum gender: [:male, :female]
 
   mount_uploader :uploaded_image, UserUploader
