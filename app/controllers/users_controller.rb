@@ -62,6 +62,8 @@ class UsersController < ApplicationController
     authorize resource
     update! do |success,failure|
       success.html do
+        resource.staff = params[:user][:staff].map(&:to_i).inject(&:+)
+        resource.save
         flash[:notice] = t('users.current_user_fields.updated')
       end
       failure.html do
