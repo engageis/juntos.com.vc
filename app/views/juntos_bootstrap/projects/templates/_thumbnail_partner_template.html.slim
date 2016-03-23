@@ -1,0 +1,21 @@
+h1 = t('remove')
+script type='text/template' data-thumbnail-partner-template='true'
+  | <div class="w-col w-col-5 w-sub-col u-marginbottom-30 u-marginleft-20
+  |   u-marginright-20 card card-secondary thumbnail-card">
+  |   <div class="u-marginleft-20">
+  |     <img class="thumbnail u-marginbottom-10" alt="{{= image.alt }}"
+  |       src="{{= image.url }}">
+  |
+  |     <input type="hidden" value="{{= image.url }}"
+  |       name="project[project_partners_attributes][][image]">
+  |
+  |     <div class="input text optional project_project_partners_link">
+  |       <label class="field-label">Link do parceiro</label>
+  |       
+  |       <input class="string optional w-input text-field w-input text-field"
+  |         name="project[project_partners_attributes][][link]" type="text">
+  |     </div>
+  |
+  |     <a class="btn btn-small js-remove_project_partner" href="#">Remover</a>
+  |   </div>
+  | </div>

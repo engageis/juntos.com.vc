@@ -40,6 +40,16 @@ GIT
     catarse_juntos_gift_cards (0.0.2)
       rails (~> 4.1.6)
 
+GIT
+  remote: git://github.com/waynehoover/s3_direct_upload.git
+  revision: b36ad83b3bb8b78fe0c6cd59c47a63f5cb97f0bb
+  specs:
+    s3_direct_upload (0.1.7)
+      coffee-rails (>= 3.1)
+      jquery-fileupload-rails (~> 0.4.1)
+      rails (>= 3.1)
+      sass-rails (>= 3.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -280,6 +290,10 @@ GEM
       phantomjs
       railties (>= 3.1.0)
       sprockets-rails
+    jquery-fileupload-rails (0.4.6)
+      actionpack (>= 3.1)
+      railties (>= 3.1)
+      sass (>= 3.2)
     jquery-minicolors-rails (2.1.4.0)
       jquery-rails
       rails (>= 3.2.8)
@@ -636,6 +650,7 @@ DEPENDENCIES
   rspec-collection_matchers
   rspec-its
   rspec-rails (~> 3.1)
+  s3_direct_upload!
   sass-rails (~> 4.0.0)
   schema_plus
   selenium-webdriver (~> 2.51.0)

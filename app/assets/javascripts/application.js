@@ -25,3 +25,4 @@
 //= require_tree ./app
 //= require slick
 //= require jquery.minicolors
+//= require s3_direct_upload

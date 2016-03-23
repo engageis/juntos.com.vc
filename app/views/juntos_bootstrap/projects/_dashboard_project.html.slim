@@ -52,29 +52,30 @@
         .w-col.w-col-8
         .w-col.w-col-4
   .divider
-  .w-hidden-small.w-hidden-tiny.section
+  .w-hidden-small.w-hidden-tiny.section[data-project-gallery-uploader='true']
     .w-container.w-hidden-small.w-hidden-tiny
     .w-row
       .w-col.w-col-8
         .fontsize-large.fontweight-semibold= t('.images.title')
         p.fontsize-small.u-marginbottom-40= t('.images.excerpt')
+
         .w-form.card.card-terciary
           .w-row.u-marginbottom-30
             .w-col.w-col-12.w-sub-col
-              label.field-label.fontsize-smallest.fontcolor-secondary= t('.images.hint')
+              label.field-label.fontsize-smallest.fontcolor-secondary
+                = t('.images.hint')
+
+            .w-col.w-col-12.w-sub-col.u-marginbottom-30.u-margintop-30
+              = s3_uploader_form callback_param: 'project[images]',
+                max_file_size: 5.megabytes, data: {s3_uploader: true},
+                key: "uploads/project/image/#{@project.id}/${filename}" do
+                  = file_field_tag :file, multiple: true, id: 'gallery-upload',
+                    data: {url: s3_uploader_url}
+
           .w-row.u-marginbottom-30
             .w-col.w-col-12.w-sub-col
-              .w-row
-                = form.simple_fields_for :project_images do |project_images_form|
-                  .w-col.w-col-5.w-sub-col.u-marginbottom-30.u-marginleft-20.u-marginright-20.card.card-secondary.thumbnail-card
-                    .u-marginleft-20
-                      - if project_images_form.object.image.present?
-                        = image_tag project_images_form.object.image.project_thumb.url, class: 'thumbnail u-marginbottom-10'
-                      = project_images_form.input_field :_destroy, as: :hidden
-                      = project_images_form.input_field :image, as: :file, label_html: { class: 'w-hidden' }
-                      = project_images_form.input :caption, label: t('.images.caption'), as: :text, input_html: { class: 'w-input text-field' }
-                      - if project_images_form.object.image.present?
-                        = link_to t('remove'), '#', class: 'btn btn-small js-remove_project_image'
+              .w-row[data-thumbnail-gallery='true']
+
   .divider
   .w-hidden-small.w-hidden-tiny.section
     .w-container.w-hidden-small.w-hidden-tiny
@@ -135,3 +136,6 @@
           .w-col.w-col-4
             = form.button :submit, t('.submit'),  class:'btn btn-large js-btn-submit'
           .w-col.w-col-4
+
+= render 'projects/templates/thumbnail_card_template'
+= render 'projects/templates/progress_bar_uploader'

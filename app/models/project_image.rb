@@ -2,5 +2,5 @@ class ProjectImage < ActiveRecord::Base
   belongs_to :project
   mount_uploader :image, ProjectUploader
 
-  validates :image, presence: true
+  validates :original_image_url, presence: true
 end

@@ -15,6 +15,8 @@ gem "best_in_place", :git => "git://github.com/bernat/best_in_place", ref: "ee95
 # State machine for attributes on models
 gem 'state_machine', require: 'state_machine/core'
 
+gem 's3_direct_upload', github: 'waynehoover/s3_direct_upload'
+
 # Database and data related
 gem 'pg'
 gem 'postgres-copy'

@@ -22,7 +22,7 @@ class ProjectImagePolicy < ApplicationPolicy
 
   def permitted_attributes
     if done_by_owner_or_admin?
-      { project_image: [:image, :caption] }
+      { project_image: [:original_image_url, :caption] }
     else
       { project_image: [] }
     end

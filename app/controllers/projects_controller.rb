@@ -182,13 +182,5 @@ class ProjectsController < ApplicationController
         end
       end
     end
-
-    if parameters[:project][:project_images_attributes]
-      parameters[:project][:project_images_attributes].each do |image|
-        if image[1][:id].present?
-          ProjectImage.find(image[1][:id]).update_attribute(:caption, image[1][:caption])
-        end
-      end
-    end
   end
 end

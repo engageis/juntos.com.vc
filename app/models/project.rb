@@ -35,10 +35,18 @@ class Project < ActiveRecord::Base
   has_many :project_partners
   has_many :subgoals, -> { order 'value DESC' }
 
+  accepts_nested_attributes_for :project_images,
+    limit: 8,
+    allow_destroy: true,
+    reject_if: proc { |attributes| attributes['original_image_url'].nil? }
+
+  accepts_nested_attributes_for :project_partners,
+    limit: 3,
+    allow_destroy: true,
+    reject_if: proc { |attributes| attributes['image'].nil? }
+
   accepts_nested_attributes_for :rewards
   accepts_nested_attributes_for :channels
-  accepts_nested_attributes_for :project_images, allow_destroy: true, limit: 8, reject_if: proc { |attributes| attributes['image'].nil? }
-  accepts_nested_attributes_for :project_partners, allow_destroy: true, limit: 3, reject_if: proc { |attributes| attributes['image'].nil? }
   accepts_nested_attributes_for :posts
   accepts_nested_attributes_for :subgoals
 
