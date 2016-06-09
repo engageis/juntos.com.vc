@@ -80,6 +80,8 @@ pt:
         amount: 'Valor (em R$)'
         minimum_notice: 'Você pode doar qualquer valor à partir de R$ 5,00.'
         minimum_disclaimer: 'Todas as transações financeiras são feitas em ambiente seguro, via <a href="http://moip.com.br">Moip</a>.<br />Caso o projeto não atinja sua meta financeira até a data estipulada o valor poderá ser convertido em créditos ou ser devolvido, conforme sua escolha. Dessa forma não haverá recompensa, é <a href="#">tudo ou nada</a>'
+        secured_transaction: 'Todas as transações financeiras são feitas em ambiente seguro, via <a href="http://moip.com.br">Moip</a>'
+        all_or_nothing:'<br />Caso o projeto não atinja sua meta financeira até a data estipulada o valor poderá ser convertido em créditos ou ser devolvido, conforme sua escolha. Dessa forma não haverá recompensa, é <a href="#">tudo ou nada</a>'
         next_step: "Revisar e realizar pagamento"
         no_reward: Obrigado. Eu só quero ajudar o projeto.
         contribute_to_platform: 'Contribuir para a plataforma'
