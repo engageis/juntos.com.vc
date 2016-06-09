@@ -30,16 +30,19 @@
               = form.input_field :project_value, value: value, as: :string, class: 'w-input back-reward-input-reward u-marginbottom-20', placeholder: t('.amount')
             - unless @project.recurring?
               .minimum-value
-                == t('.minimum_disclaimer')
+                  == t('.minimum_disclaimer')
+            - if (channel.permalink == 'amigosdobem')
+              .minimum-value
+                  == t('.secured_transaction')
           - if (channel && channel.permalink == 'garupa') || @project.category_id == 11 # 11 = Garupa
             .fontsize-base.fontweight-semibold.u-margintop-20.u-marginbottom-10.u-text-center-small-only.text-success-small-only Contribuir para a Associação Garupa
-            p.minimum-value Somos uma organização sem fins lucrativos que não cobra nenhuma taxa das ongs nem de seus apoiadores. Por isso deixamos esse espaço para quem quiser colaborar com qualquer valor e ajudar a gente a continuar com nosso trabalho.
+            p.minimum-valu  e Somos uma organização sem fins lucrativos que não cobra nenhuma taxa das ongs nem de seus apoiadores. Por isso deixamos esse espaço para quem quiser colaborar com qualquer valor e ajudar a gente a continuar com nosso trabalho.
             .platform_contribution_input
               = form.input_field :platform_value, value: @contribution.platform_value, as: :string, class: 'w-input  u-marginbottom-20'
               span R$ para a associação
             br/
           - elsif !channel
-            .fontsize-base.fontweight-semibold.u-margintop-20.u-marginbottom-10.u-text-center-small-only.text-success-small-only
+            .fontsize-  base.fontweight-semibold.u-margintop-20.u-marginbottom-10.u-text-center-small-only.text-success-small-only
               = t('.contribute_to_platform')
             p.minimum-value
               = t('.contribute_to_platform_text')
