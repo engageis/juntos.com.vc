@@ -4003,12 +4003,18 @@ input.partner-label {
 }
 
 .mobile-tab{
+  display: flex;
   padding: 10px 20px;
   background: #f2f2f2;
   color:#000;
   margin: 0;
   border-radius: 0;
   margin: 0 0.1em;
+}
+
+.mobile-tab span{
+  padding: 0 0.4em;
+  margin-left: 0.7em;
 }
 
 div .w-container .w-row .nav-tabs .mobile-tab.selected{
@@ -4056,6 +4062,16 @@ div .w-container .w-row .nav-tabs .mobile-tab.selected{
 
 .total-supporters{
   margin: 1em 0;
+}
+
+.div-height{
+  height: 200px;
+}
+
+.project-progress-description{
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .btn-select-reward-mobile{

@@ -111,6 +111,7 @@ en:
         send_to_analysis: 'Send project to analysis'
       contribution_style: 'All OR NOTHING'
       proposed_by: 'Proposed by'
+      goal: 'Goals'
       twitter_profile: 'Twitter profile'
       facebook_profile: 'Facebook profile'
       author_website: "Author's site"

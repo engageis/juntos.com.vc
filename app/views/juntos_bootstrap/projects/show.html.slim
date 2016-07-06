@@ -58,10 +58,12 @@ nav.project-nav.w-hidden-main.w-hidden-medium
       .w-col.w-col-12.nav.nav-tabs.scroll-tabs.no-padding role="tablist"
         = link_to '#about', id: 'about_link', class: 'mobile-tab selected active', data: {target: '#project_about.content'}, role: "presentation", style: "background-color: #{@color};"  do
           = t('.menu.about')
-        = link_to '#rewards', id: 'posts_link', class: 'mobile-tab' , data: {target: '#project_rewards'}, style: "background-color: #{@color};"  do
+        = link_to '#rewards', id: 'rewards_link', class: 'mobile-tab' , data: {target: '#rewards'}, style: "background-color: #{@color};"  do
           => t('.menu.reward')
         = link_to '#contributions', id: 'contributions_link', class: 'mobile-tab' , data: {target: '#project_contributions'}, style: "background-color: #{@color};"  do
           => t('.menu.contributions')
+          span.badge = project_aumigo ? 4618 :  @project.total_contributions
+            |&nbsp;
         = link_to '#comments', id: 'comments_link', class: ' mobile-tab' , data: {target: '#project_comments'}, style: "background-color: #{@color};"  do
           => t('.menu.result')
             |&nbsp;
@@ -124,6 +126,8 @@ nav.project-nav.w-hidden-main.w-hidden-medium
         = render 'project_basics'
       #dashboard_project.content.w-hidden
         = render 'dashboard_project'
+      #rewards.w-hidden
+
       #project_about.content.w-col.w-col-8
         .content.card.card-user.u-marginbottom-10.w-hidden-main.w-hidden-medium.w-hidden
           .w-clearfix
@@ -140,7 +144,8 @@ nav.project-nav.w-hidden-main.w-hidden-medium
 
 
         = render 'mobile_video'
-        = render 'project_about'
+        .w-hidden-small.w-hidden-tiny
+          = render 'project_about'
 
         .w-hidden-main.w-hidden-medium.project-share
           p.align-left = t('.share')
