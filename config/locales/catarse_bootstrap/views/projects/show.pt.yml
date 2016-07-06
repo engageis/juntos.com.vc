@@ -114,6 +114,7 @@ pt:
         send_to_analysis: 'Enviar projeto para análise'
       contribution_style: 'TUDO OU NADA'
       proposed_by: 'Proposto por'
+      goal: 'Metas'
       twitter_profile: "Perfil no Twitter"
       facebook_profile: "Perfil no Facebook"
       author_website: "Site do autor"

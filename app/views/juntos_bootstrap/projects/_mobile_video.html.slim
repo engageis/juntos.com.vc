@@ -11,13 +11,14 @@
   .w-row.w-hidden-main.w-hidden-medium
     .w-col.w-col-small-6.w-col-tiny-6
       = render 'subgoals_mobile'
-    .w-col.w-col-6.w-col-small-6.w-col-tiny-6
-      .w-col.w-col-4.w-col-small-12.w-col-tiny-12.fontweight-semibold
-        .fontsize-largest = @project.total_contributions
-        .fontsize-smaller = t('projects.show.sidebar.contributions')
-      .w-col.w-col-4.w-col-small-12.w-col-tiny-12.fontweight-semibold
-        .fontsize-largest = @project.display_pledged(%w(associacaoacorde pesquisadoacao).include?(@project.permalink) ? 2 : 1)
-        .fontsize-smaller = t('projects.show.sidebar.goal', total: @project.display_goal)
-      .w-col.w-col-4.w-col-small-12.w-col-tiny-12.fontweight-semibold
-        .fontsize-largest = @project.remaining_days
-        .fontsize-smaller #{@project.time_to_go[:unit].capitalize} #{pluralize_without_number(@project.time_to_go[:time], t('remaining_singular'), t('remaining_plural'))}
+    .w-col.w-col-6.w-col-small-6.w-col-tiny-6.div-height
+      .project-progress-description
+        .w-col.w-col-4.w-col-small-12.w-col-tiny-12.fontweight-semibold.total-supporters
+          .fontsize-largest = @project.total_contributions
+          .fontsize-smaller = t('projects.show.sidebar.contributions')
+        .w-col.w-col-4.w-col-small-12.w-col-tiny-12.fontweight-semibold
+          .fontsize-largest = @project.display_pledged(%w(associacaoacorde pesquisadoacao).include?(@project.permalink) ? 2 : 1)
+          .fontsize-smaller = t('projects.show.sidebar.goal', total: @project.display_goal)
+        .w-col.w-col-4.w-col-small-12.w-col-tiny-12.fontweight-semibold
+          .fontsize-largest = @project.remaining_days
+          .fontsize-smaller #{@project.time_to_go[:unit].capitalize} #{pluralize_without_number(@project.time_to_go[:time], t('remaining_singular'), t('remaining_plural'))}
