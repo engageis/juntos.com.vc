@@ -50,7 +50,7 @@
 
         .w-col.w-col-3.w-hidden-small.w-hidden-tiny.w-clearfix.project-nav-category
           = link_to @project.category, explore_path(anchor: "by_category_id/#{@project.category_id}"), class: 'link-hidden-light u-right'
-          = image_tag 'catarse_bootstrap/tag-icon.png', class: 'project-nav-category-icon', width: "22" 
+          = image_tag 'catarse_bootstrap/tag-icon.png', class: 'project-nav-category-icon', width: "22"
 
 - if policy(@project).update?
   nav.dashboard-nav.w-hidden-small.w-hidden-tiny
@@ -61,10 +61,10 @@
       = link_to '#dashboard_project', id: 'dashboard_project_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_project'} do
         span.fa.fa-check-circle.text-success .
         | \&nbsp;Projeto
-      a.dashboard-nav-link href="#" 
+      a.dashboard-nav-link href="#"
         span.fa.fa-check-circle .
         | \&nbsp;Recompensas
-      a.dashboard-nav-link href="#" 
+      a.dashboard-nav-link href="#"
         span.fa.fa-check-circle .
         | \&nbsp;Sobre você
       a.dashboard-nav-link href="#"  Preview
@@ -74,7 +74,7 @@
 section.section
 .w-container
   .w-row
-    article.w-hidden-small.w-hidden-tiny
+    article
       #project_basics.content.w-hidden
         = render 'project_basics'
       #dashboard_project.content.w-hidden
@@ -108,11 +108,11 @@ section.section
 
     #project-sidebar.aside.w-col.w-col-4
       .project-stats
-        .project-stats-numbers.u-marginbottom-20.w-hidden-small.w-hidden-tiny
+        .project-stats-numbers.u-marginbottom-20
           .w-hidden-small.w-hidden-tiny.u-marginbottom-10
             .fontsize-largest = @project.display_pledged
             .fontsize-small = t('.sidebar.goal', total: @project.display_goal).html_safe
-          .w-hidden-small.w-hidden-tiny.u-marginbottom-10
+          .u-marginbottom-10
             .fontsize-largest = @project.total_contributions
             .fontsize-small = t('.sidebar.contributions')
           .w-hidden-small.w-hidden-tiny.u-marginbottom-10

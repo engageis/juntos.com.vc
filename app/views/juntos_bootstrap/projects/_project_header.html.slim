@@ -1,7 +1,7 @@
-.page-header.u-text-left.u-no-brackground
+.page-header.u-text-left.u-no-brackground.w-hidden-small.w-hidden-tiny
   .project-image style='background-image:url(#{@project.uploaded_cover_image.url.present? ? @project.uploaded_cover_image.url : @project.uploaded_image.url})'
   .project-category-divider style='background-color: #{@project.color}'
-  .w-container
+  .w-container.w-hidden-small.w-hidden-tiny
     .fontsize-larger.fontweight-semibold.project-name= @project.name
     .fontsize-base.lineheight-looser
       - if @project.permalink == 'toddynho'

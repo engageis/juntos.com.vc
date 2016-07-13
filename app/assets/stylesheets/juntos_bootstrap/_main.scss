@@ -2809,11 +2809,10 @@ section.devise-body-section .access-type-field input {
   margin-left: -200px !important;
 }
 #project_contributions .contribution {
-  padding: 5px;
-  margin-right: 10px;
-  float: left;
-  border: 1px solid black;
+
 }
+
+
 #project_contributions .contribution .contribution-thumb {
   width: 119px;
   height: 121px;
@@ -3294,9 +3293,11 @@ section.devise-body-section .access-type-field input {
     margin-top: 0px;
     margin-bottom: 0px;
     padding: 30px 60px 20px;
-    background-color: #f1f4f4;
+    background-color: #fff;
     text-align: center;
   }
+
+
   .project-stats-digits {
     margin-bottom: 24px;
     padding-top: 14px;
@@ -3593,6 +3594,9 @@ section.devise-body-section .access-type-field input {
   }
 }
 @media (max-width: 479px) {
+  #project_contributions .contribution .contribution-thumb{
+    width: 80px;
+  }
   h2 {
     display: block;
   }
@@ -3992,4 +3996,95 @@ input.partner-label {
 
 .upcase {
   text-transform: uppercase;
+}
+
+.no-padding{
+  padding: 0;
+}
+
+.mobile-tab{
+  padding: 10px 20px;
+  background: #f2f2f2;
+  color:#000;
+  margin: 0;
+  border-radius: 0;
+  margin: 0 0.1em;
+}
+
+div .w-container .w-row .nav-tabs .mobile-tab.selected{
+    background: #fff !important;
+}
+
+.scroll-tabs{
+  display: flex;
+  max-width: 100%;
+  overflow-x: auto;
+  padding-bottom: 0.8em;
+}
+
+.mobile-read-more{
+  color:#b3b3b3;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.align-center{
+  text-align: center;
+}
+
+.align-right{
+  text-align: right;
+}
+
+.align-left{
+  text-align: left;
+}
+
+.btn-contribution-mobile{
+  z-index: 2;
+  border: solid 2px #00b300;
+  background-color: #00b300;
+  border-radius: 50px;
+  padding: 30px 10px;
+  font-size: 1.2em;
+  color:#fff;
+  position: fixed;
+  right:4%;
+  font-weight: bold;
+  bottom: 0;
+}
+
+.total-supporters{
+  margin: 1em 0;
+}
+
+.btn-select-reward-mobile{
+  background-color: #0c556e;
+  color:#fff;
+  border-radius: 0;
+  margin: 1em 0;
+  padding: 8px 20px;
+}
+
+.about-project-mobile{
+  margin: 0 3.3em;
+  font-weight: bold;
+}
+
+.div-btn-select-rewards{
+  margin: 0.5em 0;
+  text-align: right;
+}
+
+.inline-components{
+  display: inline-block;
+}
+
+
+.left{
+  float:left;
+}
+
+.right{
+  float:right;
 }

@@ -4,7 +4,7 @@
   - sold_out = reward.sold_out?
   .card.card-secondary.card-reward.u-radius.u-marginbottom-10[id="reward_#{reward.id}" data-new_contribution_url=new_contribution data-update_url=sort_project_reward_path(parent, reward) class="#{(policy(reward).update? ? 'clickable_owner sortable' : '')} #{(parent.online? && !policy(reward).update?  ? 'clickable'  : '' )} #{sold_out ? 'card-gone' : 'card-reward'} "]
     .u-marginbottom-20
-      .fontsize-base.fontweight-semibold = t('.reward_title', minimum: reward.display_minimum).html_safe
+      .fontsize-base.fontweight-semibold.text-left = t('.reward_title', minimum: reward.display_minimum).html_safe
       div
         i.fa.fa-star.u-left.u-marginright-5.u-margintop-5.fontcolor-yellow
         .fontsize-smaller.fontweight-semibold = pluralize(reward.contributions.with_state('confirmed').count(:all), t('contribution_singular'), t('contribution_plural'))
@@ -27,7 +27,6 @@
 
 
     .fontsize-small.fontweight-light = reward.display_description
-
     /- if reward.days_to_delivery.present?
         /.fontsize-smallest = "#{t('.reward_deliver_time', estimate: reward.display_deliver_estimate)}".html_safe
 
@@ -37,3 +36,6 @@
     - unless sold_out
       .project-reward-box-hover
         .project-reward-box-select-text.t-text-center = t('.select_reward')
+
+    .w-hidden-main.w-hidden-medium.w-col-12.div-btn-select-rewards
+      = link_to "APOIAR", @post , class: "uppercase btn-select-reward-mobile u-marginbottom-20 u-margintop-20"
