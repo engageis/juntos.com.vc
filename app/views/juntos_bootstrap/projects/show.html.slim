@@ -126,7 +126,7 @@ nav.project-nav.w-hidden-main.w-hidden-medium
         = render 'project_basics'
       #dashboard_project.content.w-hidden
         = render 'dashboard_project'
-      #rewards.content
+      #rewards.content.w-hidden-main.w-hidden-medium
         #project-sidebar.aside.w-col.w-col-4.rewards-space
           #rewards.u-marginbottom-30.w-hidden-small-w.hidden-tiny[data-can_update="#{policy(@project).update?}" data-index_path=project_rewards_path(@project)]
             .u-text-center = image_tag 'loading.gif'
@@ -149,7 +149,7 @@ nav.project-nav.w-hidden-main.w-hidden-medium
         .w-hidden-small.w-hidden-tiny
           = render 'project_about'
 
-        .w-hidden-main.w-hidden-medium.project-share.w-col-6.w-col-small-6.w-col-tiny-6
+        .w-hidden-main.w-hidden-medium.project-share.w-col-8.w-col-small-8.w-col-tiny-8
           p.align-left = t('.share')
           .div-share-mobile-fb
             = link_to '#', class: 'btn btn-medium btn-fb' do
@@ -180,7 +180,7 @@ nav.project-nav.w-hidden-main.w-hidden-medium
         .w-row
           .w-col.w-col-small-12.w-col-tiny-12
             .w-hidden-main.w-hidden-medium
-              h1.align-center.total-supporters   = "#{@project.total_contributions} Apoiadores"
+              h1.align-center.total-supporters   = "#{@project.total_contributions} #{t('.supporters')}"
             = render @contributions
         - if policy(@project).update?
           .w-row
@@ -189,9 +189,9 @@ nav.project-nav.w-hidden-main.w-hidden-medium
             br/
 
             .w-hidden-small.w-hidden-tiny
-              h1 Contribuições pendentes
+              h1 = t('.pending_contributions')
             .w-hidden-main.w-hidden-medium
-              h1.align-center.total-supporters Contribuições pendentes
+              h1.align-center.total-supporters = t('.pending_contributions')
             = render @pending_contributions
           .divider.u-marginbottom-20
         .results

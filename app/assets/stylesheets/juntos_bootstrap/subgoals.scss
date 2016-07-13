@@ -5,14 +5,12 @@ $subgoals-border-radius: 4px;
   position: relative;
   margin-top: 12px;
 }
-
 .all-or-nothing-text {
   p {
     margin: 0;
     padding: 0;
   }
 }
-
 .one-subgoal {
   position: absolute;
 
@@ -21,7 +19,6 @@ $subgoals-border-radius: 4px;
     float: right;
   }
 }
-
 .subgoals-bar {
   height: $subgoals-height;
   line-height: 44px;
@@ -34,7 +31,6 @@ $subgoals-border-radius: 4px;
   text-align: right;
   overflow: hidden;
   padding-left: 0;
-
   .partial-paint {
     position: absolute;
     height: $subgoals-height - 2px;
@@ -47,20 +43,15 @@ $subgoals-border-radius: 4px;
     z-index: 10;
   }
 }
-
 .align-centered {
   text-align: center;
 }
-
 .align-right {
   text-align: right;
 }
-
-
 .bar{
   max-height:300px;
 }
-
 .progress-bar-vertical {
   border: solid #000 2px;
   width: 70px;
@@ -75,7 +66,6 @@ $subgoals-border-radius: 4px;
   align-items: flex-end;
   -webkit-align-items: flex-end; /* Safari 7.0+ */
 }
-
 .progress-bar-vertical .progress-bar {
   width: 100%;
   height: 0;
@@ -84,15 +74,12 @@ $subgoals-border-radius: 4px;
   -o-transition: height 0.6s ease;
   transition: height 0.6s ease;
 }
-
-
 .bar-container {
   max-width: 200px;
   margin: 0 auto;
   padding: 30px;
   padding-top:0;
 }
-
 .goal-bar {
   position: relative;
   height: 100%;
@@ -105,7 +92,7 @@ $subgoals-border-radius: 4px;
   width: 30px;
   height: 100%;
   font-size: 12px;
-  line-height: 12px;
+  line-height: 1;
   color: #000;
 }
 .goal-bar .bar-label {
@@ -225,8 +212,6 @@ $subgoals-border-radius: 4px;
   font-size: 1.3em;
   font-weight: bold;
 }
-
-
 .goal-text{
   margin-bottom:0.3em;
   font-weight: bold;

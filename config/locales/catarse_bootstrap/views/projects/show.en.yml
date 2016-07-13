@@ -112,6 +112,8 @@ en:
       contribution_style: 'All OR NOTHING'
       proposed_by: 'Proposed by'
       goal: 'Goals'
+      pending_contributions: 'Pending Contributions'
+      supporters: 'Supporters'
       twitter_profile: 'Twitter profile'
       facebook_profile: 'Facebook profile'
       author_website: "Author's site"

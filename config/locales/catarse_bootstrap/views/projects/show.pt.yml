@@ -115,6 +115,8 @@ pt:
       contribution_style: 'TUDO OU NADA'
       proposed_by: 'Proposto por'
       goal: 'Metas'
+      pending_contributions: 'Contribuições Pendentes'
+      supporters: 'Apoiadores'
       twitter_profile: "Perfil no Twitter"
       facebook_profile: "Perfil no Facebook"
       author_website: "Site do autor"

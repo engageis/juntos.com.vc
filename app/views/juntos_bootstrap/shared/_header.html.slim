@@ -3,7 +3,7 @@
     .w-col.w-col-9.w-col-small-6.w-col-tiny-6.w-clearfix
       - @channel ||= channel
       - if namespace == 'channels' || (request.subdomains.first.present? && request.subdomains.first != 'www' && @channel.present?)
-        = link_to (image_tag "juntos/logo-small.png"), root_path, class: 'header-logo w-nav-brand', :title => CatarseSettings[:company_name]
+        = link_to (image_tag (@profile || @channel).image.header.url), root_path, class: 'header-logo w-nav-brand', :title => CatarseSettings[:company_name]
       - else
         = link_to (image_tag "juntos/logo-small.png"), root_path, class: 'header-logo w-nav-brand', :title => CatarseSettings[:company_name]
       - if params[:controller] == 'projects' && params[:action] == 'index'
@@ -53,7 +53,7 @@
     .w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-clearfix
       - @channel ||= channel
       - if namespace == 'channels' || (request.subdomains.first.present? && request.subdomains.first != 'www' && @channel.present?)
-        = link_to (image_tag "juntos/logo-mobile.png"), root_path, class: 'header-logo w-nav-brand', :title => CatarseSettings[:company_name]
+        = link_to (image_tag (@profile || @channel).image.header.url), root_path, class: 'header-logo w-nav-brand', :title => CatarseSettings[:company_name]
       - else
         = link_to (image_tag "juntos/logo-mobile.png"), root_path, class: 'header-logo w-nav-brand', :title => CatarseSettings[:company_name]
       - if params[:controller] == 'projects' && params[:action] == 'index'

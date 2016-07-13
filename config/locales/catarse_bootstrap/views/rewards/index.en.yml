@@ -1,6 +1,7 @@
 en:
   rewards:
     index:
+      support: "SUPPORT"
       select_reward: "Select this reward"
       display_remaining: "%{remaining} of %{maximum} available"
       dont_want: "I don't want any reward"
