@@ -5,20 +5,30 @@
       iframe.embedly-embed src="#{@project.display_video_embed_url}"  width="100%" height="379" frameborder="0" allowFullScreen
 .w-hidden-main.w-hidden-medium.project-about-highlight
   .w-container
-    p.w-hidden-main.w-hidden-medium.fontsize-small= @project.headline
+    .w-row.w-clearfix.align-center
+      .w-col.w-col-6.w-col-small-6.w-col-tiny-6
+        p
+          i.fa.fa-map-marker.project-basics-icons aria-hidden="true"
+          = @project.user.address_city
+      .w-col.w-col-6.w-col-small-6.w-col-tiny-6
+        p
+          i.fa.fa-tag.project-basics-icons aria-hidden="true"
+          = @project.category
+
+    p.w-hidden-main.w-hidden-medium.fontsize-small= @project.headline  
     = link_to "LEIA MAIS", about_mobile_project_path(@project), class: "mobile-read-more uppercase fontsize-small"
 .w-container.w-hidden-main.w-hidden-medium.project-stats
   .w-row.w-hidden-main.w-hidden-medium
-    .w-col.w-col-small-6.w-col-tiny-6
+    .w-col.w-hidden-tiny.w-hidden-small
       = render 'subgoals_mobile'
-    .w-col.w-col-6.w-col-small-6.w-col-tiny-6.div-height
+    .w-col.w-col-12.w-col-small-12.w-col-tiny-12
       .project-progress-description
-        .w-col.w-col-4.w-col-small-12.w-col-tiny-12.fontweight-semibold.total-supporters
+        .w-col.w-col-4.w-col-small-4.w-col-tiny-4.fontweight-semibold.total-supporters
           .fontsize-largest = @project.total_contributions
           .fontsize-smaller = t('projects.show.sidebar.contributions')
-        .w-col.w-col-4.w-col-small-12.w-col-tiny-12.fontweight-semibold
+        .w-col.w-col-4.w-col-small-4.w-col-tiny-4.fontweight-semibold
           .fontsize-largest = @project.display_pledged(%w(associacaoacorde pesquisadoacao).include?(@project.permalink) ? 2 : 1)
           .fontsize-smaller = t('projects.show.sidebar.goal', total: @project.display_goal)
-        .w-col.w-col-4.w-col-small-12.w-col-tiny-12.fontweight-semibold
+        .w-col.w-col-4.w-col-small-4.w-col-tiny-4.fontweight-semibold
           .fontsize-largest = @project.remaining_days
           .fontsize-smaller #{@project.time_to_go[:unit].capitalize} #{pluralize_without_number(@project.time_to_go[:time], t('remaining_singular'), t('remaining_plural'))}

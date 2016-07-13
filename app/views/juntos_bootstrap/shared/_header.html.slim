@@ -53,17 +53,49 @@
     .w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-clearfix
       - @channel ||= channel
       - if namespace == 'channels' || (request.subdomains.first.present? && request.subdomains.first != 'www' && @channel.present?)
-        = link_to (image_tag "juntos/logo-small.png"), root_path, class: 'header-logo w-nav-brand', :title => CatarseSettings[:company_name]
+        = link_to (image_tag "juntos/logo-mobile.png"), root_path, class: 'header-logo w-nav-brand', :title => CatarseSettings[:company_name]
       - else
-        = link_to (image_tag "juntos/logo-small.png"), root_path, class: 'header-logo w-nav-brand', :title => CatarseSettings[:company_name]
+        = link_to (image_tag "juntos/logo-mobile.png"), root_path, class: 'header-logo w-nav-brand', :title => CatarseSettings[:company_name]
       - if params[:controller] == 'projects' && params[:action] == 'index'
         .header-logo-label
           p = t(:header_logo_label, scope: [:site])
     .w-col.w-col-small-6.w-col-tiny-6.align-right
-      button.btn-open-menu
-        i.fa.fa-bars.fa-2x aria-hidden="true"
+      - if current_user
+        .w-dropdown.user-profile
+          = link_to '#', id: 'user-menu', class: 'w-dropdown-toggle dropdown-toggle' do
+            = image_tag(current_user.display_image, :size => "40x40", class: 'user-avatar')
+            .w-icon-dropdown-toggle.dropdown-icon.positive-mobile
+          nav.w-dropdown-list.dropdown-list.user-menu
+            = link_to t('layouts.header.profile'), current_user, class: 'w-dropdown-link dropdown-link fontsize-smaller'
+            = link_to t('layouts.user.my_contributions'), user_path(current_user, anchor: 'contributions'), class: 'w-dropdown-link dropdown-link fontsize-smaller'
+            - if current_user.project_owner?
+              = link_to t('.projects'), user_path(current_user, anchor: 'projects'), class: 'w-dropdown-link dropdown-link fontsize-smaller'
+            = link_to user_path(current_user, anchor: 'credits'), class: 'w-dropdown-link dropdown-link fontsize-smaller' do
+              = t('layouts.user.my_credits')
+              .fontsize-smallest.text-success
+                | (#{current_user.display_credits})
+            = link_to t('layouts.user.refund_link'), user_path(current_user, anchor: 'credits'), class: 'w-dropdown-link dropdown-link fontsize-smaller'
+            - if current_user.admin? || current_user.channel
+              .divider
+              - for menu, path in controller.menu do
+                = link_to menu, path, class: 'w-dropdown-link dropdown-link fontsize-smaller'
+              - if current_user.admin?
+                = link_to t('admin.home_banners.index.menu'), admin_home_banners_path, class: 'w-dropdown-link dropdown-link fontsize-smaller'
+              - if current_user.channel || namespace == 'channels'
+                .divider
+                  = link_to t('channels.admin.partners_menu'), channels_admin_partners_path, class: 'w-dropdown-link dropdown-link fontsize-smaller'
+                  = link_to t('channels.admin.images_menu'), channels_admin_images_path, class: 'w-dropdown-link dropdown-link fontsize-smaller'
+                  = link_to t('channels.admin.profile_menu'), edit_channels_profile_path, class: 'w-dropdown-link dropdown-link fontsize-smaller'
+            .divider
+            = link_to t('layouts.user.logout'), destroy_user_session_path, method: :delete, class: 'w-dropdown-link dropdown-link fontsize-smaller'
+      - else
 
-    .w-dropdown.user-profile.w-hidden-small.w-hidden-tiny
+        = link_to t('layouts.header.signup'), new_user_registration_path, class: 'w-nav-link header-link w-nav-link u-right'
+
+        = link_to t('layouts.header.signin'), new_user_session_path, class: 'w-nav-link header-link w-nav-link u-right highlight'
+
+
+    .w-col.w-col-small-12.w-col-tiny-12
       = yield :header_controls
 
     .w-col.w-col-3.w-col-small-6.w-col-tiny-10.w-clearfix.w-hidden-small.w-hidden-tiny

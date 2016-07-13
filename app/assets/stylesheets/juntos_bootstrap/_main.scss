@@ -636,12 +636,15 @@ p {
   font-size: 16px;
   font-weight: 600;
 }
-.main-header {
+.main-header{
   padding-bottom: 8px;
   padding-left: 15px;
   border-bottom: 1px solid rgba(37, 49, 57, 0.6);
   background-color: #3f4752;
 }
+
+
+
 .img-logo {
   margin-top: 8px;
   margin-right: 16px;
@@ -3679,11 +3682,13 @@ section.devise-body-section .access-type-field input {
     bottom: 0px;
   }
   .div-share-mobile-fb {
-    width: 45%;
+    width: 39%;
     margin-right: 5px;
     margin-left: 5px;
     text-align: center;
   }
+
+
   .icon-share-mobile {
     left: 8px;
     margin-top: 8px;
@@ -4002,11 +4007,12 @@ input.partner-label {
   padding: 0;
 }
 
+
+
 .mobile-tab{
   display: flex;
   padding: 10px 20px;
-  background: #f2f2f2;
-  color:#000;
+  color:#fff;
   margin: 0;
   border-radius: 0;
   margin: 0 0.1em;
@@ -4019,20 +4025,24 @@ input.partner-label {
 
 div .w-container .w-row .nav-tabs .mobile-tab.selected{
     background: #fff !important;
+    color:#000;
 }
 
 .scroll-tabs{
   display: flex;
   max-width: 100%;
   overflow-x: auto;
-  padding-bottom: 0.8em;
 }
 
 .mobile-read-more{
-  color:#b3b3b3;
+  border-radius:3px;
+  padding: 10px 20px;
+  color:#fff;
+  background-color:#FFB74D;
   font-weight: bold;
   text-decoration: none;
 }
+
 
 .align-center{
   text-align: center;
@@ -4087,6 +4097,14 @@ div .w-container .w-row .nav-tabs .mobile-tab.selected{
   font-weight: bold;
 }
 
+.rewards-space{
+  margin: 1em 0;
+}
+
+.menu-mobile-background{
+  background-color: #f8bc1c;
+}
+
 .div-btn-select-rewards{
   margin: 0.5em 0;
   text-align: right;
@@ -4103,4 +4121,10 @@ div .w-container .w-row .nav-tabs .mobile-tab.selected{
 
 .right{
   float:right;
+}
+
+p .project-basics-icons{
+  color:#f8bc1c;
+  font-size: 1.3em;
+  margin-right:0.5em;
 }

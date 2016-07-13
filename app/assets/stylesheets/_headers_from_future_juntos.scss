@@ -17,6 +17,7 @@
 @media (max-width: 767px){
   .main-header{
     padding-bottom: 4em;
+      background-color: #f8bc1c;
   }
 }
 
@@ -75,6 +76,13 @@
     background-color: #FEB84C;
   }
 }
+
+@media(max-width:678px){
+  .header-link{
+    color:#fff;
+  }
+}
+
 .header-link:hover {
   position: static;
   top: 0px;
@@ -553,4 +561,8 @@
 
 .btn-open-menu i{
   color:#fff;
+}
+
+.dropdown-icon.positive-mobile{
+  color:#000;
 }
