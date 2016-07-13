@@ -115,6 +115,7 @@ en:
       facebook_profile: 'Facebook profile'
       author_website: "Author's site"
       share: 'Share'
+      facebook: 'Facebook'
       tweet: 'Tweet'
       contact_author: 'Send a message'
       user_documents: >
@@ -141,6 +142,8 @@ en:
         without_city: 'A project of'
         with_city: 'A project of %{category_name} by %{author} at %{city}'
       menu:
+        result: Results
+        reward: 'Rewards'
         about: 'About'
         add_reward: 'Add reward'
         comments: 'Comments'

@@ -1,11 +1,16 @@
 - if contribution.anonymous
-  .contribution.u-margintop-10
-    = link_to '#', title: t('projects.contributions.contribution.anonymous_contribution') do
-      .contribution-thumb.u-left[style="background-image: url('#{asset_url('user.png')}'); background-size: cover; background-position: center;"]
+  .w-col.w-col-small-4.w-col-tiny-4
+    .contribution.u-margintop-10
+      = link_to '#', title: t('projects.contributions.contribution.anonymous_contribution') do
+        .contribution-thumb[style="background-image: url('#{asset_url('user.png')}'); background-size: cover; background-position: center;margin: 0 auto;"]
+        p.align-center  = contribution.user.name
 - else
-  .contribution.u-margintop-10
-    = link_to user_path(contribution.user), title: contribution.user.name do
-      .contribution-thumb.u-left[style="background-image: url('#{contribution.user.display_image}'); background-size: cover; background-position: center;"]
+  .w-col.w-col-small-4.w-col-tiny-4
+    .contribution.u-margintop-10
+      = link_to user_path(contribution.user), title: contribution.user.name do
+        .contribution-thumb[style="background-image: url('#{contribution.user.display_image}'); background-size: cover; background-position: center;margin: 1em auto;"]
+        .w-hidden-main.w-hidden-medium
+        p.align-center  = contribution.user.name
 /- if contribution.anonymous
   /.w-clearfix.u-marginbottom-20
 

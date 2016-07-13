@@ -1,0 +1,22 @@
+- content_for :header_controls_mobile do
+    ul
+      li
+        = link_to t('layouts.header.about'), who_we_are_path, class: 'header-link w-nav-link'
+
+      li
+        = link_to t('layouts.header.discover'), explore_path, class: 'header-link w-nav-link'
+
+      li
+        = link_to t('layouts.header.submit'), start_path(submit: true), class: 'w-hidden-small w-hidden-tiny header-link w-nav-link'
+
+      li
+        = link_to t('layouts.header.how_it_works'), start_path, class: 'header-link w-nav-link'
+
+      li
+        = link_to 'PT', url_for(locale: 'pt'), class: "btn-translation #{'active' if I18n.locale == :pt}"
+
+      li
+        = link_to 'EN', url_for(locale: 'en'), class: "btn-translation #{'active' if I18n.locale == :en}"
+
+
+= render 'shared/header'
