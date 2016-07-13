@@ -550,19 +550,13 @@
      margin-bottom: 0;
 }
 
-
-.btn-open-menu{
-  border-radius: 0;
-  background-color: #7f7f7f;
-  padding: 4px 20px;
-  border: none;
-  margin: 0.5em 0;
-}
-
-.btn-open-menu i{
-  color:#fff;
-}
-
 .dropdown-icon.positive-mobile{
   color:#000;
+}
+
+@media(max-width:396px){
+  .padding-menu-mobile{
+    padding-bottom:1em;
+    font-size: 0.8em;
+  }
 }
