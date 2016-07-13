@@ -53,12 +53,12 @@
 
 
 nav.project-nav.w-hidden-main.w-hidden-medium
-  .w-container
+  .w-container.menu-mobile-background
     .w-row
       .w-col.w-col-12.nav.nav-tabs.scroll-tabs.no-padding role="tablist"
         = link_to '#about', id: 'about_link', class: 'mobile-tab selected active', data: {target: '#project_about.content'}, role: "presentation", style: "background-color: #{@color};"  do
           = t('.menu.about')
-        = link_to '#rewards', id: 'rewards_link', class: 'mobile-tab' , data: {target: '#rewards'}, style: "background-color: #{@color};"  do
+        = link_to '#rewards', id: 'rewards_link', class: 'mobile-tab' , data: {target: '#rewards.content'}, style: "background-color: #{@color};"  do
           => t('.menu.reward')
         = link_to '#contributions', id: 'contributions_link', class: 'mobile-tab' , data: {target: '#project_contributions'}, style: "background-color: #{@color};"  do
           => t('.menu.contributions')
@@ -126,7 +126,16 @@ nav.project-nav.w-hidden-main.w-hidden-medium
         = render 'project_basics'
       #dashboard_project.content.w-hidden
         = render 'dashboard_project'
-      #rewards.w-hidden
+      #rewards.content
+        #project-sidebar.aside.w-col.w-col-4.rewards-space
+          #rewards.u-marginbottom-30.w-hidden-small-w.hidden-tiny[data-can_update="#{policy(@project).update?}" data-index_path=project_rewards_path(@project)]
+            .u-text-center = image_tag 'loading.gif'
+          - unless @project.recurring?
+            .fontsize-small.fontweight-semibold.u-text-center-small-only = t('.funding_period')
+            .fontsize-small.u-text-center-small-only = "#{@project.display_online_date} - #{@project.display_expires_at}  (#{t('datetime.distance_in_words.x_days', count: @project.online_days)})"
+          - unless @project.channels.any?
+            section.main-sidebar-division.u-marginbottom-30
+              .fb-like-box data-href="#{CatarseSettings['facebook_url']}" data-width="200" data-height="300" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false"
 
       #project_about.content.w-col.w-col-8
         .content.card.card-user.u-marginbottom-10.w-hidden-main.w-hidden-medium.w-hidden
@@ -136,26 +145,17 @@ nav.project-nav.w-hidden-main.w-hidden-medium
               p.inline-components = t('.proposed_by')
               p.inline-components = link_to @project.user.display_name, user_path(@project.user), class: 'link-hidden'
 
-            .w-row.w-clearfix.align-center
-                .w-col.w-col-6.w-col-small-6.w-col-tiny-6
-                  p = @project.user.address_city
-                .w-col.w-col-6.w-col-small-6.w-col-tiny-6
-                  p = @project.category
-
-
         = render 'mobile_video'
         .w-hidden-small.w-hidden-tiny
           = render 'project_about'
 
-        .w-hidden-main.w-hidden-medium.project-share
+        .w-hidden-main.w-hidden-medium.project-share.w-col-6.w-col-small-6.w-col-tiny-6
           p.align-left = t('.share')
           .div-share-mobile-fb
             = link_to '#', class: 'btn btn-medium btn-fb' do
-              = image_tag 'catarse_bootstrap/facebook-xxl.png', class: 'icon-share-mobile'
               = t('.facebook')
           .div-share-mobile-fb
             = link_to '#', class: 'btn btn-medium btn-fb btn-tweet' do
-              = image_tag 'catarse_bootstrap/twitter-256.png', class: 'icon-share-mobile'
               = t('.tweet')
 
       #dashboard_rewards.content.w-hidden
@@ -164,14 +164,6 @@ nav.project-nav.w-hidden-main.w-hidden-medium
         #dashboard_subgoals.content.w-hidden
           = render 'dashboard_subgoals'
 
-        #rewards.u-marginbottom-30.text-left[data-can_update="#{policy(@project).update?}" data-index_path=project_rewards_path(@project)]
-          .u-text-center = image_tag 'loading.gif'
-        - unless @project.recurring?
-          .fontsize-small.fontweight-semibold.u-text-center-small-only = t('.funding_period')
-          .fontsize-small.u-text-center-small-only = "#{@project.display_online_date} - #{@project.display_expires_at}  (#{t('datetime.distance_in_words.x_days', count: @project.online_days)})"
-        - unless @project.channels.any?
-          section.main-sidebar-division.u-marginbottom-30
-            .fb-like-box data-href="#{CatarseSettings['facebook_url']}" data-width="200" data-height="300" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false"
       #project_metrics.content.w-hidden
       - content_for :custom_javascripts do
         javascript:
@@ -288,7 +280,7 @@ nav.project-nav.w-hidden-main.w-hidden-medium
                 = image_tag partner.image.thumb.url
 
 
-
+    .w-hidden-small.w-hidden-tiny
       #rewards.u-marginbottom-30.w-hidden-small-w.hidden-tiny[data-can_update="#{policy(@project).update?}" data-index_path=project_rewards_path(@project)]
         .u-text-center = image_tag 'loading.gif'
       - unless @project.recurring?

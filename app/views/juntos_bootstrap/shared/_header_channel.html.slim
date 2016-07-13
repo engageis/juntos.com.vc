@@ -6,8 +6,9 @@
   = link_to t(:contacts, scope: [:layouts, :header]),
     channels_contacts_path, class: 'header-link w-nav-link'
 
-  = link_to 'PT', url_for(locale: 'pt'), class: "btn-translation u-right #{'active' if I18n.locale == :pt}"
+  = link_to 'PT', url_for(locale: 'pt'), class: "btn-translation #{'active' if I18n.locale == :pt} w-hidden-small w-hidden-tiny"
 
-  = link_to 'EN', url_for(locale: 'en'), class: "btn-translation u-right #{'active' if I18n.locale == :en}"
+  = link_to 'EN', url_for(locale: 'en'), class: "btn-translation #{'active' if I18n.locale == :en} w-hidden-small w-hidden-tiny"
+
 
 = render 'shared/header'

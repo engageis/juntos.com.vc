@@ -15,6 +15,7 @@ App.addChild('Project', _.extend({
     this.route('dashboard_rewards');
     this.route('dashboard_subgoals');
     this.route('posts');
+    this.route('rewards');
     this.route('contributions');
     this.route('comments');
     this.route('edit');
