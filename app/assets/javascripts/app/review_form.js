@@ -128,13 +128,12 @@ App.addChild('ReviewForm', _.extend({
   },
 
   clearStates: function(){
-    this.$state.html('<option></option>');
+    this.$state.html('<option value="">-------</option>');
   },
-  
-  nationalAddress: function(){
-    this.parent.payment.loadPaymentChoices();
-    this.makeFieldsRequired();
-    this.maskFields();
+
+  unMaskFields: function(){
+    this.$phone.unmask();
+    this.$zip.unmask();
   },
 
   maskFields: function(){
@@ -142,22 +141,26 @@ App.addChild('ReviewForm', _.extend({
     this.$zip.mask('99999-999');
   },
 
+  nationalAddress: function(){
+    this.parent.payment.loadPaymentChoicesPerNationality(true);
+    this.makeFieldsRequired();
+    this.maskFields();
+  },
+
   internationalAddress: function(){
+    this.parent.payment.loadPaymentChoicesPerNationality(false);
     this.makeFieldsOptional();
+    this.unMaskFields();
   },
 
   makeFieldsRequired: function(){
     this.$('[data-required-in-brazil]').prop('required', 'required');
     this.$('[data-required-in-brazil]').parent().removeClass('optional').addClass('required');
-
-    $("div.cpf").show();
   },
 
   makeFieldsOptional: function(){
     this.$('[data-required-in-brazil]').prop('required', false);
     this.$('[data-required-in-brazil]').parent().removeClass('required').addClass('optional');
-
-    $("div.cpf").hide();
   },
 
   acceptTerms: function(){
@@ -208,7 +211,7 @@ App.addChild('ReviewForm', _.extend({
   updateContribution: function(){
     var contribution_data = {
       anonymous: this.$('#contribution_anonymous').is(':checked'),
-      country_id: this.$('#contribution_country_id').val(),
+      country_code: this.$('#contribution_country_code').val(),
       payer_name: this.$('#contribution_full_name').val(),
       payer_email: this.$('#contribution_email').val(),
       payer_document: this.$('#contribution_payer_document').val(),
@@ -305,4 +308,3 @@ App.addChild('ReviewForm', _.extend({
   }
 
 }, Skull.Form));
-

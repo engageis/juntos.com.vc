@@ -12,8 +12,8 @@
           = form.input :id, as: :hidden, label: false
           = form.input :project_id, as: :hidden, label: false
           .u-marginbottom-30.u-text-center-small-only
-            .fontsize-large.fontweight-semibold.lineheight-tight.text-success-small-only = t('.data_review') 
-            .w-hidden-tiny.fontsize-small = t('.data_inform') 
+            .fontsize-large.fontweight-semibold.lineheight-tight.text-success-small-only = t('.data_review')
+            .w-hidden-tiny.fontsize-small = t('.data_inform')
           #error-message.card.card-error.u-radius.zindex-10.u-marginbottom-30.w-hidden
             .fontsize-smaller.fontweight-bold.u-marginbottom-10= t('.review_errors_title')
             .fontsize-smaller = t('.review_errors')
@@ -37,16 +37,16 @@
             .fontsize-base.fontweight-semibold.fontcolor-secondary.u-marginbottom-20 = t('.address')
             .w-form
               .w-row
-                = form.input :country_code, wrapper_html: {class: 'w-col w-col-6 w-sub-col'}, input_html: {class: 'w-select'}, include_blank: false, collection: @countries, required: true
+                = form.input :country_code, wrapper_html: {class: 'w-col w-col-6 w-sub-col'}, input_html: {class: 'w-select'}, include_blank: false, collection: @countries, required: true , :selected => 'BR'
               .w-row
-                = form.input :address_street, as: :string, wrapper_html: {class: 'w-col w-col-6 w-sub-col'}, required: true 
+                = form.input :address_street, as: :string, wrapper_html: {class: 'w-col w-col-6 w-sub-col'}, required: true
                 = form.input :address_number, as: :string, wrapper_html: {class: 'w-col w-col-small-6 w-col-tiny-6 w-col-2 w-sub-col-middle'}, required: true
                 = form.input :address_complement, as: :string, wrapper_html: {class: 'w-col w-col-small-6 w-col-tiny-6 w-col-4'}
               .w-row
                 = form.input :address_neighbourhood, as: :string, wrapper_html: {class: 'w-col w-col-6 w-sub-col'}, input_html: {data: {required_in_brazil: true}}
                 = form.input :address_city, as: :string, wrapper_html: {class: 'w-col w-col-6'}, required: true
               .w-row
-                = form.input :address_state, collection: [@contribution.address_state], wrapper_html: {class: 'w-col w-col-6 w-sub-col'}, required: true
+                = form.input :address_state, collection: [@contribution.address_state], wrapper_html: {class: 'w-col w-col-6 w-sub-col'}, input_html: {data: {required_in_brazil: true}}
                 = form.input :address_zip_code, as: :string, wrapper_html: {class: 'w-col w-col-small-6 w-col-tiny-6 w-col-3 w-sub-col-middle'}, input_html: {data: {required_in_brazil: true}}
                 = form.input :address_phone_number, as: :string, wrapper_html: {class: 'w-col w-col-small-6 w-col-tiny-6 w-col-3'}, input_html: {data: {required_in_brazil: true}}
 

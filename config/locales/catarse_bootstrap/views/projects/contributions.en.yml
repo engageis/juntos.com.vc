@@ -121,6 +121,11 @@ en:
           error_duplicate: This gift card is already used.
           error_value: This gift card does not have the value that was informed.
           error_coupon: Gift card not founded.
+        form:
+          labels:
+            submit: Submit
+            document: CPF/CNPJ (only numbers)
+            build_boleto: Build boleto
       show:
         header_subtitle: Maybe, this project will not have a chance without you. You are welcome to the team!
         header_title: Donation succeed!
@@ -128,3 +133,9 @@ en:
         recommended_projects: 'You can also enjoy these projects:'
         text_title_html: Thanks to your donation to the project %{link}.
         title: Thank you
+
+  catarse_moip:
+    moip:
+      review:
+        review_errors_title: Verify your information
+        review_errors: Some information is missing or is incorrect, please verify all fields in red and try again.

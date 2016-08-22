@@ -15,13 +15,6 @@ App.addChild('Payment', _.extend({
 
   show: function(){
     this.$el.slideDown('slow');
-    if(this.$el.data('international-payment') != 'BR') {
-      if (this.$el.data('show-national')) {
-        this.selectNationalPayment();
-      } else {
-        this.selectInternationalPayment();
-      }
-    }
   },
 
   updatePaymentMethod: function() {
@@ -30,18 +23,18 @@ App.addChild('Payment', _.extend({
       url: this.$el.data('update-info-path'),
       type: 'PUT',
       data: { contribution: { payment_method: $selected_tab.prop('id') } }
-    }).success(function() {
-      if ($('#contribution_country_id').val() != 36) {
-        $("div.cpf").hide();
-      } else {
-        $("div.cpf").show();
-      }
     });
   },
 
   hideNationalPayment: function() {
     this.$('#MoIP').hide();
-    this.$('.payments_type#MoIP_payment').hide();
+    this.$('#MoIP_payment').hide();
+  },
+
+  showNationalPayment: function() {
+    this.$('#MoIP').show();
+    this.$('#MoIP_payment').show();
+    this.$('#PayPal_payment').hide();
   },
 
   selectInternationalPayment: function() {
@@ -52,10 +45,10 @@ App.addChild('Payment', _.extend({
     this.onTabClick({currentTarget: this.$('#MoIP')});
   },
 
-  loadPaymentChoices: function() {
-    if($('#contribution_country_id').val() == '36') {
-      this.$('#MoIP').show();
-      this.onTabClick({currentTarget: this.$('.nav-tab:first')});
+  loadPaymentChoicesPerNationality: function(national) {
+    if(national) {
+      this.showNationalPayment();
+      this.selectNationalPayment();
     } else {
       this.hideNationalPayment();
       this.selectInternationalPayment();
@@ -64,4 +57,3 @@ App.addChild('Payment', _.extend({
     this.on('selectTab', this.updatePaymentMethod);
   }
 }, Skull.Tabs));
-
