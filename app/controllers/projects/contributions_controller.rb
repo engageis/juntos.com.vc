@@ -14,6 +14,7 @@ class Projects::ContributionsController < ApplicationController
 
   def edit
     authorize resource
+    resource.country_code = 'BR'
     @payment_engines = avaiable_payment_engines
     @countries = ISO3166::Country.all_names_with_codes(I18n.locale)
 

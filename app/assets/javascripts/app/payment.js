@@ -57,4 +57,3 @@ App.addChild('Payment', _.extend({
     this.on('selectTab', this.updatePaymentMethod);
   }
 }, Skull.Tabs));
-

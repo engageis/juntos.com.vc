@@ -6,42 +6,42 @@
     = simple_form_for '', url: admin_contributions_path, method: :get do |form|
       .w-row
         .w-col-2.w-col
-          = form.input :by_id, as: :integer, label: t('.id')
+          = form.input :by_id, as: :integer, label: t('.id'), required: false
         .w-col-2.w-col
-          = form.input :by_user_id, as: :integer, label: t('.user_id')
+          = form.input :by_user_id, as: :integer, label: t('.user_id'), required: false
         .w-col-4.w-col
           .w-row
             .w-col-5.w-col
-              = form.input 'between_values[start_at]', as: :integer, label: t(".between_values")
+              = form.input 'between_values[start_at]', as: :integer, label: t(".between_values"), required: false
             .w-col-5.w-col.u-margintop-10.u-marginleft-20
               = form.input 'between_values[ends_at]', as: :integer, label: ''
         .w-col-4.w-col
-          = form.input :payer_email_contains, as: :string, label: t('.payer_email')
+          = form.input :payer_email_contains, as: :string, label: t('.payer_email'), required: false
       .w-row
         .w-col-2.w-col
-          = form.input :by_payment_id, as: :string, label: t('.payment_id')
+          = form.input :by_payment_id, as: :string, label: t('.payment_id'), required: false
         .w-col-2.w-col
-          = form.input :with_state, collection: Contribution.state_names, label: t('channels.admin.filter.with_state'), as: :select, selected: params[:with_state], include_blank: true
+          = form.input :with_state, collection: Contribution.state_names, label: t('channels.admin.filter.with_state'), as: :select, selected: params[:with_state], include_blank: true, required: false
         .w-col-4.w-col
-          = form.input :project_name_contains, as: :string, label: t('.project')
+          = form.input :project_name_contains, as: :string, label: t('.project'), required: false
         .w-col-4.w-col
-          = form.input :user_name_contains, as: :string, label: t('.user')
+          = form.input :user_name_contains, as: :string, label: t('.user'), required: false
       .w-row
         .w-col-4.w-col
-          = form.input :user_cpf_contains, as: :string, label: t('.user_cpf')
+          = form.input :user_cpf_contains, as: :string, label: t('.user_cpf'), required: false
         .w-col-4.w-col
-          = form.input :user_email_contains, as: :string, label: t('.user_email')
+          = form.input :user_email_contains, as: :string, label: t('.user_email'), required: false
         .w-col-2.w-col
-          = form.input :by_key, as: :string, label: t('.key')
+          = form.input :by_key, as: :string, label: t('.key'), required: false
         .w-col-2.w-col
-          = form.input :credits, as: :boolean, label: t('.credits')
+          = form.input :credits, as: :boolean, label: t('.credits'), required: false
       .w-row
         .w-col-4.w-col
-          = form.input :with_cause, collection: Category.all.map{|c| [c.name_pt, c.id]}, label: t('channels.admin.filter.cause'), as: :select, selected: params[:with_cause], include_blank: true
+          = form.input :with_cause, collection: Category.all.map{|c| [c.name_pt, c.id]}, label: t('channels.admin.filter.cause'), as: :select, selected: params[:with_cause], include_blank: true, required: false
         .w-col-2.w-col
-          = form.input :platform_contributions, as: :boolean, label: t('.platform_contributions')
+          = form.input :platform_contributions, as: :boolean, label: t('.platform_contributions'), required: false
         .w-col-2.w-col
-          = form.input :partner_indications, as: :boolean, label: t('.partner_indication')
+          = form.input :partner_indications, as: :boolean, label: t('.partner_indication'), required: false
         .w-col.w-col-2.u-margintop-20
           = link_to t('Exportar CSV'), admin_contributions_path(params: params,format: :csv), class: 'btn bt-medium'
         .w-col-2.w-col.u-margintop-20
