@@ -72,7 +72,7 @@ class Contribution < ActiveRecord::Base
   scope :partner_indications, -> { where(partner_indication: true) }
   scope :can_cancel, -> { where("contributions.can_cancel") }
   scope :with_cause, ->(cause_id) {
-    where('project_id in (?)', Project.select{|p|p.category.id == cause_id.to_i}.map(&:id))
+    where('project_id in (?)', Project.select{|p|p.category_id == cause_id.to_i}.map(&:id))
   }
 
   # Contributions already refunded or with requested_refund should appear so that the user can see their status on the refunds list
