@@ -30,7 +30,7 @@
         .w-row
           .w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-sub-col-middle.phone
             = label_tag :payment_card_phone, t('projects.contributions.edit.form_labels.payment_card_phone'), class: 'field-label fontweight-semibold'
-            = text_field_tag :payment_card_phone, nil, class: 'w-input text-field', data: { mask: '(99) 9999-99999', payment_card_phone: true }, required: true
+            = text_field_tag :payment_card_phone, nil, class: 'w-input text-field', data: { payment_card_phone: true }, required: true
             .fontsize-smaller.text-error.u-marginbottom-20.fa.fa-exclamation-triangle.w-hidden[data-error-for="payment_card_phone"]
               = t('projects.contributions.edit.errors.payment_errors_phone')
 

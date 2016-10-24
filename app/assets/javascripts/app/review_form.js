@@ -144,7 +144,8 @@ App.addChild('ReviewForm', _.extend({
     this.$phone.mask('(99)9999-9999Z', { translation:  {'Z': { pattern: /[0-9]/, optional: true }}});
     this.$zip.mask('99999-999');
     this.$cpf.mask('999.999.999-99');
-    this.$payment_phone.mask('(99)9999-9999Z', { translation:  {'Z': { pattern: /[0-9]/, optional: true }}});
+    this.$payment_phone.mask('(99)Z9999-9999', { translation:  {'Z': { pattern: /[0-9]/, optional: true }}});
+    $('#payment_card_phone').mask('(99)Z9999-9999', { translation:  {'Z': { pattern: /[0-9]/, optional: true }}});
     this.$payment_birth.mask('99/99/9999');
     this.$payment_date.mask('99');
   },
