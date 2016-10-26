@@ -39,6 +39,8 @@ pt:
         description: 'Preencha o campo descrição'
       subgoal:
         minimum_value: 'Preencha o valor mínimo para a recompensa'
+        description: 'Preencha a descrição'
+        color: 'Preencha a cor'
     prompts:
       project:
         category: "Selecione uma categoria"

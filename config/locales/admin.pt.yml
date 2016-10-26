@@ -6,9 +6,15 @@ pt:
         title: 'Categorias'
         new: 'Nova categoria'
         edit: 'Editar'
+      new:
+        title: 'Categorias' 
     site_partners:
       index:
         menu: 'Parceiros'
+        title: 'Parceiros da Juntos'
+        new: Novo Parceiro
+        edit: Editar
+        remove: Apagar
     channels:
       index:
         menu: 'Canais'
@@ -131,7 +137,9 @@ pt:
         total_users: usuários
         total_credits: créditos
         total_credits_view: créditos calculados
+        id: ID
         user: Usuário
+        email: Email
         value: Valor
         payer_email: Email do pagamento
         provider: Provedor
@@ -216,10 +224,10 @@ pt:
         user: Usuário
         user_id: Id do usuário
         value: Valor
-        credits: Créditos
+        credits: Crédito?
         platform_contributions: Contribuições para a plataforma
-        platform_value: Valor para a plataforma
-        project_value: Valor para o projeto
+        platform_value: para plataforma
+        project_value: para projeto
         partner_indication: Indicação de parceiros
         search_report: Exportar CSV
         emails: Emails
@@ -256,6 +264,7 @@ pt:
         new: 'Adicionar banner'
         no_home_banners: 'Sem banners cadastrados'
         title: 'Banners da homepage'
+        id: ID
       new:
         title: 'Adicionar banner'
       edit:

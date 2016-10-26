@@ -5,7 +5,6 @@ RSpec.describe ProjectPost, type: :model do
     it{ is_expected.to validate_presence_of :project_id }
     it{ is_expected.to validate_presence_of :user_id }
     it{ is_expected.to validate_presence_of :comment }
-    it{ is_expected.to validate_presence_of :comment_html }
   end
 
   describe "associations" do

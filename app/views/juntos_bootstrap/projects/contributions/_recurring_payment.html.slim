@@ -82,5 +82,6 @@
     .w-row
       .w-col.w-col-6.w-col-push-3
         = submit_tag t(:credits_submit, scope: [:projects, :contributions, :edit]),
-          class: 'btn btn-large u-marginbottom-20', data: { recurring: true,
-          pagarme_encryption: ENV['PAGARME_ENCRYPTION_KEY'] }
+          id: 'next-step',
+          class: 'btn btn-large u-marginbottom-20', 
+          data: { recurring: true, pagarme_encryption: ENV['PAGARME_ENCRYPTION_KEY'] }

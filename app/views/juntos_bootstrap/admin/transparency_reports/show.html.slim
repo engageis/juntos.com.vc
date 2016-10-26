@@ -15,14 +15,14 @@
 
     .w-row
       .w-col.w-col-6
-        = form.input :attachment, as: :file, required: true
+        = form.input :attachment, as: :file, required: false
       .w-col.w-col-6
         - if @transparency_report.attachment
           .u-margintop-30
             = link_to 'Arquivo', @transparency_report.attachment.url, target: '_blank', class: 'fontcolor-yellow fontsize-large'
     .w-row
       .w-col.w-col-6
-        = form.input :previous_attachment, as: :file, required: true
+        = form.input :previous_attachment, as: :file, required: false
       .w-col.w-col-6
         - if @transparency_report.previous_attachment
           .u-margintop-30

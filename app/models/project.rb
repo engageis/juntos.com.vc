@@ -162,14 +162,13 @@ class Project < ActiveRecord::Base
   validates_acceptance_of :accepted_terms, on: :create
 
   validates :video_url, presence: true, if: :video_required?
-  validates_presence_of :name, :user, :permalink
-  validates_presence_of :about, unless: :new_record
+  validates_presence_of :name, :user, :permalink, :about
   validates_presence_of :about, :headline, :goal, if: ->(p) {p.state == 'online'}
   validates_length_of :headline, maximum: 140, minimum: 1
   validates_numericality_of :online_days, less_than_or_equal_to: 60, greater_than: 0, if: ->(p){ p.online_days.present? }
-  validates_numericality_of :goal, greater_than: 9, allow_blank: true
+  validates_numericality_of :goal, greater_than: 9
   validates_uniqueness_of :permalink, case_sensitive: false
-  validates_format_of :permalink, with: /\A(\w|-)*\Z/
+  validates_format_of :permalink, with: /\A[\w|-]{3,15}\z/
 
   validates_presence_of :category, unless: :recurring?
 

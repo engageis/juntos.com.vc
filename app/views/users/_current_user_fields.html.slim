@@ -26,8 +26,7 @@
       .bootstrap-form
         = semantic_form_for @user, html: {method: :put, id: 'user_form'}  do |f|
           .profile
-            = f.input :id, as: :string, input_html: { disabled:  'disabled'}
-            = f.input :full_name, required: true, as: :string
+            = f.input :full_name, as: :string
             = f.input :cpf, as: :string, input_html: {autocomplete: 'off'}, label: (t('activerecord.attributes.user.cpf') + link_to(t('activerecord.attributes.user.cpf_hint'), 'http://suporte.catarse.me/hc/pt-br/articles/202457548-O-Catarse-emite-Nota-Fiscal-', {title: t('activerecord.attributes.user.cpf_hint_title') })).html_safe
             = f.input :state_inscription, as: :string
             = f.input :name, required: false, as: :string

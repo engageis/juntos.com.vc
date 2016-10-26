@@ -6,7 +6,7 @@ class ProjectPost < ActiveRecord::Base
   belongs_to :project, inverse_of: :posts
   belongs_to :user
 
-  validates_presence_of :user_id, :project_id, :comment, :comment_html
+  validates_presence_of :user_id, :project_id, :comment
   #remove all whitespace from the start of the line so auto_html won't go crazy
   before_save -> {self.comment = comment.gsub(/^[^\S\n]+/, "")}
 

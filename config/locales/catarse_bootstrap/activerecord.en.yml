@@ -118,7 +118,7 @@ en:
             about:
               blank: "The project's description cannot be blank"
             headline:
-              blank: "The project's headline cannot be blank"
+              too_short: "The project's headline cannot be blank"
               too_long: "The project's headline is too long. You can use only 140 characters"
             recipient:
               blank: 'Insert all fields in bank account info'

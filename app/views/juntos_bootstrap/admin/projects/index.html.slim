@@ -14,14 +14,14 @@
     = simple_form_for '', url: admin_projects_path, method: :get do |form|
       .w-row
         .w-col-3.w-col
-          = form.input :order_by, as: :hidden, input_html: {value: params[:order_by], class: 'w-input text-field'}
-          = form.input :by_id, as: :integer, label: t('channels.admin.filter.by_id'), input_html: {value: params[:by_id], class: 'w-input text-field'}
+          = form.input :order_by, as: :hidden, input_html: {value: params[:order_by], class: 'w-input text-field'}, required: false
+          = form.input :by_id, as: :integer, label: t('channels.admin.filter.by_id'), input_html: {value: params[:by_id], class: 'w-input text-field'}, required: false
         .w-col-3.w-col
-          = form.input :pg_search, as: :string, label: t('channels.admin.filter.pg_search'), input_html: {value: params[:pg_search], class: 'w-input text-field'}
+          = form.input :pg_search, as: :string, label: t('channels.admin.filter.pg_search'), input_html: {value: params[:pg_search], class: 'w-input text-field'}, required: false
         .w-col-3.w-col
-          = form.input :user_name_contains, as: :string, label: t('channels.admin.filter.user_name_contains'), input_html: {value: params[:user_name_contains], class: 'w-input text-field'}
+          = form.input :user_name_contains, as: :string, label: t('channels.admin.filter.user_name_contains'), input_html: {value: params[:user_name_contains], class: 'w-input text-field'}, required: false
         .w-col-3.w-col
-          = form.input :by_user_email, as: :string, label: t('.by_user_email'), input_html: {value: params[:by_user_email], class: 'w-input text-field'}
+          = form.input :by_user_email, as: :string, label: t('.by_user_email'), input_html: {value: params[:by_user_email], class: 'w-input text-field'}, required: false
 
       .w-row
         - [:between_created_at, :between_expires_at, :between_online_date, :between_updated_at].each_with_index do |between_field, index|
@@ -29,17 +29,17 @@
           - if index % 4 == 0
             .w-row
           .w-col-3.w-col
-            = form.input "#{between_field}[start_at]", as: :string, label: t(".#{between_field}"), input_html: {value: params[between_field] && params[between_field][:start_at], data: { mask: mask } , class: 'w-input text-field'}
+            = form.input "#{between_field}[start_at]", as: :string, label: t(".#{between_field}"), input_html: {value: params[between_field] && params[between_field][:start_at], data: { mask: mask } , class: 'w-input text-field'}, required: false
           .w-col-3.w-col.u-margintop-10
-            = form.input "#{between_field}[ends_at]", as: :string, label: false, label: '', input_html: { value: params[between_field] && params[between_field][:ends_at], data: { mask: mask } , class: 'w-input text-field'}
+            = form.input "#{between_field}[ends_at]", as: :string, label: false, label: '', input_html: { value: params[between_field] && params[between_field][:ends_at], data: { mask: mask } , class: 'w-input text-field'}, required: false
         .w-col-3.w-col
-          = form.input "goal_between[start_at]", as: :string, label: t(".#{'goal_between'}"), input_html: {value: params['goal_between'] && params['goal_between'][:start_at], class: 'w-input text-field'}
+          = form.input "goal_between[start_at]", as: :string, label: t(".#{'goal_between'}"), input_html: {value: params['goal_between'] && params['goal_between'][:start_at], class: 'w-input text-field'}, required: false
         .w-col-3.w-col.u-margintop-10
-          = form.input "goal_between[ends_at]", as: :string, label: false, label: '', input_html: { value: params['goal_between'] && params['goal_between'][:ends_at], class: 'w-input text-field'}
+          = form.input "goal_between[ends_at]", as: :string, label: false, label: '', input_html: { value: params['goal_between'] && params['goal_between'][:ends_at], class: 'w-input text-field'}, required: false
         .w-col-3.w-col
-          = form.input :with_state, collection: Project.state_names, label: t('channels.admin.filter.with_state'), as: :select, selected: params[:with_state], include_blank: true, input_html: { class: 'w-input text-field' }
+          = form.input :with_state, collection: Project.state_names, label: t('channels.admin.filter.with_state'), as: :select, selected: params[:with_state], include_blank: true, input_html: { class: 'w-input text-field' }, required: false
         .w-col-3.w-col
-          = form.input :by_channel, as: :select, collection: Channel.all, selected: params[:by_channel], include_blank: true, input_html: { class: 'w-input text-field' }
+          = form.input :by_channel, as: :select, collection: Channel.all, selected: params[:by_channel], include_blank: true, input_html: { class: 'w-input text-field' }, required: false
 
       .w-row
         .w-col-8.w-col

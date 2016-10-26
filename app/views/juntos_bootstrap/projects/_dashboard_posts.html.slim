@@ -13,11 +13,7 @@
                 = form.input_field :title, as: :string, class: 'w-input text-field positive'
 
                 = form.label "Novidade", as: :string
-                = form.input_field :comment, class: 'redactor text-field'
-
-                /.w-checkbox.w-clearfix.u-marginbottom-30
-                  /= form.check_box :exclusive, class: 'w-checkbox-input'
-                  /= form.label :exclusive, "Apenas para apoiadores", class: 'w-form-label fontsize-small'
+                = form.input_field :comment, class: 'redactor text-field', required: false
 
                 .w-row
                   .w-col.w-col-4.w-sub-col.u-marginbottom-20

@@ -9,7 +9,7 @@
   .w-container
     .w-row
       .w-col.w-col-8
-        = simple_form_for @project, html: { id: 'project_form', class: 'w-form' } do |form|
+        = simple_form_for @project, html: { id: 'project_form', class: 'w-form', novalidate: true } do |form|
           = render 'devise/shared/alert'
 
           fieldset
@@ -19,7 +19,7 @@
             .u-marginbottom-40
               = form.label :name, class: 'fontsize-large', required: false, as: :string
               .fontsize-small.fontcolor-secondary.u-marginbottom-10= form.hint :name
-              = form.input_field :name, class: 'medium', as: :string
+              = form.input_field :name, class: 'medium', as: :string, required: false
             .u-marginbottom-40
               = form.label :headline, class: 'fontsize-large', required: true, as: :text
               p = form.hint :headline
@@ -27,7 +27,7 @@
             .u-marginbottom-40
               = form.label :about, class: 'fontsize-large', required: true, as: :text
               p = form.hint :about
-              = form.input_field :about, class: 'medium', as: :text
+              = form.input_field :about, class: 'medium', as: :text, required: false
             .u-marginbottom-40
               = form.label :goal, class: 'fontsize-large', required: true, as: :string
               .fontsize-small.fontcolor-secondary.u-marginbottom-10= form.hint :name
@@ -63,7 +63,7 @@
                       .fontcolor-secondary.fontsize-base.u-text-center
                         = t('.form.info.permalink')
                 .w-col.w-col-8.w-col-small-6.w-col-tiny-6
-                    = form.input_field :permalink, as: :string, class: 'medium medium postfix', required: false, placeholder: 'projetobacana'
+                  = form.input_field :permalink, as: :string, class: 'medium postfix', required: false, placeholder: 'projetobacana'
             .u-marginbottom-40
               label.fontsize-large.field-label for="field"
                 - if channel.present?

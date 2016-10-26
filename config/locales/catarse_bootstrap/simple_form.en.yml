@@ -39,6 +39,8 @@ en:
         description: 'Enter a description'
       subgoal:
         minimum_value: 'Enter a minimum value'
+        description: 'Enter a description'
+        color: 'Enter a color'
     prompts:
       project:
         category: 'Choose a category'

@@ -21,6 +21,6 @@ br
         tr class=cycle("even", "odd")
           td= link_to channel.name, root_url(subdomain: channel.permalink)
           td= channel.permalink
-          td= channel.category.name_pt
+          td= channel.category.try(:name_pt)
           td= link_to t('.edit'), edit_admin_channel_path(channel.id)
   br

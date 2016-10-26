@@ -13,7 +13,7 @@
       = form.input :permalink, as: :string, required: true
   .w-row
     .w-col.w-col-6
-      = form.input :category_id, as: :select, class: 'medium',
+      = form.input :category_id, as: :select, class: 'medium', required: true,
         collection: Category.order(:name_pt),
         prompt: t('simple_form.prompts.project.category')
     .w-col.w-col-6

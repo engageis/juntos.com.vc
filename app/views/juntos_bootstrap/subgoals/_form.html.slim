@@ -18,7 +18,7 @@
                   .fontsize-smallest.fontcolor-secondary.u-text-center R$
                 .w-col.w-col-9
                   = form.input_field :value, class: 'postfix positive', required: true
-              .fontsize-smaller.text-error.u-marginbottom-20.fa.fa-exclamation-triangle.w-hidden[data-error-for="subgoal_minimum_value"] = t('simple_form.validation_texts.subgoal.minimum_value')
+              .fontsize-smaller.text-error.u-marginbottom-20.fa.fa-exclamation-triangle.w-hidden[data-error-for="subgoal_value"] = t('simple_form.validation_texts.subgoal.minimum_value')
           .w-row
             .w-col.w-col-5
               label.fontsize-smaller Descrição:
@@ -30,7 +30,7 @@
               label.fontsize-smaller Cor:
             .w-col.w-col-7
               = form.input_field :color, as: :string, class: 'positive', required: true
-              .fontsize-smaller.text-error.u-marginbottom-20.fa.fa-exclamation-triangle.w-hidden[data-error-for="subgoal_description"] = t('simple_form.validation_texts.subgoal.description')
+              .fontsize-smaller.text-error.u-marginbottom-20.fa.fa-exclamation-triangle.w-hidden[data-error-for="subgoal_color"] = t('simple_form.validation_texts.subgoal.color')
           .w-row
             .w-col.w-col-6.w-sub-col
               = form.button :submit, "Salvar",  class:'btn btn-small'

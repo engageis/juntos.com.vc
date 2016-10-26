@@ -195,6 +195,7 @@ en:
     formats:
       simple: "%m/%d/%Y, %H:%M h"
       estimate: "%B/%Y"
+      simple: "%d/%m/%Y, %H:%M h"
       default: ! '%a, %d %b %Y %H:%M:%S %z'
       long: ! '%B %d, %Y %H:%M'
       short: ! '%d %b %H:%M'

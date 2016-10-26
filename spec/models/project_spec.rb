@@ -711,11 +711,11 @@ RSpec.describe Project, type: :model do
 
   describe ".enabled_to_use_pagarme" do
     before do
-      @project_01 = create(:project, permalink: 'a')
-      @project_02 = create(:project, permalink: 'b')
-      @project_03 = create(:project, permalink: 'c')
+      @project_01 = create(:project, permalink: 'foo')
+      @project_02 = create(:project, permalink: 'bar')
+      @project_03 = create(:project, permalink: 'foobar')
 
-      CatarseSettings[:projects_enabled_to_use_pagarme] = 'a, c'
+      CatarseSettings[:projects_enabled_to_use_pagarme] = 'foo, foobar'
     end
 
     subject { Project.enabled_to_use_pagarme }

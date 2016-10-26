@@ -23,7 +23,7 @@ class Projects::PostsController < ApplicationController
 
   def destroy
     authorize resource
-    destroy!{ return index }
+    destroy!{ project_by_slug_path(permalink: resource.project.permalink) }
   end
 
   def collection

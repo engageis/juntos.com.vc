@@ -14,16 +14,16 @@ br
       = form.hidden_field :order_by, name: :order_by, value: params[:order_by]
       .w-row
         .w-col.w-col-2
-          = form.input :by_id, as: :integer, label: t('.by_id'), input_html: {value: params[:by_id], name: :by_id}
+          = form.input :by_id, as: :integer, label: t('.by_id'), input_html: {value: params[:by_id], name: :by_id}, required: false
         .w-col.w-col-5
-          = form.input :by_name, as: :string, label: t('.by_name'), input_html: {value: params[:by_name], name: :by_name}
+          = form.input :by_name, as: :string, label: t('.by_name'), input_html: {value: params[:by_name], name: :by_name}, required: false
         .w-col.w-col-5
-          = form.input :by_email, as: :string, label: t('.by_email'), input_html: {value: params[:by_email], name: :by_email}
+          = form.input :by_email, as: :string, label: t('.by_email'), input_html: {value: params[:by_email], name: :by_email}, required: false
       .w-row
         .w-col.w-col-4
-          = form.input :by_payer_email, as: :string, label: t('.by_payer_email'), input_html: {value: params[:by_payer_email], name: :by_payer_email}
+          = form.input :by_payer_email, as: :string, label: t('.by_payer_email'), input_html: {value: params[:by_payer_email], name: :by_payer_email}, required: false
         .w-col.w-col-3
-          = form.input :by_key, as: :string, label: t('.key'), input_html: {value: params[:by_key], name: :by_key}
+          = form.input :by_key, as: :string, label: t('.key'), input_html: {value: params[:by_key], name: :by_key}, required: false
         .w-col.w-col-2.u-margintop-30
           = check_box_tag :has_credits, true, params[:has_credits].present?
           label.label for="has_credits" = t('.credits')

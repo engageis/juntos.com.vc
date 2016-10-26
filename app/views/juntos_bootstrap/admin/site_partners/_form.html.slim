@@ -19,7 +19,7 @@
     .w-col.w-col-4
       = form.input :phone, as: :string
     .w-col.w-col-4
-      = form.input :logo, as: :file, required: false, required: true,
+      = form.input :logo, as: :file, required: false,
         hint: '(180X60)'
       - if @site_partner.logo?
         = image_tag(@site_partner.logo.featured.url)

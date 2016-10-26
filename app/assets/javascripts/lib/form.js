@@ -25,7 +25,7 @@ Skull.Form = {
   },
 
   setupForm: function(){
-    this.$('input, select').on('invalid', this.invalid);
+    this.$('input, select, textarea').on('invalid', this.invalid);
   },
 
   invalid: function(event){
@@ -36,7 +36,7 @@ Skull.Form = {
 
   validate: function(){
     var valid = true;
-    this.$('input:visible, select:visible').each(function(){
+    this.$('input:visible, select:visible, textarea:visible').each(function(){
       valid = this.checkValidity() && valid;
     });
 

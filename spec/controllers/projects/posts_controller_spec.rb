@@ -13,23 +13,47 @@ RSpec.describe Projects::PostsController, type: :controller do
 
   describe "DELETE destroy" do
     before { delete :destroy, project_id: project_post.project.id, id: project_post.id, locale: 'pt' }
+
     context 'When user is a guest' do
+      it 'does not delete the record' do
+        expect { project_post.reload }.to_not raise_error
+      end
+
       its(:status) { should == 302 }
+      its(:redirect_url) { should == sign_up_url }
     end
 
     context "When user is a registered user but don't the project owner" do
       let(:current_user){ FactoryGirl.create(:user) }
+
+      it 'does not delete the record' do
+        expect { project_post.reload }.to_not raise_error
+      end
+
       its(:status) { should == 302 }
+      its(:redirect_url) { should == root_url }
     end
 
     context 'When user is admin' do
       let(:current_user) { FactoryGirl.create(:user, admin: true) }
-      its(:status) { should == 200}
+
+      it 'deletes the record' do
+        expect { project_post.reload }.to raise_error(ActiveRecord::RecordNotFound)
+      end
+
+      its(:status) { should == 302 }
+      its(:redirect_url) { should == project_by_slug_url(permalink: project_post.project.permalink) }
     end
 
     context 'When user is project_owner' do
       let(:current_user) { project_post.project.user }
-      its(:status) { should == 200}
+
+      it 'deletes the record' do
+        expect { project_post.reload }.to raise_error(ActiveRecord::RecordNotFound)
+      end
+
+      its(:status) { should == 302 }
+      its(:redirect_url) { should == project_by_slug_url(permalink: project_post.project.permalink) }
     end
   end
 
