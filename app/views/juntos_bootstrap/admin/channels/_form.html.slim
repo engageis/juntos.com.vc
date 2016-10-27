@@ -13,9 +13,15 @@
       = form.input :permalink, as: :string, required: true
   .w-row
     .w-col.w-col-6
-      = form.input :category_id, as: :select, class: 'medium',
-        collection: Category.order(:name_pt),
-        prompt: t('simple_form.prompts.project.category')
+      = form.input :name,
+        label: t('channels.admin.table.category') do
+        = select_tag "category_id",
+          options_from_collection_for_select(Category.order(:name_pt), "id", "name_pt"),
+          class: 'select required w-select text-field medium',
+          required: true,
+          multiple: true,
+          data: 'select2'
+
     .w-col.w-col-6
       = form.input :recurring, as: :select, collection: [:true, :false],
         prompt: false, required: true

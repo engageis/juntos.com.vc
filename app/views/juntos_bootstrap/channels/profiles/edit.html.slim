@@ -4,11 +4,22 @@
 = render 'shared/header_channel'
 = content_for :title, @profile.name
 .w-container.u-margintop-40.u-marginbottom-40
-  .w-row
     = simple_form_for @profile, as: 'profile', url: '/profile', html: { method: 'patch' }, class: 'channel-edit' do |form|
       - if current_user.admin
         = form.input :ga_code, as: :string
-      = form.input :name, as: :string
+      .w-row
+        .w-col.w-col-6
+          = form.input :name, as: :string
+        .w-col.w-col-6
+          = form.input :name,
+            label: t('channels.admin.table.category') do
+            = select_tag "category_id",
+              options_from_collection_for_select(Category.order(:name_pt), "id", "name_pt"),
+              class: 'select required w-select text-field medium',
+              required: true,
+              multiple: true,
+              data: 'select2'
+              
       = form.input :description, as: :text
 
       .u-marginbottom-40[data-channel-profile-upload="true"]

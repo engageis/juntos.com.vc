@@ -171,7 +171,6 @@ p {
   width: 100% !important;
 }
 .selection span.select2-selection {
-  height: 40px;
   border: 1px solid $border-yellow;
   padding-top: 6px;
   font-size: 15px;
@@ -4172,4 +4171,8 @@ p .project-basics-icons{
 
 .admin-form-title{
   margin: 1em 0;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice{
+  margin-bottom: 0.3em; 
 }
