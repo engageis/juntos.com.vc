@@ -1,0 +1,6 @@
+en:
+  enumerize:
+    plan:
+      payment_methods:
+        credit_card: "Credit card"
+        bank_billet: "Bank billet"
