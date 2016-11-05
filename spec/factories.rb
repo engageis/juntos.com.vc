@@ -397,4 +397,22 @@ FactoryGirl.define do
     f.numeric_order 10
     f.image File.open("#{Rails.root}/spec/support/testimg.png")
   end
+
+  factory :plan do |f|
+    f.name 'Foo Plan'
+    f.amount 30
+    f.payment_methods [:credit_card, :bank_billet]
+
+    trait :invalid_payment_method do
+      payment_methods [:unknown]
+    end
+
+    trait :with_credit_card do
+      payment_methods [:credit_card]
+    end
+
+    trait :with_bank_billet do
+      payment_methods [:bank_billet]
+    end
+  end
 end
