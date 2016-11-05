@@ -200,6 +200,8 @@ GEM
       request_store (~> 1.0)
     enumerate_it (1.2.8)
       activesupport (>= 3.0.0)
+    enumerize (2.0.1)
+      activesupport (>= 3.2)
     erubis (2.7.0)
     eventmachine (1.0.3)
     excon (0.40.0)
@@ -623,6 +625,7 @@ DEPENDENCIES
   devise
   dotenv-rails
   draper
+  enumerize
   ezcrypto
   factory_girl_rails
   fakeweb
