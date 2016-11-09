@@ -6,6 +6,7 @@ RSpec.describe Plan, :type => :model do
   let(:bank_billet_plan) { build(:plan, :with_bank_billet) }
 
   describe 'validations' do
+    it { is_expected.to validate_presence_of(:plan_code) }
     it { is_expected.to validate_presence_of(:name) }
     it { is_expected.to validate_presence_of(:amount) }
     it { is_expected.to validate_presence_of(:payment_methods) }
