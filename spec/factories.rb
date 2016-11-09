@@ -399,6 +399,7 @@ FactoryGirl.define do
   end
 
   factory :plan do |f|
+    f.plan_code { rand(1..100) }
     f.name 'Foo Plan'
     f.amount 30
     f.payment_methods [:credit_card, :bank_billet]
