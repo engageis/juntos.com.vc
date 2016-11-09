@@ -210,11 +210,11 @@ nav.project-nav.w-hidden-main.w-hidden-medium
             .fontsize-large.fontweight-light.u-margintop-30
               = t('.contribute_project.already_contributing')
             .fontsize-smallest.fontweight-light.u-marginbottom-30
-              = link_to t('.contribute_project.cancel'), 
-                  cancel_recurring_project_path(@project), 
+              = link_to t('.contribute_project.cancel'),
+                  cancel_recurring_project_path(@project),
                   data: { confirm: t('.contribute_project.confirm') }
         - else
-          - if @project.online? && !@project.expired? && @project.id != 629
+          - if @project.online? && !@project.expired? && @project.id != 629 && @project.permalink != 'refeicoessobrerodas'
             - if project_aumigo
               = link_to t('.contribute_project.submit'), 'http://acaochego.doemaisdoemelhor.org.br/br/doacao/1/acaochego/aumigo-seu-apoio-e-nossa-esperanca', id: 'contribute_project_form', class: "btn bt-yellow btn-large u-marginbottom-20", target: '_blank'
             - else
