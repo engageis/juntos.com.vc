@@ -416,4 +416,21 @@ FactoryGirl.define do
       payment_methods [:bank_billet]
     end
   end
+
+  factory :subscription do |f|
+    f.subscription_code { rand(1..100) }
+    f.payment_method :credit_card
+    f.status :paid
+    f.association :project, factory: :project
+    f.association :plan, factory: :plan
+    f.association :user, factory: :user
+
+    trait :bank_billet_payment do
+      payment_method :bank_billet
+    end
+
+    trait :credit_card_payment do
+      payment_method :credit_card
+    end
+  end
 end
