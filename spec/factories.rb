@@ -433,4 +433,12 @@ FactoryGirl.define do
       payment_method :credit_card
     end
   end
+
+  factory :transaction do |f|
+    f.transaction_code { rand(1..100) }
+    f.status :processing
+    f.amount 30
+    f.payment_method :credit_card
+    f.association :subscription, factory: :subscription
+  end
 end
