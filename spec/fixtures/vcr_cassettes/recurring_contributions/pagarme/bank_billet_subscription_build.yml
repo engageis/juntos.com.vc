@@ -1,0 +1,161 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://ak_test_pipsnOcK4bpb17wcBkPpx31xULfUQH:x@api.pagar.me/1/plans/73197
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      content-type:
+      - application/json; charset=utf8
+      user-agent:
+      - pagarme-ruby/2.1.2
+      content-length:
+      - '2'
+      authorization:
+      - Basic YWtfdGVzdF9waXBzbk9jSzRicGIxN3djQmtQcHgzMXhVTGZVUUg6eA==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      access-control-allow-credentials:
+      - 'true'
+      access-control-allow-headers:
+      - Content-Type, Authorization, X-Requested-With, X-HTTP-Method-Override
+      access-control-allow-methods:
+      - GET,PUT,POST,DELETE
+      access-control-allow-origin:
+      - "*"
+      charset:
+      - utf-8
+      content-type:
+      - application/json
+      date:
+      - Fri, 18 Nov 2016 16:19:48 GMT
+      server:
+      - nginx
+      x-powered-by:
+      - Express
+      x-ratelimit-limit:
+      - '30'
+      x-ratelimit-remaining:
+      - '29'
+      x-ratelimit-reset:
+      - '1479485990'
+      x-response-time:
+      - 20ms
+      connection:
+      - keep-alive
+      set-cookie:
+      - visid_incap_166741=fsWTXSpkThST0wwL0vy3KyMqL1gAAAAAQUIPAAAAAABi7SfTi3vQKCIsLFQJtVcD;
+        expires=Sat, 18 Nov 2017 13:43:49 GMT; path=/; Domain=.pagar.me
+      - nlbi_166741=mYzDUUVXtRE+q/5uW7H6TQAAAAAhFDVW4P9xHQy1B9vLN9VT; path=/; Domain=.pagar.me
+      - incap_ses_469_166741=n+LSYccnGSTL4xJsQDmCBiMqL1gAAAAAcz9ZI+pdoMvW4kEKM7bueA==;
+        path=/; Domain=.pagar.me
+      x-iinfo:
+      - 10-65297748-65293250 PNNN RT(1479485987369 202) q(0 0 0 -1) r(1 1) U16
+      x-cdn:
+      - Incapsula
+      content-encoding:
+      - gzip
+      transfer-encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAA/zWMywrCQAxFf0WynsqkhRbnO1wpUtJO0Mo8yjRdFPHfTRVX
+        yX2c+4I8PHkUcDAHSmBg8uC6Bk+dAYp5TRo11loDnrZl/w0kiqyA8CJ8QGWk
+        TBT6X+HbFO7Hwnp0DGqLbYVY2e5co0N0tT3Wtr0oONMWOUkfWR7ZK32FIQeW
+        rJkO+En6kYqHm8occgGX1hBUPKjcefnLKS1CIexT6uH7A0yd0fjWAAAA
+    http_version: '1.1'
+  recorded_at: Fri, 18 Nov 2016 16:19:47 GMT
+- request:
+    method: post
+    uri: https://ak_test_pipsnOcK4bpb17wcBkPpx31xULfUQH:x@api.pagar.me/1/subscriptions
+    body:
+      encoding: UTF-8
+      string: '{"plan":null,"payment_method":"boleto","postback_url":"http://test.com/postback","customer":{"email":"person2@example.com"},"installments":1,"status":"local","plan_id":73197,"card_expiration_date":""}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      content-type:
+      - application/json; charset=utf8
+      user-agent:
+      - pagarme-ruby/2.1.2
+      content-length:
+      - '200'
+      authorization:
+      - Basic YWtfdGVzdF9waXBzbk9jSzRicGIxN3djQmtQcHgzMXhVTGZVUUg6eA==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      access-control-allow-credentials:
+      - 'true'
+      access-control-allow-headers:
+      - Content-Type, Authorization, X-Requested-With, X-HTTP-Method-Override
+      access-control-allow-methods:
+      - GET,PUT,POST,DELETE
+      access-control-allow-origin:
+      - "*"
+      charset:
+      - utf-8
+      content-type:
+      - application/json
+      date:
+      - Fri, 18 Nov 2016 16:19:49 GMT
+      etag:
+      - '"1839757661"'
+      server:
+      - nginx
+      x-powered-by:
+      - Express
+      x-response-time:
+      - 509ms
+      connection:
+      - keep-alive
+      set-cookie:
+      - visid_incap_166741=PAMPCBFXSd+cY7u3bHknXyQqL1gAAAAAQUIPAAAAAACYma/Ud6LTpfL5vRMC4Dc0;
+        expires=Sat, 18 Nov 2017 13:43:49 GMT; path=/; Domain=.pagar.me
+      - nlbi_166741=R8U8cmcI8ADgV7VmW7H6TQAAAACDzXBtBMcCeT5kXDTTVDDa; path=/; Domain=.pagar.me
+      - incap_ses_469_166741=a+OBENE4z3y05BJsQDmCBiQqL1gAAAAALj2R7Kkluft+AOvWCNT1ug==;
+        path=/; Domain=.pagar.me
+      x-iinfo:
+      - 9-56220330-56216257 PNNN RT(1479485987804 207) q(0 0 0 -1) r(5 5) U6
+      x-cdn:
+      - Incapsula
+      content-encoding:
+      - gzip
+      transfer-encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAA/41U23LbIBD9lQzPjiJkW5L11I/IUzodDRZrmwYB5dLGzfjf
+        uwjr4iSe6ZPQ3mDPObvvRO9/QudJQ1zYu84K44VWZEWMZIo077N/MKyI4KSp
+        1nRXrQjrdVDoWud5viKcnV08r4hiPWCCB+fhgWKOt4LJNgUMkR7azgJ+sBgp
+        clo+UvqYV88FbShtijwr8vIlPoKde1C+7cGfNMfs72SvJXiNPizAhW87Zjn5
+        gb9aaksaFaTEnxOzR3Djr1DOMyljKbTRS+qCrvOiKDA4WBsv8ZYpx7qh/2Xj
+        S/uKYCUfsAr5w4QX6the34guC4fgoMXGXCyR7k7xk5Gw7lcQFizGj0d0OqMV
+        pnaaw5g4ea9wcvgNUpvrXaPXYY46iGOwLD38mhwQMCv+Dsabsk4ffMshUT0j
+        5iMi6ahcGI93mKL1My0bums2dVbTTWRqiAyG343cZXRXx8hb1YwPBd7eOgwT
+        sylP4CoON7YPvCZa63JXrrdREC5FRYW0Jy35hOVVJNEumUM4xFF4d2M/CPu1
+        Y49qmKAyeMeeda9tsHKy3WgWsZgVy4wPFmYPdLrvwXYQYVFeHCwLvHWdttMj
+        U3KqT07eG9c8PRl2ZDbrY9rVv2c2kUxosd48bMuqnp3wZkSSRxv5WdBTbGci
+        q13xkkQMUZ6oVCPaVzjHmTexcFVl5SaymNFtnOrlwmiXA+WMxMG0Qc4TiC0z
+        vJvhYF2WvS7tl494Dv1iu3GRZAjV0+j+tBluUf7I0l2ir4NvwAqNuHtm/R0f
+        LKqNuyVfLIOgol7Jf0wMzkE9TIw5aTUPO+e4BBYvc173kYXFHpqMeIvuwtC+
+        Cv0epiGezP5sIs2dOZBxHacI6JmIyGJbuI6Kb/DGeiMhojvoxaqWTRgcsetF
+        8TudVc+0bta4tWlWbAYJDVrIq7IsLwn8zyqI/5d/XXmobX0GAAA=
+    http_version: '1.1'
+  recorded_at: Fri, 18 Nov 2016 16:19:48 GMT
+recorded_with: VCR 3.0.3
