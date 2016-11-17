@@ -2,18 +2,7 @@ require 'rails_helper'
 require 'json'
 
 RSpec.describe RecurringContribution::UpdatePlans do
-  def mocked_plans
-    (1..3).map do |plan_id|
-      build_plan_mock(plan_id)
-    end
-  end
-
-  def build_plan_mock(plan_id)
-    double("Plan", id: plan_id,
-                   name: 'Foo Plan',
-                   amount: 30,
-                   payment_methods: ['boleto', 'credit_card'])
-  end
+  include RecurringContributionsHelper
 
   describe '#call' do
     let(:remote_plans) { mocked_plans }
