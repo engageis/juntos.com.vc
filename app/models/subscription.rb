@@ -11,6 +11,7 @@ class Subscription < ActiveRecord::Base
 
   enumerize :status, in: { paid: 0, pending_payment: 1, unpaid: 2, canceled: 3 }
 
+  has_many   :transactions
   belongs_to :user
   belongs_to :project
   belongs_to :plan
