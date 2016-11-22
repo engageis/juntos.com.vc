@@ -317,4 +317,14 @@ FactoryGirl.define do
     f.payment_method :credit_card
     f.association :subscription, factory: :subscription
   end
+
+  factory :credit_card, class: Hash do |f|
+    f.send(:card_number, '4929234122840114')
+    f.send(:card_holder_name, 'Jose da Silva')
+    f.send(:card_expiration_month, '03')
+    f.send(:card_expiration_year, '18')
+    f.send(:card_cvv, '875')
+
+    initialize_with {attributes.stringify_keys}
+  end
 end

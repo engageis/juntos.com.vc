@@ -585,6 +585,7 @@ GEM
       rails (>= 4.0.0)
       sidekiq
     valuable (0.9.8)
+    vcr (3.0.3)
     video_info (2.3.1)
       addressable
       htmlentities
@@ -700,6 +701,7 @@ DEPENDENCIES
   uglifier
   unicorn
   user_notifier (~> 0.0.5)
+  vcr
   video_info (>= 1.1.1)
   weekdays
 
