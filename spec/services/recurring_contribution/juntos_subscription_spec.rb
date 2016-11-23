@@ -7,11 +7,14 @@ RSpec.describe RecurringContribution::JuntosSubscription do
     let(:project) { create(:project) }
     let(:plan) { create(:plan) }
     let(:user) { create(:user) }
-    let(:juntos_subscription_service) { RecurringContribution::JuntosSubscription.new(project, plan, user, 'credit_card') }
+    let(:juntos_subscription_instance) { SubscriptionFactory.build(:juntos, plan, user, 'credit_card', project) }
 
     context 'when the models subscription and transaction are successfully created' do
       let(:pagarme_subscription) { build_subscription_mock('credit_card') }
-      let(:juntos_subscription)  { juntos_subscription_service.process(pagarme_subscription) }
+      let(:juntos_subscription_service) {
+        RecurringContribution::JuntosSubscription.new(juntos_subscription_instance, pagarme_subscription)
+      }
+      let(:juntos_subscription)  { juntos_subscription_service.process }
 
       it 'must create a subscription model' do
         expect(juntos_subscription.subscription_code).to eq(pagarme_subscription.id)
@@ -26,7 +29,10 @@ RSpec.describe RecurringContribution::JuntosSubscription do
 
     context 'when a problem occurs on creation of models subscription and transaction' do
       let(:invalid_pagarme_subscription) { build_subscription_mock('invalid_payment_method') }
-      let(:invalid_juntos_subscription)  { juntos_subscription_service.process(invalid_pagarme_subscription) }
+      let(:juntos_subscription_service) {
+        RecurringContribution::JuntosSubscription.new(juntos_subscription_instance, invalid_pagarme_subscription)
+      }
+      let(:invalid_juntos_subscription)  { juntos_subscription_service.process }
 
       it 'should not create a subscription model' do
         expect(Subscription.count).to eq(0)
