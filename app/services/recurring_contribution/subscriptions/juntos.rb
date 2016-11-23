@@ -1,4 +1,6 @@
 class RecurringContribution::Subscriptions::Juntos
+  attr_reader :juntos_data, :project
+
   def initialize(project, juntos_data)
     @project = project
     @juntos_data = juntos_data
@@ -15,17 +17,23 @@ class RecurringContribution::Subscriptions::Juntos
   private
 
   def create_subscription
-    Subscription.create(subscription_code: @juntos_data.pagarme_subscription.id,
-                        status: @juntos_data.pagarme_subscription.status,
-                        payment_method: @juntos_data.payment_method,
-                        plan: @juntos_data.plan, project: @project,
-                        user: @juntos_data.user)
+    Subscription.create(
+      subscription_code: juntos_data.pagarme_subscription.id,
+      status:            juntos_data.pagarme_subscription.status,
+      payment_method:    juntos_data.payment_method,
+      plan:              juntos_data.plan,
+      project:           project,
+      user:              juntos_data.user
+    )
   end
 
   def create_transaction(juntos_subscription)
-    return unless juntos_subscription.valid?
-    juntos_subscription.transactions.create(transaction_code: @juntos_data.pagarme_transaction.id,
-                                           status: @juntos_data.pagarme_transaction.status,
-                                           amount: @juntos_data.pagarme_transaction.amount)
+    transaction = Transaction.new(
+      transaction_code: juntos_data.pagarme_transaction.id,
+      status:           juntos_data.pagarme_transaction.status,
+      amount:           juntos_data.pagarme_transaction.amount
+    )
+
+    juntos_subscription.transactions << transaction
   end
 end
