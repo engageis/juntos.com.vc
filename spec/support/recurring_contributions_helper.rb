@@ -23,11 +23,11 @@ module RecurringContributionsHelper
 
   end
 
-  def build_subscription_mock(payment_method)
+  def build_subscription_mock(payment_method, plan = build_plan_mock(73197))
     double('Subscription', id: 10,
                            payment_method: payment_method,
                            status: 'pending_payment',
-                           plan: build_plan_mock(73197),
+                           plan: plan,
                            current_transaction: build_transaction_mock)
   end
 end
