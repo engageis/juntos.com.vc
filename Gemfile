@@ -164,6 +164,7 @@ group :test do
   gem 'coveralls', require: false
   gem 'selenium-webdriver', '~> 2.51.0'
   gem 'rspec-html-matchers', '~> 0.7.2'
+  gem 'vcr'
 end
 
 source 'https://rails-assets.org' do
