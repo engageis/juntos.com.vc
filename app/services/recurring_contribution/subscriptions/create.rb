@@ -1,4 +1,4 @@
-class RecurringContribution::CreateSubscription
+class RecurringContribution::Subscriptions::Create
   def initialize(plan, project, user, payment_method, credit_card_hash)
     @plan = plan
     @project = project
@@ -20,7 +20,7 @@ class RecurringContribution::CreateSubscription
   attr_reader :plan, :project, :user, :payment_method, :credit_card_hash
 
   def create_subscription_on_pagarme
-    RecurringContribution::Subscriptions::Pagarme.new(plan.plan_code, user, payment_method, credit_card_hash).process
+    RecurringContribution::Subscriptions::CreatePagarme.new(plan.plan_code, user, payment_method, credit_card_hash).process
   end
 
   def create_subscription_on_juntos(pagarme_response)
@@ -28,6 +28,6 @@ class RecurringContribution::CreateSubscription
   end
 
   def juntos_subscription_service(project, pagarme_response)
-    RecurringContribution::Subscriptions::Juntos.new(project, pagarme_response)
+    RecurringContribution::Subscriptions::CreateJuntos.new(project, pagarme_response)
   end
 end

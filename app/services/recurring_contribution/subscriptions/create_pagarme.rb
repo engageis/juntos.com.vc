@@ -1,4 +1,4 @@
-class RecurringContribution::Subscriptions::Pagarme
+class RecurringContribution::Subscriptions::CreatePagarme
   def initialize(plan_id, user, payment_method, credit_card)
     @credit_card = credit_card
     @payment_method = normalize_payment_method(payment_method)
