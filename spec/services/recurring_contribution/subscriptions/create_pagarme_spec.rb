@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe RecurringContribution::Subscriptions::Pagarme do
+RSpec.describe RecurringContribution::Subscriptions::CreatePagarme do
   include RecurringContributionsHelper
 
   describe '#process' do
@@ -8,10 +8,10 @@ RSpec.describe RecurringContribution::Subscriptions::Pagarme do
     let(:user) { create(:user) }
     let(:credit_card) { build(:credit_card) }
     let(:bank_billet_service) {
-      RecurringContribution::Subscriptions::Pagarme.new(plan.plan_code, user, 'bank_billet', credit_card).process
+      RecurringContribution::Subscriptions::CreatePagarme.new(plan.plan_code, user, 'bank_billet', credit_card).process
     }
     let(:credit_card_service) {
-      RecurringContribution::Subscriptions::Pagarme.new(plan.plan_code, user, 'credit_card', credit_card).process
+      RecurringContribution::Subscriptions::CreatePagarme.new(plan.plan_code, user, 'credit_card', credit_card).process
     }
 
     context 'when the subscription is successfully created' do

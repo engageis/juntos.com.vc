@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe RecurringContribution::CreateSubscription do
+RSpec.describe RecurringContribution::Subscriptions::Create do
   include RecurringContributionsHelper
 
   describe '.process' do
@@ -13,7 +13,7 @@ RSpec.describe RecurringContribution::CreateSubscription do
       RecurringContribution::Subscriptions::JuntosSubscriptionData.new(user, payment_method, pagarme_api_response)
     end
     let(:create_subscription_service) do
-      RecurringContribution::CreateSubscription.process(
+      RecurringContribution::Subscriptions::Create.process(
         plan: juntos_plan,
         project: recurring_project,
         user: user,
@@ -23,7 +23,7 @@ RSpec.describe RecurringContribution::CreateSubscription do
     end
 
     before do
-      allow_any_instance_of(RecurringContribution::Subscriptions::Pagarme).to receive(:process).and_return(pagarme_subscription_service_response)
+      allow_any_instance_of(RecurringContribution::Subscriptions::CreatePagarme).to receive(:process).and_return(pagarme_subscription_service_response)
     end
 
     context "when all parameters are valid" do
