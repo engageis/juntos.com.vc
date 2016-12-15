@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe RecurringContribution::Subscriptions::Juntos do
+RSpec.describe RecurringContribution::Subscriptions::CreateJuntos do
   include RecurringContributionsHelper
 
   describe '#process' do
@@ -15,7 +15,7 @@ RSpec.describe RecurringContribution::Subscriptions::Juntos do
          RecurringContribution::Subscriptions::JuntosSubscriptionData.new(user, 'credit_card', pagarme_subscription)
       }
       let(:juntos_subscription_service) {
-        RecurringContribution::Subscriptions::Juntos.new(project, juntos_subscription_data)
+        RecurringContribution::Subscriptions::CreateJuntos.new(project, juntos_subscription_data)
       }
       let(:juntos_subscription) { juntos_subscription_service.process }
       let(:juntos_transaction) { juntos_subscription.transactions.first }
@@ -42,7 +42,7 @@ RSpec.describe RecurringContribution::Subscriptions::Juntos do
          RecurringContribution::Subscriptions::JuntosSubscriptionData.new(user, 'invalid_payment_method', pagarme_subscription)
       }
       let(:juntos_subscription_service) {
-        RecurringContribution::Subscriptions::Juntos.new(project, juntos_subscription_data)
+        RecurringContribution::Subscriptions::CreateJuntos.new(project, juntos_subscription_data)
       }
       let(:service_response) { juntos_subscription_service.process }
 

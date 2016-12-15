@@ -1,4 +1,4 @@
-class RecurringContribution::Subscriptions::Juntos
+class RecurringContribution::Subscriptions::CreateJuntos
   attr_reader :juntos_data, :project
 
   def initialize(project, juntos_data)
