@@ -212,5 +212,7 @@ Rails.application.routes.draw do
 
   post '/transaction/status/update' => 'pagarme_transactions#update_status'
 
+  post '/subscription/status/update' => 'subscriptions#update_status'
+
   get '/projects/validate/permalink' => 'projects#permalink_valid?'
 end
