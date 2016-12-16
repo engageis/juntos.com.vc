@@ -22,7 +22,7 @@ class RecurringContribution::Subscriptions::CreatePagarme
     {
       plan: ::Pagarme::API.find_plan(@plan_id),
       payment_method: @payment_method,
-      postback_url: "http://test.com/postback",
+      postback_url: postback_url,
       customer: { email: @user.email }
     }
   end
@@ -41,5 +41,9 @@ class RecurringContribution::Subscriptions::CreatePagarme
 
   def bank_billet?
     @payment_method == 'bank_billet'
+  end
+
+  def postback_url
+    Rails.application.routes.url_helpers.subscription_status_update_url
   end
 end
