@@ -210,7 +210,7 @@ Rails.application.routes.draw do
 
   get '/countries/:country_code/states' => 'countries#states'
 
-  post '/transaction/status/update' => 'pagarme_transactions#update_status'
+  post '/transaction/status/update' => 'transactions#update_status'
 
   post '/subscription/status/update' => 'subscriptions#update_status'
 
