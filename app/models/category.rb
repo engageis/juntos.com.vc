@@ -3,6 +3,7 @@ class Category < ActiveRecord::Base
   has_many :projects
   has_many :category_followers
   has_many :users, through: :category_followers
+  has_and_belongs_to_many :channels
 
   validates_presence_of :name_pt
   validates_uniqueness_of :name_pt
@@ -42,7 +43,7 @@ class Category < ActiveRecord::Base
   end
 
   def self.name_with_locale
-    "name_#{I18n.locale}" 
+    "name_#{I18n.locale}"
   end
 
   def name_with_locale

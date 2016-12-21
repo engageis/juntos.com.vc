@@ -9,14 +9,13 @@ class Channel < ActiveRecord::Base
   validates_presence_of :name, :description, :permalink
   validates_uniqueness_of :permalink
 
-  validates_presence_of :category_id, unless: :recurring?
 
   has_and_belongs_to_many :projects, -> { order_status.most_recent_first }
   has_many :subscribers, class_name: 'User', through: :channels_subscribers, source: :user
   has_many :channels_subscribers
   has_many :subscriber_reports
   has_many :users
-  belongs_to :category
+  has_and_belongs_to_many :categories
 
   catarse_auto_html_for field: :how_it_works, video_width: 560, video_height: 340
   catarse_auto_html_for field: :terms, video_width: 560, video_height: 340

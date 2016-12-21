@@ -53,7 +53,9 @@
                 .fontsize-small.fontcolor-secondary.u-marginbottom-10= form.hint :category
                 = form.association :category, as: :select, collection: Category.order(:name_pt), prompt: t('simple_form.prompts.project.category'), class: 'medium', label: '', hint: ''
             - elsif !channel.recurring?
-              = form.input :category_id, as: :hidden, input_html: {value: channel.category.id}
+              = form.label :category, class: 'fontsize-large', required: false
+              .fontsize-small.fontcolor-secondary.u-marginbottom-10= form.hint :category
+              = form.association :category,  as: :select, collection: channel.categories.map(&:name_pt), class: 'medium', label: '', hint: ''
             .u-marginbottom-40
               = form.label :permalink, class: 'fontsize-large', required: false, as: :string
               .fontsize-small.fontcolor-secondary.u-marginbottom-10= form.hint :permalink

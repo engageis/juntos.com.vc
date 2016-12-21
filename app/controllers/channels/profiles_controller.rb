@@ -20,9 +20,24 @@ class Channels::ProfilesController < Channels::BaseController
     @profile ||= channel
   end
 
+  def create
+    @profile = Channel.new channel_params
+    if @profile.save
+      CreateMultiCategoriesChannel.new(params[:category_id], @profile).call
+      redirect_to :back
+    else
+      render :new
+    end
+  end
+
   private
 
   def show_statistics
     @channel_statistics = ChannelStatisticsQuery.new(resource)
   end
+
+  def channel_params
+    params.require(:channel).permit(:name, :permalink, :recurring, :custom_submit_text, :description, category_id:  [])
+  end
+
 end
