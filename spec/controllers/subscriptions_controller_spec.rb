@@ -2,44 +2,17 @@ require 'rails_helper'
 
 RSpec.describe SubscriptionsController, type: :controller do
   describe "POST update_status" do
-    let!(:subscription) { create(:subscription, subscription_code: 10, status: 'unpaid') }
-    let(:pagarme_request_params) do
-      {
-        id:             '10',
-        event:          'subscription_status_changed',
-        object:         'subscription',
-        old_status:     'unpaid',
-        current_status: 'paid',
-        desired_status: 'paid'
-      }
-    end
-
-    context "when the request is sent by PagarMe" do
-      before do
-        allow(RecurringContribution::UpdateStatus).to receive(:process)
-      end
-
-      it "returns a successful status code" do
-        post :update_status, pagarme_request_params
-        expect(response).to have_http_status(200)
-      end
-
-      it "should call the UpdateSubscriptionStatus service" do
-        expect(RecurringContribution::UpdateStatus).to receive(:process).with(controller.request, subscription)
-        post :update_status, pagarme_request_params
-      end
-    end
-
-    context "when the request is not sent by PagarMe" do
-      before do
-        allow(RecurringContribution::UpdateStatus)
-          .to receive(:process)
-          .and_raise(RecurringContribution::UpdateStatus::InvalidRequestError)
-      end
-
-      it "returns a bad request status code" do
-        post :update_status, pagarme_request_params
-        expect(response).to have_http_status(400)
+    it_behaves_like "update status controller's method" do
+      let!(:resource) { create(:subscription, subscription_code: 10, status: 'unpaid') }
+      let(:pagarme_request_params) do
+        {
+          id:             '10',
+          event:          'subscription_status_changed',
+          object:         'subscription',
+          old_status:     'unpaid',
+          current_status: 'paid',
+          desired_status: 'paid'
+        }
       end
     end
   end
