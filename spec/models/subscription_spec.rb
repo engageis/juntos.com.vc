@@ -13,7 +13,6 @@ RSpec.describe Subscription, type: :model do
     let(:unpermitted_payment_subscription) { build(:subscription, :bank_billet_payment, plan: plan) }
     let(:permitted_payment_subscription) { build(:subscription, :credit_card_payment, plan: plan) }
 
-    it { is_expected.to validate_presence_of(:subscription_code) }
     it { is_expected.to validate_presence_of(:status) }
     it { is_expected.to validate_presence_of(:payment_method) }
     it { is_expected.to validate_presence_of(:plan_id) }
