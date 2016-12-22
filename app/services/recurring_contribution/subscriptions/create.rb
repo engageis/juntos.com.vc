@@ -1,33 +1,30 @@
 class RecurringContribution::Subscriptions::Create
-  def initialize(plan, project, user, payment_method, credit_card_hash)
-    @plan = plan
-    @project = project
-    @user = user
-    @payment_method = payment_method
+  def initialize(juntos_subscription, credit_card_hash)
+    @juntos_subscription = juntos_subscription
     @credit_card_hash = credit_card_hash
   end
 
-  def self.process(plan:, project:, user:, payment_method:, credit_card_hash: nil)
-    new(plan, project, user, payment_method, credit_card_hash).process
+  def self.process(juntos_subscription, credit_card_hash = nil)
+    new(juntos_subscription, credit_card_hash).process
   end
 
   def process
     pagarme_response = create_subscription_on_pagarme
-    create_subscription_on_juntos(pagarme_response)
+    update_juntos_subscription(pagarme_response)
   end
 
   private
-  attr_reader :plan, :project, :user, :payment_method, :credit_card_hash
+  attr_reader :juntos_subscription, :credit_card_hash
 
   def create_subscription_on_pagarme
-    RecurringContribution::Subscriptions::CreatePagarme.new(plan.plan_code, user, payment_method, credit_card_hash).process
+    RecurringContribution::Subscriptions::CreatePagarme.new(juntos_subscription, credit_card_hash).process
   end
 
-  def create_subscription_on_juntos(pagarme_response)
-    juntos_subscription_service(project, pagarme_response).process
+  def update_juntos_subscription(pagarme_response)
+    juntos_subscription_service(juntos_subscription, pagarme_response).process
   end
 
-  def juntos_subscription_service(project, pagarme_response)
-    RecurringContribution::Subscriptions::CreateJuntos.new(project, pagarme_response)
+  def juntos_subscription_service(juntos_subscription, pagarme_response)
+    RecurringContribution::Subscriptions::UpdateJuntos.new(juntos_subscription, pagarme_response)
   end
 end
