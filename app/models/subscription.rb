@@ -1,7 +1,7 @@
 class Subscription < ActiveRecord::Base
   extend Enumerize
 
-  validates_presence_of :subscription_code, :status, :payment_method,
+  validates_presence_of :status, :payment_method,
                         :plan_id, :user_id, :project_id
 
   validates_inclusion_of :payment_method, in: 'permitted_payment_methods',
