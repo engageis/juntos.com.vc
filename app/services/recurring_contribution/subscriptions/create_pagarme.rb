@@ -1,14 +1,13 @@
 class RecurringContribution::Subscriptions::CreatePagarme
-  def initialize(plan_id, user, payment_method, credit_card)
+  def initialize(juntos_subscription, credit_card = nil)
     @credit_card = credit_card
-    @payment_method = normalize_payment_method(payment_method)
-    @plan_id = plan_id
-    @user = user
+    @payment_method = normalize_payment_method(juntos_subscription.payment_method)
+    @plan_id = juntos_subscription.plan.plan_code
+    @user = juntos_subscription.user
   end
 
   def process
-    pagarme_subscription = ::Pagarme::API.create_subscription(attributes)
-    RecurringContribution::Subscriptions::JuntosSubscriptionData.new(@user, @payment_method, pagarme_subscription)
+    ::Pagarme::API.create_subscription(attributes)
   end
 
   private
