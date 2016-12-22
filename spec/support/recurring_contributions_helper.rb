@@ -31,3 +31,7 @@ module RecurringContributionsHelper
                            current_transaction: build_transaction_mock)
   end
 end
+
+RSpec.configure do |config|
+  config.include RecurringContributionsHelper
+end
