@@ -29,6 +29,14 @@ class Pagarme::API
       raise_connection_error
     end
 
+    def create_credit_card(attributes)
+      PagarMe::Card.create(attributes)
+    rescue PagarMe::ConnectionError
+      raise_connection_error
+    rescue PagarMe::ValidationError => e
+      raise InvalidAttributeError, e.message
+    end
+
     private
 
     def raise_connection_error
