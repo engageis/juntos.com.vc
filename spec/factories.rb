@@ -421,6 +421,7 @@ FactoryGirl.define do
     f.subscription_code { rand(1..100) }
     f.payment_method :credit_card
     f.status :paid
+    f.charging_day 5
     f.association :project, factory: :project
     f.association :plan, factory: :plan
     f.association :user, factory: :user
