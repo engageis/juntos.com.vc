@@ -433,6 +433,14 @@ FactoryGirl.define do
     trait :credit_card_payment do
       payment_method :credit_card
     end
+
+    trait :waiting_for_charging_day do
+      status :waiting_for_charging_day
+    end
+
+    trait :unpaid do
+      status :unpaid
+    end
   end
 
   factory :transaction do |f|
