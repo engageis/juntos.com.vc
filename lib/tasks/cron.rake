@@ -134,3 +134,10 @@ task :deliver_credits_more_than_10, [:percent] => :environment do |t, args|
     user.notify(:credits_warning_more_group)
   end
 end
+
+namespace :recurring_contribution do
+  desc "Create pagarme's subscriptions scheduled for the current day"
+  task create_scheduled_pagarme_subscriptions: :environment do
+    RecurringContribution::ChargingSubscriptionWorker.perform_async
+  end
+end
