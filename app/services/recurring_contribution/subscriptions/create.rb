@@ -1,11 +1,10 @@
 class RecurringContribution::Subscriptions::Create
-  def initialize(juntos_subscription, credit_card_hash)
+  def initialize(juntos_subscription)
     @juntos_subscription = juntos_subscription
-    @credit_card_hash = credit_card_hash
   end
 
-  def self.process(juntos_subscription, credit_card_hash = nil)
-    new(juntos_subscription, credit_card_hash).process
+  def self.process(juntos_subscription)
+    new(juntos_subscription).process
   end
 
   def process
@@ -14,10 +13,10 @@ class RecurringContribution::Subscriptions::Create
   end
 
   private
-  attr_reader :juntos_subscription, :credit_card_hash
+  attr_reader :juntos_subscription
 
   def create_subscription_on_pagarme
-    RecurringContribution::Subscriptions::CreatePagarme.new(juntos_subscription, credit_card_hash).process
+    RecurringContribution::Subscriptions::CreatePagarme.new(juntos_subscription).process
   end
 
   def update_juntos_subscription(pagarme_response)
