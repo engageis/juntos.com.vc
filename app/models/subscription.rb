@@ -1,6 +1,4 @@
 class Subscription < ActiveRecord::Base
-  extend Enumerize
-
   validates_presence_of :status, :payment_method, :charging_day,
                         :plan_id, :user_id, :project_id
 
@@ -9,14 +7,16 @@ class Subscription < ActiveRecord::Base
 
   validates_numericality_of :charging_day, less_than_or_equal_to: 28, greater_than: 0
 
-  enumerize :payment_method, in: { credit_card: 0, bank_billet: 1 }
+  enum payment_method: [ :credit_card, :bank_billet ]
 
-  enumerize :status, in: { paid: 0, pending_payment: 1, unpaid: 2, canceled: 3, waiting_for_charging_day: 4 }
+  enum status: [ :pending_payment, :paid, :unpaid, :canceled, :waiting_for_charging_day ]
 
   has_many   :transactions
   belongs_to :user
   belongs_to :project
   belongs_to :plan
+
+  scope :charging_day_reached, -> { waiting_for_charging_day.where(charging_day: DateTime.current.day) }
 
   private
 
