@@ -37,7 +37,7 @@ http_interactions:
       content-type:
       - application/json
       date:
-      - Fri, 18 Nov 2016 16:19:48 GMT
+      - Mon, 26 Dec 2016 14:08:23 GMT
       server:
       - nginx
       x-powered-by:
@@ -47,19 +47,19 @@ http_interactions:
       x-ratelimit-remaining:
       - '29'
       x-ratelimit-reset:
-      - '1479485990'
+      - '1482761303'
       x-response-time:
-      - 20ms
+      - 18ms
       connection:
       - keep-alive
       set-cookie:
-      - visid_incap_166741=fsWTXSpkThST0wwL0vy3KyMqL1gAAAAAQUIPAAAAAABi7SfTi3vQKCIsLFQJtVcD;
-        expires=Sat, 18 Nov 2017 13:43:49 GMT; path=/; Domain=.pagar.me
-      - nlbi_166741=mYzDUUVXtRE+q/5uW7H6TQAAAAAhFDVW4P9xHQy1B9vLN9VT; path=/; Domain=.pagar.me
-      - incap_ses_469_166741=n+LSYccnGSTL4xJsQDmCBiMqL1gAAAAAcz9ZI+pdoMvW4kEKM7bueA==;
+      - visid_incap_166741=SND7AIZcTwuznjeaOLvc3VIkYVgAAAAAQUIPAAAAAABVMU/ori3ITi27wG0AjqEb;
+        expires=Tue, 26 Dec 2017 08:37:14 GMT; path=/; Domain=.pagar.me
+      - nlbi_166741=ayNVdmY6d0Vfq84WtCXDpgAAAACpCxM1UwxQi1FKeNkoxocn; path=/; Domain=.pagar.me
+      - incap_ses_297_166741=o+FwYcsr3yDm+PmtWigfBFUkYVgAAAAAfXZ48e1IxtWQY5+pcAt2kg==;
         path=/; Domain=.pagar.me
       x-iinfo:
-      - 10-65297748-65293250 PNNN RT(1479485987369 202) q(0 0 0 -1) r(1 1) U16
+      - 1-55624777-55603502 PNNN RT(1482761300843 252) q(0 0 0 1) r(2 2) U16
       x-cdn:
       - Incapsula
       content-encoding:
@@ -74,13 +74,13 @@ http_interactions:
         TBT6X+HbFO7Hwnp0DGqLbYVY2e5co0N0tT3Wtr0oONMWOUkfWR7ZK32FIQeW
         rJkO+En6kYqHm8occgGX1hBUPKjcefnLKS1CIexT6uH7A0yd0fjWAAAA
     http_version: '1.1'
-  recorded_at: Fri, 18 Nov 2016 16:19:47 GMT
+  recorded_at: Mon, 26 Dec 2016 14:08:22 GMT
 - request:
     method: post
     uri: https://ak_test_pipsnOcK4bpb17wcBkPpx31xULfUQH:x@api.pagar.me/1/subscriptions
     body:
       encoding: UTF-8
-      string: '{"plan":null,"payment_method":"boleto","postback_url":"http://test.com/postback","customer":{"email":"person2@example.com"},"installments":1,"status":"local","plan_id":73197,"card_expiration_date":""}'
+      string: '{"plan":null,"payment_method":"boleto","postback_url":"http://localhost:3000/subscription/status/update","customer":{"email":"person2@example.com"},"installments":1,"status":"local","plan_id":73197,"card_expiration_date":""}'
     headers:
       accept:
       - application/json
@@ -91,7 +91,7 @@ http_interactions:
       user-agent:
       - pagarme-ruby/2.1.2
       content-length:
-      - '200'
+      - '224'
       authorization:
       - Basic YWtfdGVzdF9waXBzbk9jSzRicGIxN3djQmtQcHgzMXhVTGZVUUg6eA==
   response:
@@ -112,25 +112,25 @@ http_interactions:
       content-type:
       - application/json
       date:
-      - Fri, 18 Nov 2016 16:19:49 GMT
+      - Mon, 26 Dec 2016 14:08:22 GMT
       etag:
-      - '"1839757661"'
+      - '"-1976719667"'
       server:
       - nginx
       x-powered-by:
       - Express
       x-response-time:
-      - 509ms
+      - 287ms
       connection:
       - keep-alive
       set-cookie:
-      - visid_incap_166741=PAMPCBFXSd+cY7u3bHknXyQqL1gAAAAAQUIPAAAAAACYma/Ud6LTpfL5vRMC4Dc0;
-        expires=Sat, 18 Nov 2017 13:43:49 GMT; path=/; Domain=.pagar.me
-      - nlbi_166741=R8U8cmcI8ADgV7VmW7H6TQAAAACDzXBtBMcCeT5kXDTTVDDa; path=/; Domain=.pagar.me
-      - incap_ses_469_166741=a+OBENE4z3y05BJsQDmCBiQqL1gAAAAALj2R7Kkluft+AOvWCNT1ug==;
+      - visid_incap_166741=SND7AIZcTwuznjeaOLvc3VIkYVgAAAAAQUIPAAAAAABVMU/ori3ITi27wG0AjqEb;
+        expires=Tue, 26 Dec 2017 08:37:14 GMT; path=/; Domain=.pagar.me
+      - nlbi_166741=a47BW5sLpjqNbLZFtCXDpgAAAACnJGS/fZERs/CAnpomtXto; path=/; Domain=.pagar.me
+      - incap_ses_297_166741=GmwlZC6YVHXm+PmtWigfBFYkYVgAAAAAqtm1vjPYVL+NqGaeqZEOGg==;
         path=/; Domain=.pagar.me
       x-iinfo:
-      - 9-56220330-56216257 PNNN RT(1479485987804 207) q(0 0 0 -1) r(5 5) U6
+      - 2-63705400-63692016 PNNN RT(1482761301409 172) q(0 0 0 1) r(5 5) U6
       x-cdn:
       - Incapsula
       content-encoding:
@@ -140,22 +140,23 @@ http_interactions:
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        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
+        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
+        /kRw2TZNc87kv1dH+j7/Bc2mLYqfBgAA
     http_version: '1.1'
-  recorded_at: Fri, 18 Nov 2016 16:19:48 GMT
+  recorded_at: Mon, 26 Dec 2016 14:08:22 GMT
 recorded_with: VCR 3.0.3

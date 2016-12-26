@@ -1,0 +1,74 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://ak_test_pipsnOcK4bpb17wcBkPpx31xULfUQH:x@api.pagar.me/1/cards
+    body:
+      encoding: UTF-8
+      string: '{"card_number":"5106961093083678","card_holder_name":"Juntos","card_expiration_month":"07","card_expiration_year":"17","card_cvv":"906","payment_method":"credit_card","installments":1,"status":"local","card_expiration_date":"0717"}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      content-type:
+      - application/json; charset=utf8
+      user-agent:
+      - pagarme-ruby/2.1.2
+      content-length:
+      - '231'
+      authorization:
+      - Basic YWtfdGVzdF9waXBzbk9jSzRicGIxN3djQmtQcHgzMXhVTGZVUUg6eA==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      access-control-allow-credentials:
+      - 'true'
+      access-control-allow-headers:
+      - Content-Type, Authorization, X-Requested-With, X-HTTP-Method-Override
+      access-control-allow-methods:
+      - GET,PUT,POST,DELETE
+      access-control-allow-origin:
+      - "*"
+      charset:
+      - utf-8
+      content-type:
+      - application/json
+      date:
+      - Mon, 26 Dec 2016 14:08:20 GMT
+      server:
+      - nginx
+      x-powered-by:
+      - Express
+      x-response-time:
+      - 51ms
+      connection:
+      - keep-alive
+      set-cookie:
+      - visid_incap_166741=SND7AIZcTwuznjeaOLvc3VIkYVgAAAAAQUIPAAAAAABVMU/ori3ITi27wG0AjqEb;
+        expires=Tue, 26 Dec 2017 08:37:02 GMT; path=/; Domain=.pagar.me
+      - nlbi_166741=1xIAaMFb2Fa50eGKtCXDpgAAAAC7rZsXMVngvOteHFyYlQgO; path=/; Domain=.pagar.me
+      - incap_ses_297_166741=p5NqWJ2K+jvm+PmtWigfBFIkYVgAAAAA0Vsqw8WjFeKcD64xWWScgQ==;
+        path=/; Domain=.pagar.me
+      x-iinfo:
+      - 9-141592098-141571974 PNNN RT(1482761298290 185) q(0 0 0 1) r(2 2) U6
+      x-cdn:
+      - Incapsula
+      content-encoding:
+      - gzip
+      transfer-encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAA/22QsW7DIBCG34XZScF2sOO5U5YMTTp0QQQuCREG5wxNqqrv
+        3qNKpQ6VTgJ9fL/Ef58sHi5gEhuY0WhZxZx93JVxd9nebp3mvOnNRdp8rY/R
+        XJEsqxMog0BH8Wsu5ELUi1ruRDO0NGLJ5ert18yT/cdsB94PYr1sBS/mAXUo
+        yqjnBPj4zjl6C6iCHoGeNjmkOBM+OpyTsu7k0kx8JbhcS+Je/8WN7HqCJlIM
+        PwjsX36y4QQ4oQul9nbzXMPUP8H4ui1unlMcAdkQsvcVe9e+bCRhhorBfXKo
+        k4tBlT6U5p3o2Nc3GdoZDUYBAAA=
+    http_version: '1.1'
+  recorded_at: Mon, 26 Dec 2016 14:08:19 GMT
+recorded_with: VCR 3.0.3
