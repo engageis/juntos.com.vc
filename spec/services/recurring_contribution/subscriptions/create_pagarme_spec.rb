@@ -18,7 +18,8 @@ RSpec.describe RecurringContribution::Subscriptions::CreatePagarme do
     context "when the parameters sent are valid" do
       let(:juntos_subscription) do
         VCR.use_cassette('recurring_contributions/pagarme/credit_card') do
-          create(:subscription, plan: plan, user: user, project: project, payment_method: 'credit_card', credit_card_key: pagarme_credit_card.id)
+          create(:subscription, plan: plan, user: user, project: project,
+                 payment_method: 'credit_card', credit_card_key: pagarme_credit_card.id)
         end
       end
       subject do
@@ -35,7 +36,8 @@ RSpec.describe RecurringContribution::Subscriptions::CreatePagarme do
         context "when credit_card" do
           let(:juntos_subscription) do
             VCR.use_cassette('recurring_contributions/pagarme/credit_card') do
-              create(:subscription, plan: plan, user: user, project: project, payment_method: 'credit_card', credit_card_key: pagarme_credit_card.id)
+              create(:subscription, plan: plan, user: user, project: project,
+                     payment_method: 'credit_card', credit_card_key: pagarme_credit_card.id)
             end
           end
           subject do
@@ -51,7 +53,8 @@ RSpec.describe RecurringContribution::Subscriptions::CreatePagarme do
 
         context "when bank_billet" do
           let(:juntos_subscription) do
-            create(:subscription, plan: plan, user: user, project: project, payment_method: 'bank_billet')
+            create(:subscription, plan: plan, user: user, project: project,
+                   payment_method: 'bank_billet')
           end
           subject do
             RecurringContribution::Subscriptions::CreatePagarme.new(juntos_subscription).process
