@@ -51,9 +51,8 @@ RSpec.describe RecurringContribution::Subscriptions::CreateJuntos do
         end
       end
 
-      it "should return a subscription" do
-        expect(subject)
-          .to have_attributes(status: :waiting_for_charging_day, plan_id: plan.id, credit_card_key: nil)
+      it "should return a subscription with a 'waiting_for_charging_day' status" do
+        expect(subject.status).to match 'waiting_for_charging_day'
       end
 
       it "should create a subscription" do
