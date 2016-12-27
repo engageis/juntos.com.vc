@@ -18,17 +18,6 @@ RSpec.shared_examples "update status service" do
             .from('pending_payment').to('paid')
         end
       end
-
-      context "when an invalid status is passed as param" do
-        let(:current_status) { 'invalid status' }
-        let(:params) { { id: pagarme_resource.id, current_status: current_status } }
-        let(:request) { double('Request', params: params) }
-        let(:update_service) { described_class.process(request, juntos_resource) }
-
-        it "returns an invalid resource instance" do
-          expect(update_service).to be_invalid
-        end
-      end
     end
 
     context "when the request is made by an unauthorized resource" do
