@@ -44,13 +44,6 @@ RSpec.describe RecurringContribution::Subscriptions::UpdateJuntos do
             .to raise_error(RecurringContribution::Subscriptions::UpdateJuntos::InvalidPagarmeSubscription)
         end
       end
-
-      context "when the pagarme's subscription status is invalid" do
-        it "should return an invalid subscription instance" do
-          allow(pagarme_subscription).to receive(:status).and_return(:invalid_status)
-          expect(service_response).to be_invalid
-        end
-      end
     end
   end
 end
