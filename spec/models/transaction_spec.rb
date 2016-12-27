@@ -8,10 +8,17 @@ RSpec.describe Transaction, type: :model do
     it { is_expected.to validate_presence_of(:payment_method) }
     it { is_expected.to validate_presence_of(:subscription_id) }
 
-    it { is_expected.to enumerize(:payment_method).in(:credit_card, :bank_billet) }
-    it { is_expected.to enumerize(:status).in(:processing, :authorized, :paid,
-                                              :refunded, :waiting_payment,
-                                              :pending_payment, :refused) }
+    describe "enumerators" do
+      it "should define an enum for payment_method" do
+        is_expected.to define_enum_for(:payment_method)
+          .with([ :credit_card, :bank_billet ])
+      end
+
+      it "should define an enum for status" do
+        is_expected.to define_enum_for(:status)
+          .with([ :pending_payment, :processing, :authorized, :paid, :refunded, :waiting_payment, :refused ])
+      end
+    end
   end
 
   describe 'associations' do
