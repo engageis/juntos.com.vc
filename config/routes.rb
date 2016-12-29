@@ -52,6 +52,7 @@ Rails.application.routes.draw do
   resources :plans, only: :index
   resources :auto_complete_projects, only: [:index]
   resources :projects, only: [:index, :create, :update, :new, :show] do
+    resources :subscriptions, controller: 'projects/subscriptions', only: [:new, :create]
     resources :posts, controller: 'projects/posts', only: [ :index, :create, :destroy ]
     resources :rewards, only: [ :index, :create, :update, :destroy, :new, :edit ] do
       member do
@@ -212,5 +213,5 @@ Rails.application.routes.draw do
 
   post '/transaction/status/update' => 'transactions#update_status'
 
-  post '/subscription/status/update' => 'subscriptions#update_status'
+  post '/subscription/status/update' => 'projects/subscriptions#update_status'
 end
