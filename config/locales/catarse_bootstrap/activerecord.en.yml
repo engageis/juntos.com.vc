@@ -3,6 +3,9 @@ en:
     models:
       channel: 'Channel'
       project: 'Project'
+      plan: 'Plan'
+      subscription: 'Subscription'
+      transaction: 'Transaction'
       reward: 'Reward'
       contribution: 'Contribution'
       category: 'Catergory'
@@ -12,6 +15,13 @@ en:
       page: 'Page'
       transparency_report: 'Transparency Report'
     attributes:
+      subscription:
+        subscription_code: Subscription code
+        payment_method: Payment method
+        status: Status
+        plan_id: Plan
+        user_id: User
+        project_id: Project
       bank_account:
         bank: Bank
         bank_id: Bank
@@ -98,6 +108,11 @@ en:
     errors:
       models:
         contribution: 'An error occurred while trying to save the contribution'
+        subscription:
+          attributes:
+            credit_card_key:
+              connection_fails: "The payment service is offline"
+              credit_card_invalid: "Invalid credit card"
         project:
           attributes:
             name:
@@ -139,6 +154,9 @@ en:
             reset_password_token:
               invalid: 'expired. Access <a href="/password/new">reset my password</a> and resquest a new password reset token.'
   project:
+    subscription:
+      create:
+        success: 'Your subscription was successfully created'
     update:
       success: 'Project updated'
     video_regex_validation: 'only URLs from YouTube or Vimeo are allowed'
