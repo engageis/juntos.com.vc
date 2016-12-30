@@ -427,11 +427,11 @@ FactoryGirl.define do
     f.association :user, factory: :user
 
     trait :bank_billet_payment do
-      payment_method :bank_billet
+      payment_method 'bank_billet'
     end
 
     trait :credit_card_payment do
-      payment_method :credit_card
+      payment_method 'credit_card'
     end
 
     trait :waiting_for_charging_day do
