@@ -230,6 +230,11 @@ pt:
     subscription:
       create:
         success: 'Sua assinatura foi criada com sucesso'
+      cancel:
+        success: 'Sua assinatura foi cancelada'
+        errors:
+          not_found: 'A assinatura não foi encontrada'
+          connection_fails: 'O gateway de pagamento está fora do ar'
     update:
       success: As informações foram atualizadas
     video_regex_validation: somente URLs do Vimeo e Youtube são aceitas
