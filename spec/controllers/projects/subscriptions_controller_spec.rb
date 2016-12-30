@@ -137,4 +137,57 @@ RSpec.describe Projects::SubscriptionsController, type: :controller do
       end
     end
   end
+
+  describe "POST cancel" do
+    let(:user) { create(:user) }
+    let(:subscription) { create(:subscription, user: user) }
+
+    context "when no user is logged in" do
+      it "should redirect to registrations path" do
+        post :cancel, { id: subscription.id }.merge(ssl_options)
+        expect(response).to redirect_to new_user_registration_path
+      end
+    end
+
+    context "when there is a logged user" do
+      before do
+        sign_in user
+      end
+
+      context "when the subscription is successfully updated" do
+        it "should return a success flash message" do
+          allow_any_instance_of(RecurringContribution::Subscriptions::CancelOnPagarme)
+            .to receive(:process).and_return(true)
+            
+          post :cancel, { id: subscription.id }.merge(ssl_options)
+
+          expect(flash[:notice]).to match I18n.t('project.subscription.cancel.success')
+        end
+      end
+
+      context "when a problem occurs on the subscription updation" do
+        context "when the subscription was not found" do
+          it "should return an flash message notifying the error" do
+            allow_any_instance_of(RecurringContribution::Subscriptions::CancelOnPagarme)
+              .to receive(:process).and_raise(Pagarme::API::ResourceNotFound)
+
+            post :cancel, { id: subscription.id }.merge(ssl_options)
+
+            expect(flash[:notice]).to match I18n.t('project.subscription.cancel.errors.not_found')
+          end
+        end
+
+        context "when the connection with PagarMe API was lost" do
+          it "should return an flash message notifying the error" do
+            allow_any_instance_of(RecurringContribution::Subscriptions::CancelOnPagarme)
+              .to receive(:process).and_raise(Pagarme::API::ConnectionError)
+
+            post :cancel, { id: subscription.id }.merge(ssl_options)
+
+            expect(flash[:notice]).to match I18n.t('project.subscription.cancel.errors.connection_fails')
+          end
+        end
+      end
+    end
+  end
 end
