@@ -111,7 +111,7 @@ en:
         subscription:
           attributes:
             credit_card_key:
-              connection_fails: "The payment service is offline"
+              connection_fails: "The payment gateway is offline"
               credit_card_invalid: "Invalid credit card"
         project:
           attributes:
@@ -157,6 +157,11 @@ en:
     subscription:
       create:
         success: 'Your subscription was successfully created'
+      cancel:
+        success: 'Your subscription was canceled'
+        errors:
+          not_found: 'The subscription was not found'
+          connection_fails: 'The payment server is offline'
     update:
       success: 'Project updated'
     video_regex_validation: 'only URLs from YouTube or Vimeo are allowed'
