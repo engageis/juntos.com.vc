@@ -36,6 +36,24 @@ class Projects::SubscriptionsController < ApplicationController
     end
   end
 
+  def cancel
+    subscription = Subscription.find(params[:id])
+    authorize subscription
+
+    RecurringContribution::Subscriptions::CancelOnPagarme.process(subscription)
+
+    flash[:notice] = t('project.subscription.cancel.success')
+
+    render nothing: true
+
+  rescue Pagarme::API::ResourceNotFound
+    flash[:notice] = t('project.subscription.cancel.errors.not_found')
+    render nothing: true
+  rescue Pagarme::API::ConnectionError
+    flash[:notice] = t('project.subscription.cancel.errors.connection_fails')
+    render nothing: true
+  end
+
   private
 
   def subscription_params
