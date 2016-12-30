@@ -215,5 +215,7 @@ Rails.application.routes.draw do
 
   post '/subscription/status/update' => 'projects/subscriptions#update_status'
 
+  post '/subscription/cancel' => 'projects/subscriptions#cancel'
+
   get '/projects/validate/permalink' => 'projects#permalink_valid?'
 end
