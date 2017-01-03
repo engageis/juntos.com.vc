@@ -116,13 +116,17 @@ nav.project-nav.w-hidden-main.w-hidden-medium
           span.fa.fa-check-circle
             span.u-marginleft-10 = t('.dashboard_nav.bank_info')
 
+        = link_to '#dashboard_project_plans', id: 'dashboard_project_plans_link', class: 'dashboard-nav-link' , data: {target: '#dashboard_project_plans'} do
+          span.fa.fa-check-circle
+            span.u-marginleft-10 = t('.dashboard_nav.plans')
+
       - if current_user.admin?
         = link_to '#dashboard_subgoals', id: 'dashboard_subgoals_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_subgoals'} do
           span.fa.fa-check-circle
             span.u-marginleft-10 = t('.dashboard_nav.subgoals')
       = link_to t('.dashboard_nav.preview'), @project, class: 'dashboard-nav-link'
       - if @project.draft?
-        .btn-send-draft
+        .btn-send-draft.u-margintop-10.u-marginbottom-10
            = link_to t('.dashboard_nav.send_to_analysis'), send_to_analysis_project_path(@project), class: 'btn btn-small'
 
 .w-container
@@ -159,11 +163,14 @@ nav.project-nav.w-hidden-main.w-hidden-medium
 
 
 
+
       #dashboard_rewards.content.w-hidden
         = render 'dashboard_reward'
       - if @project.recurring?
         #project_bank_info.content.w-hidden
           = render 'project_bank_info'
+        #dashboard_project_plans.content.w-hidden
+          = render(partial: 'dashboard_project_plans', collection: Plan.all, locals: { plans: Plan.all }) || t('.no_plans_available')
       - if current_user and current_user.admin?
         #dashboard_subgoals.content.w-hidden
           = render 'dashboard_subgoals'
