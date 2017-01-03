@@ -29,6 +29,11 @@ en:
         excerpt: 'Do you have any company that supports your fundraising campaign? If you have, put them right here! You can put up to 3 logos that will be displayed to the right side of the project. Remember, supporters must be of your project, not your NGO as a whole.'
         hint: 'We recommend 264x75 pixels images.'
         link: "Partner's link"
+    dashboard_project_plans:
+      title: 'Which donation plans are available for your project?'
+      subtitle: "Choose the plans that will be available for your project's donators"
+      charging_recurrence: 'Monthly charging'
+      submit: 'Add plans'
     dashboard_reward:
       title: 'Create and edit you rewards here'
       subtitle: 'Think how you will deliver them and put all this in the budget! Deliver our rewards or the reliability of your project may be impaired.'
@@ -124,11 +129,13 @@ en:
       contributions: 'donors'
       goal: achieved of %{total}
     show:
+      no_plans_available: 'No plans are available'
       all_or_nothing: 'All or nothing: Upon reaching each subject below , the tenderer guarantees the transfer of respective value'
       dashboard_nav:
         basics: 'Basics'
         project: 'Project'
         rewards: 'Rewards'
+        plans: 'Plans'
         bank_info: 'Bank info'
         subgoals: 'Subgoals'
         preview: 'Preview'
