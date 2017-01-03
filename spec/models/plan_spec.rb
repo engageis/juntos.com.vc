@@ -11,6 +11,7 @@ RSpec.describe Plan, :type => :model do
     it { is_expected.to validate_presence_of(:amount) }
     it { is_expected.to validate_presence_of(:payment_methods) }
     it { is_expected.to enumerize(:payment_methods).in(:credit_card, :bank_billet) }
+    it { is_expected.to have_and_belong_to_many(:projects) }
 
     context 'when an invalid payment_method value is passed' do
       it 'should not be valid' do
