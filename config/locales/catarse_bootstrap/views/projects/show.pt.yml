@@ -29,6 +29,11 @@ pt:
         excerpt: 'Você tem alguma empresa que apoia a sua campanha de captação de recursos? Se você tiver, coloque o logo delas aqui! Você pode colocar até 3 logos, que serão exibidos a direita do projeto. Lembre-se: os apoiadores devem ser do seu projeto, não da sua ONG como um todo.'
         hint: 'Recomendamos imagens de 264x75 pixels.'
         link: 'Link do parceiro'
+    dashboard_project_plans:
+      title: 'Quais planos de contribuição estarão disponíveis no seu projeto?'
+      subtitle: 'Selecione quais planos estarão disponíveis aos doadores do seu projeto'
+      charging_recurrence: 'Cobrança mensal'
+      submit: 'Adicionar planos'
     dashboard_reward:
       title: 'Crie e edite aqui suas recompensas'
       subtitle: 'Pense bem como você irá entregá-las e coloque tudo isso no orçamento! Entregue suas recompensas, senão a confiabilidade do seu projeto pode ser prejudicada.'
@@ -128,10 +133,12 @@ pt:
       contributions: doadores
       goal: atingidos de %{total}
     show:
+      no_plans_available: 'Nenhum plano está disponível'
       all_or_nothing: 'Tudo ou Nada por submeta: ao atingir cada submeta abaixo, o proponente garante o repasse do respectivo valor'
       dashboard_nav:
         basics: 'Básico'
         project: 'Projeto'
+        plans: 'Planos'
         rewards: 'Recompensas'
         bank_info: 'Dados bancários'
         subgoals: 'Submetas'
