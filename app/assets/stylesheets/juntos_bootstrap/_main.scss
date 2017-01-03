@@ -503,6 +503,41 @@ p {
     font-weight: normal;
   }
 }
+
+.plans-container {
+  .plan {
+    cursor: pointer;
+
+    .check-box {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .content {
+      background-color: $gray-three;
+      border-radius: 5px;
+      box-shadow: 1px 1px 1px $border-strong;
+      height: 120px;
+    }
+
+    .amount {
+      margin-bottom: 0;
+    }
+
+    .recurrence {
+      padding: 0 10px;
+    }
+
+    hr {
+      background-color: $border-strong;
+      border: 0;
+      height: 1px;
+      width: 70%;
+    }
+  }
+}
+
 .warning {
   position: absolute;
   top: 0px;
@@ -2167,6 +2202,9 @@ input[type="submit"][disabled] {
 .u-marginleft-10 {
   margin-left: 10px;
 }
+.u-marginleft-5 {
+  margin-left: 5px;
+}
 .u-right {
   float: right;
 }
@@ -2703,7 +2741,6 @@ input[type="submit"][disabled] {
 .btn-send-draft {
   display: inline-block;
   width: 210px;
-  margin-top: -4px;
   float: right;
 }
 .link-edit {
@@ -3311,8 +3348,6 @@ section.devise-body-section .access-type-field input {
     background-color: #fff;
     text-align: center;
   }
-
-
   .project-stats-digits {
     margin-bottom: 24px;
     padding-top: 14px;
