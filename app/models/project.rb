@@ -31,6 +31,7 @@ class Project < ActiveRecord::Base
   belongs_to :user
   belongs_to :category
   has_and_belongs_to_many :channels
+  has_and_belongs_to_many :plans, join_table: 'projects_plans'
   has_one :project_total
   has_many :rewards
   has_many :contributions
@@ -186,6 +187,8 @@ class Project < ActiveRecord::Base
   validates_format_of :permalink, with: /\A(\w|-)*\Z/
 
   validates_presence_of :category, unless: :recurring?
+
+  validate :permit_association_with_plans?, unless: 'plans.empty?'
 
   [:between_created_at, :between_expires_at, :between_online_date, :between_updated_at].each do |name|
     define_singleton_method name do |starts_at, ends_at|
@@ -386,5 +389,9 @@ class Project < ActiveRecord::Base
 
   def reject_project_image(attributes)
     new_record? && attributes[:original_image_url].nil?
+  end
+
+  def permit_association_with_plans?
+    errors.add(:plans, :project_is_not_recurring) unless recurring?
   end
 end
