@@ -22,9 +22,31 @@ RSpec.describe Project, type: :model do
     it { is_expected.to have_many :subgoals }
     it { is_expected.to have_many :notifications }
     it { is_expected.to have_and_belong_to_many :channels }
+    it{ is_expected.to have_and_belong_to_many(:plans) }
   end
 
   describe "validations" do
+    describe "plans" do
+      let(:plan) { create(:plan) }
+      subject { build(:project, channels: [channel], plans: [plan]) }
+
+      context "when the project is recurring" do
+        let(:channel) { create(:channel, :recurring) }
+
+        it "can has associated plans" do
+          expect(subject).to be_valid
+        end
+      end
+
+      context "when the project is not recurring" do
+        let(:channel) { create(:channel) }
+
+        it "cannot has associated plans" do
+          expect(subject).to be_invalid
+        end
+      end
+    end
+
     describe "presence validations" do
       it { is_expected.to validate_presence_of(:name) }
       it { is_expected.to validate_presence_of(:user) }
