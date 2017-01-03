@@ -19,6 +19,8 @@ en:
         subscription_code: Subscription code
         payment_method: Payment method
         status: Status
+        plan: Plans
+        plan_ids: Plans
         plan_id: Plan
         user_id: User
         project_id: Project
@@ -105,6 +107,7 @@ en:
         permalink: 'URL of your project'
         traffic_sources: 'How did you hear about Juntos.com.vc?'
         recipient: 'Bank account info'
+        plans: 'Plans'
     errors:
       models:
         contribution: 'An error occurred while trying to save the contribution'
@@ -140,6 +143,8 @@ en:
               too_short: "The project's headline is too short. Please, use at least 1 character"
             recipient:
               blank: 'Insert all fields in bank account info'
+            plan_ids:
+              project_is_not_recurring: 'only can be associated with recurring projects'
         user:
           attributes:
             email:

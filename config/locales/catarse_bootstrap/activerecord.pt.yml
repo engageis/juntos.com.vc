@@ -67,6 +67,7 @@ pt:
         first_contributions: "Quem são as primeiras pessoas que você vai pedir para apoiar o seu projeto?"
         project_partners: 'Parceiros'
         recipient: 'Dados bancários'
+        plans: 'Planos'
       user/staff:
         team: 'Time'
         financial_board: 'Conselho Financeiro'
@@ -213,6 +214,8 @@ pt:
               too_short: "A frase de efeito é muito curta. Por favor, use no mínimo 1 caractere"
             recipient:
               blank: 'Insira corretamente todos os campos de dados bancários'
+            plans:
+              project_is_not_recurring: 'podem ser associados apenas à projetos recorrentes'
         user:
           attributes:
             email:
