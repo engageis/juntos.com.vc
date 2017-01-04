@@ -35,6 +35,7 @@ class ProjectPolicy < ApplicationPolicy
 
       p_attr = [
         channel_ids: [],
+        plan_ids: [],
         project_images_attributes: [:original_image_url, :caption, :id, :_destroy],
         project_partners_attributes: [:original_image_url, :link, :id, :_destroy]
       ]
