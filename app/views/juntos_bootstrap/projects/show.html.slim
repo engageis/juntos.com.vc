@@ -170,7 +170,7 @@ nav.project-nav.w-hidden-main.w-hidden-medium
         #project_bank_info.content.w-hidden
           = render 'project_bank_info'
         #dashboard_project_plans.content.w-hidden
-          = render(partial: 'dashboard_project_plans', collection: Plan.all, locals: { plans: Plan.all }) || t('.no_plans_available')
+          = render 'projects/plans/dashboard_project_plans', plans: @plans
       - if current_user and current_user.admin?
         #dashboard_subgoals.content.w-hidden
           = render 'dashboard_subgoals'
@@ -227,10 +227,10 @@ nav.project-nav.w-hidden-main.w-hidden-medium
               = link_to t('.contribute_project.submit'), 'http://acaochego.doemaisdoemelhor.org.br/br/doacao/1/acaochego/aumigo-seu-apoio-e-nossa-esperanca', id: 'contribute_project_form', class: "btn bt-yellow btn-large u-marginbottom-20", target: '_blank'
             - else
             .w-hidden-small.w-hidden-tiny
-               = link_to t('.contribute_project.submit'), new_project_contribution_path(@project), id: 'contribute_project_form', class: "btn bt-yellow btn-large u-marginbottom-20 u-margintop-20"
+               = link_to t('.contribute_project.submit'), @project.new_contribution_link, id: 'contribute_project_form', class: "btn bt-yellow btn-large u-marginbottom-20 u-margintop-20"
             .w-hidden-main.w-hidden-medium
-              = link_to t('.contribute_project.submit'), new_project_contribution_path(@project), id: 'contribute_project_form', class: "suport-text-mobile uppercase u-marginbottom-20 u-margintop-20 btn bt-yellow btn-large"
-              = link_to t('.contribute_project.donate'), new_project_contribution_path(@project), id: 'contribute_project_form', class: "suport-text-mobile uppercase u-marginbottom-20 u-margintop-20  btn-support-fixed" ,  style: "background-color: #{@color};"
+              = link_to t('.contribute_project.submit'), @project.new_contribution_link, id: 'contribute_project_form', class: "suport-text-mobile uppercase u-marginbottom-20 u-margintop-20 btn bt-yellow btn-large"
+              = link_to t('.contribute_project.donate'), @project.new_contribution_link, id: 'contribute_project_form', class: "suport-text-mobile uppercase u-marginbottom-20 u-margintop-20  btn-support-fixed" ,  style: "background-color: #{@color};"
 
           - if @project.subgoals.empty? && !@project.recurring?
             .fontsize-smaller.fontweight-light.u-marginbottom-30[class=@project.display_card_class]
