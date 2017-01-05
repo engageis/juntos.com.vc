@@ -120,6 +120,7 @@ class ProjectsController < ApplicationController
     @post = resource.posts.where(id: params[:project_post_id]).first if params[:project_post_id].present?
     @contributions = @project.contributions.available_to_count
     @pending_contributions = @project.contributions.with_state(:waiting_confirmation)
+    @plans = Plan.all if @project.recurring?
 
     if @channel && @channel.recurring?
       @banks = Bank.order(:code).to_collection
