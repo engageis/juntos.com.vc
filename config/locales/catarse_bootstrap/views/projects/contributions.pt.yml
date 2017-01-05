@@ -41,6 +41,8 @@ pt:
           payment_card_source: 'Cód. Segurança'
           payment_card_source_short: 'CVC'
           payment_card_date: 'Expiração'
+          payment_card_month: 'Mês'
+          payment_card_year: 'Ano (últimos dígitos)'
           payment_card_name: 'Nome impresso no cartão de crédito'
           payment_card_error: 'Verifique o CPF ou CNPJ'
           payment_card_installments: 'Parcelas'

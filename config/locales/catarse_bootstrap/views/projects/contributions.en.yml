@@ -42,6 +42,8 @@ en:
           payment_card_source: Security code
           payment_card_source_short: CVC
           payment_card_date: Expired at
+          payment_card_month: Month (last two digits)
+          payment_card_year: Year (last digits)
           payment_card_name: Name printed in credit card
           payment_card_installments: Installments
           payment_card_error: 'Check the CPF or CNPJ'
