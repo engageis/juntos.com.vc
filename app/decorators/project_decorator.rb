@@ -1,5 +1,6 @@
 class ProjectDecorator < Draper::Decorator
   decorates :project
+  delegate_all
   include Draper::LazyHelpers
 
   def remaining_text
@@ -8,6 +9,15 @@ class ProjectDecorator < Draper::Decorator
 
   def state_warning_template
     "#{source.state}_warning"
+  end
+
+  def new_contribution_link
+    object.recurring? ? new_project_subscription_path(object) : new_project_contribution_path(object)
+  end
+
+  def standard_plan_id
+    plan = object.plans.first
+    plan ? plan.id : nil
   end
 
   def time_to_go
@@ -147,4 +157,3 @@ class ProjectDecorator < Draper::Decorator
     { time: time, unit: pluralize_without_number(time, I18n.t("datetime.prompts.#{unit}").downcase) }
   end
 end
-

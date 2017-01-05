@@ -123,6 +123,7 @@ class ProjectsController < ApplicationController
     @post = resource.posts.where(id: params[:project_post_id]).first if params[:project_post_id].present?
     @contributions = @project.contributions.available_to_count
     @pending_contributions = @project.contributions.with_state(:waiting_confirmation)
+    @plans = Plan.all if @project.recurring?
 
     if @channel && @channel.recurring?
       @banks = Bank.order(:code).to_collection
@@ -132,7 +133,7 @@ class ProjectsController < ApplicationController
       }).active.any?
 
       @bank_account = params[:bank_account] || {}
- 
+
       if @project.recipient
         recipient = FindRemoteRecipient.call(@project.recipient)
         @bank_account = recipient.bank_account
@@ -180,7 +181,7 @@ class ProjectsController < ApplicationController
   end
 
   def resource
-    @project ||= (params[:permalink].present? ? Project.by_permalink(params[:permalink]).first! : Project.find(params[:id]))
+    @project ||= (params[:permalink].present? ? Project.by_permalink(params[:permalink]).first! : Project.find(params[:id])).decorate
   end
 
   def use_catarse_boostrap
