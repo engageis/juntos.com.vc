@@ -1,0 +1,21 @@
+en:
+  projects:
+    subscriptions:
+      new:
+        page_title: 'Support %{name}'
+        donation: 'Your donation'
+        plan_selection: 'Select a plan:'
+        submit: 'Create subscription'
+        payment_methods: 'Payment methods:'
+        user_preferences: 'Your preferences'
+        form:
+          payment_method:
+            credit_card: 'Credit card'
+            bank_billet: 'Bank billet'
+          card_number: 'Card number:'
+          card_holder_name: "Card's holder name:"
+          card_expiration_month: 'Expiration month:'
+          card_expiration_year: 'Expiration year:'
+          card_expiration_cvv: 'Security code'
+          charging_day: "What's the day you would like to be charged?"
+          expires_at: 'How many months would you like to donate?'
