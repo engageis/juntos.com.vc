@@ -1,0 +1,63 @@
+- content_for :title, t('.page_title', name: @project.name)
+
+= render 'shared/header_big'
+
+= render 'projects/project_header'
+
+- content_for :custom_javascripts do
+  = javascript_include_tag 'https://assets.pagar.me/js/pagarme.min.js'
+
+#new-subscription.section
+  .w-container
+    .w-row
+      .w-col.w-col-12
+        = render partial: 'devise/shared/alert', locals: { resource: @subscription }
+    .w-row
+      = simple_form_for @subscription, url: project_subscriptions_path(project: @project), html: { id: 'subscription_form', method: :post} do |form|
+        .w-col.w-col-6.w-col-offset-6.donation.section
+          h3 = t('.donation')
+          p = t('.plan_selection')
+          .w-row
+            .w-col.w-col-12.plans-container
+              = form.collection_radio_buttons :plan_id, @project.plans, :id, :amount, checked: @project.standard_plan_id do |input|
+                .w-col.w-col-4.w-col-small-3.w-col-tiny-4.u-marginleft-10.u-marginbottom-10
+                  = render 'projects/plans/select_plans', input: input, type: :radio_button
+          .w-row
+            .w-col.w-col-12.user-payment-preferences
+              h3 = t('.user_preferences')
+              .w-row
+                .w-col.w-col-12
+                  h4 = t('.form.charging_day')
+              .w-row
+                .w-col.w-col-3
+                  = form.input_field :charging_day
+            .w-row
+              .w-col.w-col-12
+                h4 = t('.form.expires_at')
+            .w-row
+              .w-col.w-col-3
+                = form.input_field :charging_day
+              .w-col.w-col-5.u-marginleft-5
+
+          .w-row
+            .w-col.w-col-12.payment-method
+              h4 = t('.payment_methods')
+              = form.collection_radio_buttons :payment_method,
+                  [['credit_card', t('.form.payment_method.credit_card')],
+                  ['bank_billet', t('.form.payment_method.bank_billet')]], :first, :last do |rb|
+                = rb.label do
+                  .w-col.w-col-12.u-margintop-5
+                    .w-col.w-col-1
+                      = rb.radio_button
+                    .w-col.w-col-11.left
+                      = rb.text
+          .w-row
+            #credit-card-fields.u-margintop-20
+              = render partial: 'projects/contributions/recurring_payment', locals: { form: form }
+          .w-row
+            = form.input :project_id, value: @subscription.project, as: :hidden
+            = form.input :user_id, value: @subscription.user, as: :hidden
+            .w-col.w-col-6.u-margintop-10
+              = submit_tag t(:credits_submit, scope: [:projects, :contributions, :edit]),
+                class: 'btn btn-large', data: { recurring: true,
+                pagarme_encryption: ENV['PAGARME_ENCRYPTION_KEY'] }
