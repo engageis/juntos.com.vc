@@ -10,26 +10,26 @@ class Projects::SubscriptionsController < ApplicationController
   end
 
   def new
-    @subscription = Subscription.new(user: current_user)
+    @project = Project.find(params[:project_id]).decorate
+    @subscription = Subscription.new(user: current_user, project: @project)
     authorize @subscription
-
-    render nothing: true
   end
 
   def create
-    subscription = Subscription.new subscription_params
-    subscription.user = current_user
+    @subscription = Subscription.new
+    @subscription.user = current_user
+    @subscription.assign_attributes(subscription_params)
 
-    authorize subscription
+    authorize @subscription
 
     @subscription = RecurringContribution::Subscriptions::Processor.process(
-      subscription: subscription,
+      subscription: @subscription,
       credit_card_hash: credit_card_params
     )
 
     if @subscription.errors.any?
       flash[:alert] = @subscription.errors.full_messages.to_sentence
-      render nothing: true
+      redirect_to new_project_subscription_path project_id: params[:project_id]
     else
       flash[:notice] = t('project.subscription.create.success')
       redirect_to project_path @subscription.project
@@ -57,10 +57,14 @@ class Projects::SubscriptionsController < ApplicationController
   private
 
   def subscription_params
-    params.require(:subscription).permit(:plan_id, :project_id, :user_id, :payment_method, :charging_day)
+    params.require(:subscription).permit(policy(@subscription).permitted_attributes)
   end
 
   def credit_card_params
-    params.require(:subscription).permit(:cedit_card_hash) || {}
+    params.require(:subscription).permit(policy(@subscription).credit_card_permitted_attributes) || {}
+  end
+
+  def use_catarse_boostrap
+    action_name.eql?('new') ? 'juntos_bootstrap' : 'application'
   end
 end

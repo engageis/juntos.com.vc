@@ -46,7 +46,7 @@ RSpec.describe Projects::SubscriptionsController, type: :controller do
 
     context "when there is a logged user" do
       let(:current_user) { create(:user) }
-      let(:credit_card_params) { { credit_card_hash: build(:credit_card) } }
+      let(:credit_card_params) { { card_hash: 'test_Ec8KhxISQ1tug1b8bCGxC2nXfxqRmk' } }
       let(:params) do
         {
           plan_id:          plan.id,
@@ -62,21 +62,23 @@ RSpec.describe Projects::SubscriptionsController, type: :controller do
           .to receive(:process).and_return(subscription)
 
         sign_in current_user
-
-        post :create, { locale: :pt,
-                        project_id: project.id,
-                        subscription: params }.merge(ssl_options)
       end
 
       context "when the subscription is successfully created" do
         let(:subscription) { create(:subscription, project: project, plan: plan, user: current_user) }
+
+        before do
+          post :create, { locale: :pt,
+                          project_id: project.id,
+                          subscription: params }.merge(ssl_options)
+        end
 
         it "should send a success flash message to the user" do
           expect(flash[:notice]).to match I18n.t('project.subscription.create.success')
         end
 
         it "should redirect_to project show page" do
-          expect(response).to redirect_to project_path project
+          expect(response).to redirect_to project_path(project)
         end
       end
 
@@ -117,7 +119,7 @@ RSpec.describe Projects::SubscriptionsController, type: :controller do
     end
 
     context "when no user is logged in" do
-      let(:credit_card_params) { { credit_card_hash: build(:credit_card) } }
+      let(:credit_card_params) { { card_hash: 'test_Ec8KhxISQ1tug1b8bCGxC2nXfxqRmk' } }
       let(:params) do
         {
           plan_id:          plan.id,
@@ -158,7 +160,7 @@ RSpec.describe Projects::SubscriptionsController, type: :controller do
         it "should return a success flash message" do
           allow_any_instance_of(RecurringContribution::Subscriptions::CancelOnPagarme)
             .to receive(:process).and_return(true)
-            
+
           post :cancel, { id: subscription.id }.merge(ssl_options)
 
           expect(flash[:notice]).to match I18n.t('project.subscription.cancel.success')
