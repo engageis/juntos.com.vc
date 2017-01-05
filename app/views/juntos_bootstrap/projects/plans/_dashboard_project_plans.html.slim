@@ -1,0 +1,21 @@
+- if plans.empty?
+  = t('.no_plans_available')
+- else
+  .dashboard_project_plans
+    .dashboard-header.u-text-center
+      .w-container
+        .w-row
+          .w-col.w-col-2
+          .w-col.w-col-8
+            .fontweight-semibold.fontsize-large = t('.title')
+            p.fontsize-base = t('.subtitle')
+  = simple_form_for @project, html: { id: 'project_form', class: 'w-form' } do |form|
+    .section
+      .w-container
+        .w-row
+          .w-col.w-col-12.plans-container
+            = form.collection_check_boxes :plan_ids, plans, :id, :amount do |input|
+              .w-col.w-col-2.w-col-small-3.w-col-tiny-4.u-marginleft-10.u-marginbottom-10
+                = render 'projects/plans/select_plans', input: input, type: :check_box
+          .w-col.w-col-offset-4.w-col-tiny-offset-1.w-col-medium-offset-1.w-col-4.w-col-tiny-10.w-col-small-10.u-margintop-20
+            = form.button :submit, t('.submit'),  class:'btn btn-large js-btn-submit'
