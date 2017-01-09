@@ -300,6 +300,10 @@ FactoryGirl.define do
     email "email+channel@foo.bar"
     description "Lorem Ipsum"
     sequence(:permalink) { |n| "#{n}-test-page" }
+
+    trait :recurring do
+      recurring true
+    end
   end
 
   factory :state do
@@ -361,5 +365,68 @@ FactoryGirl.define do
   factory :transparency_report do |f|
     f.attachment File.open("#{Rails.root}/spec/support/testimg.png")
     f.previous_attachment File.open("#{Rails.root}/spec/support/testimg.png")
+  end
+
+  factory :plan do |f|
+    f.plan_code { rand(1..100) }
+    f.name 'Foo Plan'
+    f.amount 30
+    f.payment_methods [:credit_card, :bank_billet]
+
+    trait :invalid_payment_method do
+      payment_methods [:unknown]
+    end
+
+    trait :with_credit_card do
+      payment_methods [:credit_card]
+    end
+
+    trait :with_bank_billet do
+      payment_methods [:bank_billet]
+    end
+  end
+
+  factory :subscription do |f|
+    f.subscription_code { rand(1..100) }
+    f.payment_method :credit_card
+    f.status :paid
+    f.charging_day 5
+    f.association :project, factory: :project
+    f.association :plan, factory: :plan
+    f.association :user, factory: :user
+
+    trait :bank_billet_payment do
+      payment_method 'bank_billet'
+    end
+
+    trait :credit_card_payment do
+      payment_method 'credit_card'
+    end
+
+    trait :waiting_for_charging_day do
+      status :waiting_for_charging_day
+    end
+
+    trait :unpaid do
+      status :unpaid
+    end
+  end
+
+  factory :transaction do |f|
+    f.transaction_code { rand(1..100) }
+    f.status :processing
+    f.amount 30
+    f.payment_method :credit_card
+    f.association :subscription, factory: :subscription
+  end
+
+  factory :credit_card, class: Hash do |f|
+    f.send(:card_number, '4929234122840114')
+    f.send(:card_holder_name, 'Jose da Silva')
+    f.send(:card_expiration_month, '03')
+    f.send(:card_expiration_year, '18')
+    f.send(:card_cvv, '875')
+
+    initialize_with {attributes.stringify_keys}
   end
 end

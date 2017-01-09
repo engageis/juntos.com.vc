@@ -3,6 +3,9 @@ pt:
     models:
       channel: Canal
       project: Projeto
+      plan: Plano
+      subscription: Assinatura
+      transaction: Transação
       reward: Recompensa
       contribution: Apoiador
       category: Categoria
@@ -12,6 +15,13 @@ pt:
       page: 'Página'
       transparency_report: 'Relatório de Trasparência'
     attributes:
+      subscription:
+        subscription_code: Código da assinatura
+        payment_method: Método de pagamento
+        status: Status
+        plan_id: Plano
+        user_id: Usuário
+        project_id: Projeto
       bank_account:
         bank: 'Banco'
         bank_id: 'Banco'
@@ -57,6 +67,7 @@ pt:
         first_contributions: "Quem são as primeiras pessoas que você vai pedir para apoiar o seu projeto?"
         project_partners: 'Parceiros'
         recipient: 'Dados bancários'
+        plans: 'Planos'
       user/staff:
         team: 'Time'
         financial_board: 'Conselho Financeiro'
@@ -171,6 +182,11 @@ pt:
     errors:
       models:
         contribution: "Erro ao salvar apoio"
+        subscription:
+          attributes:
+            credit_card_key:
+              connection_fails: "Serviço de pagamento fora do ar"
+              credit_card_invalid: "Cartão de crédito inválido"
         project:
           attributes:
             name:
@@ -198,6 +214,8 @@ pt:
               too_short: "A frase de efeito é muito curta. Por favor, use no mínimo 1 caractere"
             recipient:
               blank: 'Insira corretamente todos os campos de dados bancários'
+            plans:
+              project_is_not_recurring: 'podem ser associados apenas à projetos recorrentes'
         user:
           attributes:
             email:
@@ -212,6 +230,14 @@ pt:
             reset_password_token:
               invalid: 'expirou. Vá para <a href="/password/new">redefinir senha</a> e solicite novamente a redefinição da senha.'
   project:
+    subscription:
+      create:
+        success: 'Sua assinatura foi criada com sucesso'
+      cancel:
+        success: 'Sua assinatura foi cancelada'
+        errors:
+          not_found: 'A assinatura não foi encontrada'
+          connection_fails: 'O gateway de pagamento está fora do ar'
     update:
       success: As informações foram atualizadas
     video_regex_validation: somente URLs do Vimeo e Youtube são aceitas

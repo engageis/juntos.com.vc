@@ -200,6 +200,8 @@ GEM
       request_store (~> 1.0)
     enumerate_it (1.2.8)
       activesupport (>= 3.0.0)
+    enumerize (2.0.1)
+      activesupport (>= 3.2)
     erubis (2.7.0)
     eventmachine (1.0.3)
     excon (0.40.0)
@@ -581,6 +583,7 @@ GEM
       rails (>= 4.0.0)
       sidekiq
     valuable (0.9.8)
+    vcr (3.0.3)
     video_info (2.3.1)
       addressable
       htmlentities
@@ -623,6 +626,7 @@ DEPENDENCIES
   devise
   dotenv-rails
   draper
+  enumerize
   ezcrypto
   factory_girl_rails
   fakeweb
@@ -694,6 +698,7 @@ DEPENDENCIES
   uglifier
   unicorn
   user_notifier (~> 0.0.5)
+  vcr
   video_info (>= 1.1.1)
   weekdays
 

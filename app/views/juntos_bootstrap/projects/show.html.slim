@@ -116,13 +116,17 @@ nav.project-nav.w-hidden-main.w-hidden-medium
           span.fa.fa-check-circle
             span.u-marginleft-10 = t('.dashboard_nav.bank_info')
 
+        = link_to '#dashboard_project_plans', id: 'dashboard_project_plans_link', class: 'dashboard-nav-link' , data: {target: '#dashboard_project_plans'} do
+          span.fa.fa-check-circle
+            span.u-marginleft-10 = t('.dashboard_nav.plans')
+
       - if current_user.admin?
         = link_to '#dashboard_subgoals', id: 'dashboard_subgoals_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_subgoals'} do
           span.fa.fa-check-circle
             span.u-marginleft-10 = t('.dashboard_nav.subgoals')
       = link_to t('.dashboard_nav.preview'), @project, class: 'dashboard-nav-link'
       - if @project.draft?
-        .btn-send-draft
+        .btn-send-draft.u-margintop-10.u-marginbottom-10
            = link_to t('.dashboard_nav.send_to_analysis'), send_to_analysis_project_path(@project), class: 'btn btn-small'
 
 .w-container
@@ -159,11 +163,14 @@ nav.project-nav.w-hidden-main.w-hidden-medium
 
 
 
+
       #dashboard_rewards.content.w-hidden
         = render 'dashboard_reward'
       - if @project.recurring?
         #project_bank_info.content.w-hidden
           = render 'project_bank_info'
+        #dashboard_project_plans.content.w-hidden
+          = render 'projects/plans/dashboard_project_plans', plans: @plans
       - if current_user and current_user.admin?
         #dashboard_subgoals.content.w-hidden
           = render 'dashboard_subgoals'
@@ -220,10 +227,10 @@ nav.project-nav.w-hidden-main.w-hidden-medium
               = link_to t('.contribute_project.submit'), 'http://acaochego.doemaisdoemelhor.org.br/br/doacao/1/acaochego/aumigo-seu-apoio-e-nossa-esperanca', id: 'contribute_project_form', class: "btn bt-yellow btn-large u-marginbottom-20", target: '_blank'
             - else
             .w-hidden-small.w-hidden-tiny
-               = link_to t('.contribute_project.submit'), new_project_contribution_path(@project), id: 'contribute_project_form', class: "btn bt-yellow btn-large u-marginbottom-20 u-margintop-20"
+               = link_to t('.contribute_project.submit'), @project.new_contribution_link, id: 'contribute_project_form', class: "btn bt-yellow btn-large u-marginbottom-20 u-margintop-20"
             .w-hidden-main.w-hidden-medium
-              = link_to t('.contribute_project.submit'), new_project_contribution_path(@project), id: 'contribute_project_form', class: "suport-text-mobile uppercase u-marginbottom-20 u-margintop-20 btn bt-yellow btn-large"
-              = link_to t('.contribute_project.donate'), new_project_contribution_path(@project), id: 'contribute_project_form', class: "suport-text-mobile uppercase u-marginbottom-20 u-margintop-20  btn-support-fixed" ,  style: "background-color: #{@color};"
+              = link_to t('.contribute_project.submit'), @project.new_contribution_link, id: 'contribute_project_form', class: "suport-text-mobile uppercase u-marginbottom-20 u-margintop-20 btn bt-yellow btn-large"
+              = link_to t('.contribute_project.donate'), @project.new_contribution_link, id: 'contribute_project_form', class: "suport-text-mobile uppercase u-marginbottom-20 u-margintop-20  btn-support-fixed" ,  style: "background-color: #{@color};"
 
           - if @project.subgoals.empty? && !@project.recurring?
             .fontsize-smaller.fontweight-light.u-marginbottom-30[class=@project.display_card_class]

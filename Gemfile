@@ -88,6 +88,7 @@ gem 'has_scope', '~> 0.6.0.rc'
 gem 'spectator-validates_email',  require: 'validates_email'
 gem 'video_info', '>= 1.1.1'
 gem 'httparty', '~> 0.6.1' # this version is required by moip gem, otherwise payment confirmation will break
+gem 'enumerize'
 
 # Translations
 gem 'http_accept_language'
@@ -162,6 +163,7 @@ group :test do
   gem 'coveralls', require: false
   gem 'selenium-webdriver', '~> 2.51.0'
   gem 'rspec-html-matchers', '~> 0.7.2'
+  gem 'vcr'
 end
 
 source 'https://rails-assets.org' do
