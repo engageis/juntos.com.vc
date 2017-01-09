@@ -1,6 +1,4 @@
 class Plan < ActiveRecord::Base
-  attr_accessible :plan_code, :name, :amount, :payment_methods
-
   extend Enumerize
   extend ActiveModel::Naming
 
