@@ -1,6 +1,7 @@
 {
   "name": "juntos.com.vc",
   "scripts": {
+    "postdeploy": "rake db:setup"
   },
   "env": {
     "AWS_ACCESS_KEY": {
@@ -12,7 +13,25 @@
     "AWS_SECRET_KEY": {
       "required": true
     },
+    "BASE_URL": {
+      "required": true
+    },
+    "BASE_DOMAIN": {
+      "required": true
+    },
     "LANG": {
+      "required": true
+    },
+    "MOIP_KEY": {
+      "required": true
+    },
+    "MOIP_URI": {
+      "required": true
+    },
+    "MOIP_TEST": {
+      "required": true
+    },
+    "MOIP_TOKEN": {
       "required": true
     },
     "PAGARME_API_KEY": {
@@ -27,7 +46,22 @@
     "RAILS_ENV": {
       "required": true
     },
+    "ROLLBAR_ACCESS_TOKEN": {
+      "required": true
+    },
+    "ROLLBAR_ENDPOINT": {
+      "required": true
+    },
     "SECRET_KEY_BASE": {
+      "required": true
+    },
+    "SECURE_HOST": {
+      "required": true
+    },
+    "SENDGRID_USERNAME": {
+      "required": true
+    },
+    "SENDGRID_PASSWORD": {
       "required": true
     },
     "DATABASE_URL": {
