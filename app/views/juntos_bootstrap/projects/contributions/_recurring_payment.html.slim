@@ -42,14 +42,14 @@
               = form.input :payment_card_date,
                 label: t(:payment_card_date,
                   scope: [:projects, :contributions, :edit, :form_labels]) do
-              .w-col.w-col-6.w-sub-col
+              .w-col.w-col-6.w-col-tiny-6.w-sub-col
                 = text_field_tag 'payment_card_date', nil, required: true,
                   data: { payment_card_expiration_month: true },
                   class: 'string w-input text-field month payment_card_date',
                   placeholder: t(:payment_card_month, scope: [:projects, :contributions, :edit, :form_labels])
               .fontsize-smaller.text-error.u-marginbottom-20.fa.fa-exclamation-triangle.w-hidden[
                 data-error-for="card_expiration_year"]
-              .w-col.w-col-6.w-sub-col
+              .w-col.w-col-6.w-col-tiny-6.w-sub-col
                 = text_field_tag 'payment_card_date', nil, required: true,
                   data: { payment_card_expiration_year: true },
                   class: 'string w-input text-field year payment_card_date',
