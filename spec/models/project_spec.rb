@@ -21,8 +21,9 @@ RSpec.describe Project, type: :model do
     it { is_expected.to have_many :project_partners }
     it { is_expected.to have_many :subgoals }
     it { is_expected.to have_many :notifications }
+    it { is_expected.to have_many :subscriptions }
     it { is_expected.to have_and_belong_to_many :channels }
-    it{ is_expected.to have_and_belong_to_many(:plans) }
+    it { is_expected.to have_and_belong_to_many(:plans) }
   end
 
   describe "validations" do
