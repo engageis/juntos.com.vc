@@ -1,7 +1,7 @@
 body {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   color: $blue-one;
-  font-size: 14px;
+  font-size: $base-font-size;
   line-height: 20px;
 }
 h2 {
@@ -505,8 +505,16 @@ p {
 }
 
 .plans-container {
+  border-radius: 5px;
+  border: 1px solid $border-strong;
+  max-height: rem-calc(275);
+  overflow: auto;
+  padding: 5px;
+
   .plan {
     cursor: pointer;
+    display: inline-block;
+    margin: 0 auto;
 
     .input-type {
       position: absolute;
@@ -518,7 +526,7 @@ p {
       background-color: $gray-three;
       border-radius: 5px;
       box-shadow: 1px 1px 1px $border-strong;
-      height: 120px;
+      height: rem-calc(120);
     }
 
     .amount {
@@ -532,7 +540,7 @@ p {
     hr {
       background-color: $border-strong;
       border: 0;
-      height: 1px;
+      height: rem-calc(1);
       width: 70%;
     }
   }
