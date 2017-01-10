@@ -1,9 +1,9 @@
 - raise 'input type is not valid' unless %i(check_box radio_button).include? type
 = input.label do
-  .plan
-    .w-col.w-col-2.left.input-type
+  .plan.align-center
+    .w-col.w-col-2.w-col-tiny-2.left.input-type
       = input.send(type)
-    .w.col.w-col-10.right.content
+    .w.col.w-col-10.w-col-tiny-10.right.content
       .u-text-center.value
         p.amount.fontsize-larger.bold.u-margintop-10
           = input.text.to_i
