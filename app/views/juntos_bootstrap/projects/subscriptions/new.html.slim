@@ -36,10 +36,13 @@
               .w-col.w-col-12
                 h4 = t('.form.expires_at')
             .w-row
-              .w-col.w-col-3.w-col-tiny-3
-                = form.input_field :charging_day
-              .w-col.w-col-5.u-marginleft-5
-
+              .w-col.w-col-12.w-col-tiny-3
+                = form.collection_radio_buttons :charges, Subscription.accepted_charge_options, :last, :first do |rb|
+                  = rb.label do
+                    .w-col.w-col-1.w-col-tiny-1
+                      = rb.radio_button
+                    .w-col.w-col-11.w-col-tiny-11.left
+                      = rb.text
           .w-row
             .w-col.w-col-12.w-col-tiny-12.payment-method
               h4 = t('.payment_methods')
