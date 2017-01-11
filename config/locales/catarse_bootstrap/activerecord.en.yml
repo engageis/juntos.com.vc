@@ -15,6 +15,11 @@ en:
       page: 'Page'
       transparency_report: 'Transparency Report'
     attributes:
+      subscription/charge_options:
+        indefinite: 'Indefinite period'
+        for_three_months: '3 months'
+        for_six_months: '6 months'
+        for_a_year: '1 year'
       subscription:
         statuses:
           pending_payment: Pending payment
