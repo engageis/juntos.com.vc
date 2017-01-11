@@ -11,15 +11,29 @@ class Subscription < ActiveRecord::Base
 
   enum status: [ :pending_payment, :paid, :unpaid, :canceled, :waiting_for_charging_day ]
 
+  ACCEPTED_CHARGE_OPTIONS = {
+    indefinite:       0,
+    for_three_months: 3,
+    for_six_months:   6,
+    for_a_year:       12
+  }
+
   has_many   :transactions
   belongs_to :user
   belongs_to :project
   belongs_to :plan
 
   scope :charged_at_least_once, -> { where.not(status: Subscription.statuses[:waiting_for_charging_day]) }
-  scope :charging_day_reached, -> { waiting_for_charging_day.where(charging_day: DateTime.current.day) }
+  scope :charging_day_reached,  -> { waiting_for_charging_day.where(charging_day: DateTime.current.day) }
+  scope :expired,               -> { paid.where("expires_at <= ?", Date.current) }
 
-  scope :expired, -> { paid.where("expires_at <= ?", Date.current) }
+  def self.accepted_charge_options
+    {}.tap do |h|
+      ACCEPTED_CHARGE_OPTIONS.each do |k, v|
+        h[human_attribute_name("charge_options.#{k}")] = v
+      end
+    end
+  end
 
   private
 
