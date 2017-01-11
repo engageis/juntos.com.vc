@@ -15,6 +15,11 @@ pt:
       page: 'Página'
       transparency_report: 'Relatório de Trasparência'
     attributes:
+      subscription/charge_options:
+        indefinite: 'Tempo indeterminado'
+        for_three_months: '3 meses'
+        for_six_months: '6 meses'
+        for_a_year: '1 ano'
       subscription:
         statuses:
           pending_payment: Pagamento pendente
