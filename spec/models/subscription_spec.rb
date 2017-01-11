@@ -2,6 +2,12 @@ require 'rails_helper'
 
 RSpec.describe Subscription, type: :model do
 
+  describe "::ACCEPTED_CHARGE_OPTIONS" do
+    it "defines a constant containing the accepted charge options" do
+      expect(described_class.const_defined?(:ACCEPTED_CHARGE_OPTIONS)).to be_truthy
+    end
+  end
+
   describe "associations" do
     it{ is_expected.to belong_to :user }
     it{ is_expected.to belong_to :project }
@@ -45,6 +51,21 @@ RSpec.describe Subscription, type: :model do
       it "should be valid" do
         expect(permitted_payment_subscription).to be_valid
       end
+    end
+  end
+
+  describe ".accepted_charge_options" do
+    let(:charge_options) do
+      [
+        Subscription.human_attribute_name('charge_options.indefinite'),
+        Subscription.human_attribute_name('charge_options.for_three_months'),
+        Subscription.human_attribute_name('charge_options.for_six_months'),
+        Subscription.human_attribute_name('charge_options.for_a_year')
+      ]
+    end
+
+    it "should return an array matching all the ACCEPTED_CHARGE_OPTIONS's constant keys" do
+      expect(described_class.accepted_charge_options.keys).to match_array charge_options
     end
   end
 
