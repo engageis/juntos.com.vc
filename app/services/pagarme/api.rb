@@ -37,6 +37,10 @@ class Pagarme::API
       raise_connection_error
     end
 
+    def cancel_subscription(pagarme_subscription)
+      pagarme_subscription.cancel
+    end
+
     def create_credit_card(attributes)
       PagarMe::Card.create(attributes)
     rescue PagarMe::ConnectionError
