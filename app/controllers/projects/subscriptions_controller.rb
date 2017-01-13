@@ -37,21 +37,21 @@ class Projects::SubscriptionsController < ApplicationController
   end
 
   def cancel
-    subscription = Subscription.find(params[:id])
+    subscription = Subscription.find(params[:subscription][:id])
     authorize subscription
 
     RecurringContribution::Subscriptions::CancelOnPagarme.process(subscription)
 
     flash[:notice] = t('project.subscription.cancel.success')
 
-    render nothing: true
+    redirect_to_user_path(subscription.user)
 
   rescue Pagarme::API::ResourceNotFound
     flash[:notice] = t('project.subscription.cancel.errors.not_found')
-    render nothing: true
+    redirect_to_user_path(subscription.user)
   rescue Pagarme::API::ConnectionError
     flash[:notice] = t('project.subscription.cancel.errors.connection_fails')
-    render nothing: true
+    redirect_to_user_path(subscription.user)
   end
 
   private
@@ -66,5 +66,9 @@ class Projects::SubscriptionsController < ApplicationController
 
   def use_catarse_boostrap
     action_name.eql?('new') ? 'juntos_bootstrap' : 'application'
+  end
+
+  def redirect_to_user_path(user)
+    redirect_to user_path(user)
   end
 end
