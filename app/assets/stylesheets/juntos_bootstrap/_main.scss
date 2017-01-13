@@ -654,21 +654,6 @@ p {
 .project-reward-box.project-reward-box--gone {
   color: rgba(121, 128, 139, 0.36);
 }
-.icon-close {
-  display: block;
-  margin-top: -13px;
-  margin-right: -12px;
-  margin-left: 3px;
-  padding: 0px;
-  float: right;
-  opacity: 0.5;
-  -webkit-transition: all 500ms ease;
-  -o-transition: all 500ms ease;
-  transition: all 500ms ease;
-}
-.icon-close:hover {
-  opacity: 1;
-}
 .alt-link {
   color: $border-yellow;
   text-decoration: none;
@@ -1560,39 +1545,6 @@ input[type="submit"][disabled] {
   border-radius: 5px;
   background-color: white;
 }
-.card {
-  padding: 18px;
-  border: 1px solid #ddd;
-  background-color: white;
-}
-.card-project-description {
-  padding: 8px;
-}
-.card-project-description._1 {
-  padding-right: 12px;
-  padding-bottom: 12px;
-  padding-left: 12px;
-}
-.card-project-description._2 {
-  padding: 12px 12px 18px;
-  background-color: #f1f4f4;
-}
-.card-project-description._3 {
-  height: 165px;
-  padding: 13px 14px 20px;
-}
-.card-title {
-  margin-bottom: 7px;
-  font-weight: 700;
-}
-.card-percentage {
-  display: inline-block;
-  font-weight: 700;
-}
-.card-percentage-funded {
-  display: inline-block;
-  margin-left: 5px;
-}
 .meter {
   height: 12px;
   margin-top: 5px;
@@ -1615,53 +1567,6 @@ input[type="submit"][disabled] {
   border-radius: 3px;
   background-color: #00b22d;
 }
-.card-project-thumb {
-  width: 100%;
-  height: 170px;
-  border-radius: 5px 5px 0px 0px;
-  background-position: 50% 50%;
-  background-size: cover;
-}
-.card-project-thumb._2 {
-  padding: 10px;
-  border-radius: 5px;
-}
-.card-highlight {
-  color: #79808b;
-}
-.card-highlight.alt {
-  margin-top: -7px;
-  font-size: 15px;
-}
-.card-infos-bottom-left {
-  display: inline-block;
-  float: left;
-}
-.card-infos-bottom-left.alt {
-  margin-left: 71px;
-}
-.card-infos-bottom-right {
-  display: inline-block;
-  float: right;
-}
-.card-project-stats {
-  height: 90px;
-  padding: 13px;
-  border-top: 1px solid #ddd;
-  background-color: #f1f4f4;
-}
-.card-project-stats._1 {
-  padding: 12px;
-  border-top-style: none;
-  border-top-width: 0px;
-  background-color: #f1f4f4;
-}
-.card-project-stats._2 {
-  height: 90px;
-  padding: 13px;
-  border-top-style: none;
-  background-color: #f1f4f4;
-}
 .form-error {
   margin-bottom: 28px;
   padding: 10px;
@@ -1673,48 +1578,14 @@ input[type="submit"][disabled] {
   width: 80%;
   color: white;
 }
-.cardbig {
-  position: static;
-  width: 440px;
-  height: 460px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  box-shadow: rgba(121, 128, 139, 0.2) 0px 0px 6px 0px;
-}
-.cardbig-description {
-  margin-bottom: 10px;
-  padding: 18px 20px 8px;
-}
-.cardbig-description.alt {
-  margin-top: 0px;
-  margin-bottom: 0px;
-  padding-right: 50px;
-  padding-left: 50px;
-  text-align: center;
-}
-.cardbig-infos-bottom {
-  padding-right: 50px;
-  padding-left: 50px;
-}
 .project-embed-title {
   margin-bottom: 20px;
   border-bottom: 1px solid #ddd;
   text-align: center;
 }
-.card-author {
-  margin-top: -9px;
-  margin-bottom: 9px;
-  color: #79808b;
-}
 .project-embed-container-content {
   overflow-x: visible;
   overflow-y: visible;
-}
-.cardbig-button-div {
-  width: 70%;
-  margin-top: 19px;
-  margin-right: auto;
-  margin-left: auto;
 }
 .back-payment-form-box-half {
   display: inline-block;
@@ -2503,17 +2374,6 @@ input[type="submit"][disabled] {
 .lineheight-looser {
   line-height: 200%;
 }
-.card-notification {
-  position: fixed;
-  top: 0px;
-  right: 0px;
-  width: 30%;
-  margin-top: 20px;
-  margin-right: 20px;
-  border-color: #409bff;
-  background-color: #409bff;
-  color: white;
-}
 .zindex-10 {
   z-index: 10;
   box-shadow: rgba(0, 0, 0, 0.61) 0px 1px 2px 0px;
@@ -3165,9 +3025,6 @@ section.devise-body-section .access-type-field input {
     padding-right: 80px;
     padding-left: 80px;
   }
-  .card-notification {
-    width: 50%;
-  }
   .section-one-column {
     padding-top: 20px;
     padding-bottom: 20px;
@@ -3266,10 +3123,6 @@ section.devise-body-section .access-type-field input {
   }
   .project-author.get-contact {
     margin-bottom: 7px;
-  }
-  .icon-close {
-    position: static;
-    display: block;
   }
   .alt-link {
     display: inline;
@@ -3616,10 +3469,6 @@ section.devise-body-section .access-type-field input {
     padding-right: 63px;
     padding-left: 63px;
   }
-  .card-notification {
-    width: auto;
-    margin-left: 20px;
-  }
   .section-one-column {
     padding-top: 25px;
     padding-right: 15px;
@@ -3706,10 +3555,6 @@ section.devise-body-section .access-type-field input {
   }
   .column-logo-header {
     text-align: left;
-  }
-  .icon-close {
-    position: static;
-    top: -64px;
   }
   .main-header {
     padding-left: 0px;
