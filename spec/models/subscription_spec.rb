@@ -66,4 +66,30 @@ RSpec.describe Subscription, type: :model do
       end
     end
   end
+
+  describe ".charged_at_least_once" do
+    let(:canceled_subscription) { create(:subscription, :canceled) }
+    let(:pending_payment_subscription) { create(:subscription, :pending_payment) }
+    let(:paid_subscription) { create(:subscription, :paid) }
+    let(:unpaid_subscription) { create(:subscription, :unpaid) }
+    let(:waiting_for_charging_day_subscription) { create(:subscription, :waiting_for_charging_day) }
+    let(:charged_subscriptions) do
+      [
+        canceled_subscription,
+        pending_payment_subscription,
+        paid_subscription,
+        unpaid_subscription
+      ]
+    end
+
+    subject { Subscription.charged_at_least_once }
+
+    it "should return all subscriptions with :canceled, :pending_payment, :paid, :unpaid statuses" do
+      expect(subject).to match_array charged_subscriptions
+    end
+
+    it "should not return subscriptions with the :waiting_for_charging_day status" do
+      expect(subject).not_to include waiting_for_charging_day_subscription
+    end
+  end
 end
