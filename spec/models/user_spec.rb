@@ -29,6 +29,7 @@ RSpec.describe User, type: :model do
     it { is_expected.to have_many(:category_followers) }
     it { is_expected.to have_many(:categories) }
     it { is_expected.to have_many(:notifications) }
+    it { is_expected.to have_many(:recurring_contributions) }
     it { is_expected.to have_and_belong_to_many(:subscriptions) }
   end
 
