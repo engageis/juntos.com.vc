@@ -9,7 +9,6 @@ class RecurringContribution::Subscriptions::CancelOnPagarme
 
   def process
     pagarme_subscription = Pagarme::API.find_subscription(@juntos_subscription.subscription_code)
-    pagarme_subscription.status = 'canceled'
-    pagarme_subscription.save
+    Pagarme::API.cancel_subscription(pagarme_subscription)
   end
 end
