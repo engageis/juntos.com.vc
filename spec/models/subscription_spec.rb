@@ -92,4 +92,45 @@ RSpec.describe Subscription, type: :model do
       expect(subject).not_to include waiting_for_charging_day_subscription
     end
   end
+
+  describe ".expired" do
+    subject { Subscription.expired }
+
+    context "when subject is paid" do
+      context "and expires today" do
+        let!(:subscription) { create(:subscription, :paid, expires_at: Date.current) }
+
+        it { is_expected.to contain_exactly(subscription) }
+      end
+
+      context "and expired yesterday" do
+        let!(:subscription) { create(:subscription, :paid, expires_at: Date.yesterday) }
+
+        it { is_expected.to contain_exactly(subscription) }
+      end
+
+      context "and expires tomorrow" do
+        before { create(:subscription, :paid, expires_at: Date.tomorrow) }
+
+        it { is_expected.to be_empty }
+      end
+
+      context "and has no expires_at" do
+        before { create(:subscription, :paid, expires_at: nil) }
+
+        it { is_expected.to be_empty }
+      end
+    end
+
+    context "when subject is not paid" do
+      before do
+        create(:subscription, :unpaid, expires_at: Date.current)
+        create(:subscription, :waiting_for_charging_day, expires_at: Date.current)
+        create(:subscription, :pending_payment, expires_at: Date.current)
+        create(:subscription, :canceled, expires_at: Date.current)
+      end
+
+      it { is_expected.to be_empty }
+    end
+  end
 end
