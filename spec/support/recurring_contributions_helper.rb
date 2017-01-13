@@ -28,6 +28,7 @@ module RecurringContributionsHelper
                            payment_method: payment_method,
                            status: 'pending_payment',
                            plan: plan,
+                           current_period_start: Date.current,
                            current_transaction: build_transaction_mock)
   end
 end
