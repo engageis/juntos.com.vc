@@ -14,6 +14,15 @@ pt:
         brand: 'Operadora'
         title: 'Cartões de credito'
         remove: 'Remover'
+    subscriptions:
+      title: 'Contribuições recorrentes'
+      form:
+        submit:
+          cancel: 'Cancelar'
+      table:
+        project: 'Projeto'
+        subscription_date: 'Data de apoio'
+        status: 'Status'
     credits:
       modal:
         title: 'Quer mesmo solicitar o reembolso do seu apoio?'
@@ -120,6 +129,7 @@ pt:
         credit_cards: 'Cartões de credito'
         contributed_projects: "Projetos apoiados"
         created_projects: "Projetos criados"
+        recurring_contributions: 'Contribuições recorrentes'
         comments: Comentários
         credits: Créditos
         settings: Preferências
