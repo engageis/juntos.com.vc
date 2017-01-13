@@ -438,12 +438,12 @@ FactoryGirl.define do
       status :waiting_for_charging_day
     end
 
-    trait :unpaid do
-      status :unpaid
-    end
-
     trait :paid do
       status :paid
+    end
+
+    trait :unpaid do
+      status :unpaid
     end
 
     trait :pending_payment do
@@ -452,6 +452,14 @@ FactoryGirl.define do
 
     trait :canceled do
       status :canceled
+    end
+
+    trait :not_expired do
+      expires_at Date.tomorrow
+    end
+
+    trait :expired do
+      expires_at Date.current
     end
   end
 
