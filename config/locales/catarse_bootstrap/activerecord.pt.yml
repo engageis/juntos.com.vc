@@ -16,6 +16,12 @@ pt:
       transparency_report: 'Relatório de Trasparência'
     attributes:
       subscription:
+        statuses:
+          pending_payment: Pagamento pendente
+          paid: Paga
+          unpaid: Não paga
+          canceled: Cancelada
+          waiting_for_charging_day: Aguardando cobrança
         subscription_code: Código da assinatura
         payment_method: Método de pagamento
         status: Status
