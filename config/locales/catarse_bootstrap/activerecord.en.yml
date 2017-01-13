@@ -16,6 +16,12 @@ en:
       transparency_report: 'Transparency Report'
     attributes:
       subscription:
+        statuses:
+          pending_payment: Pending payment
+          paid: Paid
+          unpaid: Unpaid
+          canceled: Canceled
+          waiting_for_charging_day: Waiting for the charging day
         subscription_code: Subscription code
         payment_method: Payment method
         status: Status
