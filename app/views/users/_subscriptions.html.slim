@@ -1,0 +1,18 @@
+.table_content
+  table.table.table-striped
+    thead
+      th= t('.table.project')
+      th= t('.table.subscription_date')
+      th= t('.table.status')
+      th
+    - subscriptions.each do |subscription|
+        tr[id="subscription_#{subscription.id}"]
+          td.project_name
+            = link_to subscription.project.name, subscription.project, class: 'link_project'
+          td.date = I18n.l(subscription.created_at.to_date)
+          td.status = I18n.t(subscription.status, scope: [:activerecord, :attributes, :subscription, :statuses])
+          td.cancel
+            - unless subscription.canceled?
+              = simple_form_for subscription, url: subscription_cancel_path, method: :post do |form|
+                = form.input :id, as: :hidden, value: subscription.id
+                = form.button :submit, t('.form.submit.cancel'), class: 'bg-red-error'
