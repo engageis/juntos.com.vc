@@ -14,6 +14,15 @@ en:
         brand: 'Brand'
         title: 'Credit cards'
         remove: 'Remove'
+    subscriptions:
+      title: 'Recurring contributions'
+      form:
+        submit:
+          cancel: 'Cancel'
+      table:
+        project: 'Project'
+        subscription_date: 'Data of support'
+        status: 'Status'
     credits:
       modal:
         title: 'Do you really want to request refunding?'
@@ -146,6 +155,7 @@ en:
         credit_cards: 'Credit cards'
         contributed_projects: 'Supported projects'
         created_projects: 'Projects created'
+        recurring_contributions: 'Recurring contributions'
         comments: 'Comments'
         credits: 'Credits'
         settings: 'Settings'
