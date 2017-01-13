@@ -1,0 +1,153 @@
+.card,
+.card-notification {
+  border: 1px solid $border-strong;
+  padding: 18px;
+}
+
+.card-notification {
+  background-color: $blue-note;
+  border-color: $blue-note;
+  border-radius: 5px;
+  box-shadow: $box-shadow-color-darken 0 1px 4px 0;
+  color: $white;
+  margin-right: 20px;
+  margin-top: 20px;
+  max-height: rem-calc(60);
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 30%;
+  z-index: 20;
+}
+
+.card-project-description {
+  padding: 8px;
+
+  &._1 {
+    padding-bottom: 12px;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  &._2 {
+    background-color: $gray-one;
+    padding: 12px 12px 18px;
+  }
+
+  &._3 {
+    height: 165px;
+    padding: 13px 14px 20px;
+  }
+}
+
+.card-title {
+  font-weight: 700;
+  margin-bottom: 7px;
+}
+
+.card-percentage {
+  display: inline-block;
+  font-weight: 700;
+}
+
+.card-percentage-funded {
+  display: inline-block;
+  margin-left: 5px;
+}
+
+.card-project-thumb {
+  background-position: 50% 50%;
+  background-size: cover;
+  border-radius: 5px 5px 0 0;
+  height: 170px;
+  width: 100%;
+
+  &._2 {
+    border-radius: 5px;
+    padding: 10px;
+  }
+}
+
+.card-highlight {
+  color: $blue-two;
+
+  &.alt {
+    font-size: 15px;
+    margin-top: -7px;
+  }
+}
+
+.card-infos-bottom-left {
+  display: inline-block;
+  float: left;
+
+  &.alt {
+    margin-left: 71px;
+  }
+}
+
+.card-infos-bottom-right {
+  display: inline-block;
+  float: right;
+}
+
+.card-project-stats {
+  background-color: $gray-one;
+  border-top: 1px solid $border-strong;
+  height: 90px;
+  padding: 13px;
+
+  &._1 {
+    background-color: $gray-one;
+    border-top-style: none;
+    border-top-width: 0;
+    padding: 12px;
+  }
+
+  &._2 {
+    background-color: $gray-one;
+    border-top-style: none;
+    height: 90px;
+    padding: 13px;
+  }
+}
+
+.bigcard {
+  border: 1px solid $border-strong;
+  border-radius: 5px;
+  box-shadow: $box-shadow-color-lighten 0 0 6px 0;
+  height: 460px;
+  position: static;
+  width: 440px;
+}
+
+.bigcard-description {
+  margin-bottom: 10px;
+  padding: 18px 20px 8px;
+
+  &.alt {
+    margin-bottom: 0;
+    margin-top: 0;
+    padding-left: 50px;
+    padding-right: 50px;
+    text-align: center;
+  }
+}
+
+.bigcard-infos-bottom {
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.card-author {
+  color: $blue-two;
+  margin-bottom: 9px;
+  margin-top: -9px;
+}
+
+.bigcard-button {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 19px;
+  width: 70%;
+}
