@@ -1,24 +1,27 @@
 // Compass mixins
-@import "compass/css3";
+@import 'compass/css3';
 
-@import "juntos_bootstrap/base/normalize";
-@import "juntos_bootstrap/abstract/variables";
-@import "juntos_bootstrap/abstract/functions";
+@import 'juntos_bootstrap/base/normalize';
+@import 'juntos_bootstrap/abstract/variables';
+@import 'juntos_bootstrap/abstract/functions';
+
+@import 'juntos_bootstrap/components/cards';
+@import 'juntos_bootstrap/components/flash_messages';
 
 // The order below doesn't matter
-@import "juntos_bootstrap/grid/webflow";
+@import 'juntos_bootstrap/grid/webflow';
 
-@import "juntos_bootstrap/extra";
+@import 'juntos_bootstrap/extra';
 
-@import "juntos_bootstrap/main";
+@import 'juntos_bootstrap/main';
 
-@import "../headers_from_future_juntos";
-@import "../miv/project_box";
+@import '../headers_from_future_juntos';
+@import '../miv/project_box';
 
-@import "slick";
+@import 'slick';
 
-@import "./minicolors";
-@import "./subgoals";
-@import "./channels";
+@import './minicolors';
+@import './subgoals';
+@import './channels';
 
-@import "s3_direct_upload_progress_bars";
+@import 's3_direct_upload_progress_bars';

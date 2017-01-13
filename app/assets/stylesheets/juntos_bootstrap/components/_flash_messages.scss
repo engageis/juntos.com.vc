@@ -1,0 +1,47 @@
+.flash {
+  p {
+    margin-left: 10px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+.icon-close {
+  display: block;
+  float: right;
+  margin-left: 3px;
+  opacity: .5;
+  padding: 0;
+  transition: all 500ms ease;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+
+@media (max-width: 991px) {
+  .card-notification {
+    width: 50%;
+  }
+}
+
+@media (max-width: 767px) {
+  .card-notification {
+    margin-left: 20px;
+    width: auto;
+  }
+
+  .icon-close {
+    display: block;
+    position: static;
+  }
+}
+
+@media (max-width: 479px) {
+  .icon-close {
+    position: static;
+    top: -64px;
+  }
+}
