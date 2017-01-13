@@ -441,6 +441,18 @@ FactoryGirl.define do
     trait :unpaid do
       status :unpaid
     end
+
+    trait :paid do
+      status :paid
+    end
+
+    trait :pending_payment do
+      status :pending_payment
+    end
+
+    trait :canceled do
+      status :canceled
+    end
   end
 
   factory :transaction do |f|
