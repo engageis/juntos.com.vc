@@ -19,6 +19,8 @@ class Subscription < ActiveRecord::Base
   scope :charged_at_least_once, -> { where.not(status: Subscription.statuses[:waiting_for_charging_day]) }
   scope :charging_day_reached, -> { waiting_for_charging_day.where(charging_day: DateTime.current.day) }
 
+  scope :expired, -> { paid.where("expires_at <= ?", Date.current) }
+
   private
 
   def permitted_payment_methods
