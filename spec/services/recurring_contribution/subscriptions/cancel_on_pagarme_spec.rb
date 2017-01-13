@@ -4,12 +4,19 @@ RSpec.describe RecurringContribution::Subscriptions::CancelOnPagarme do
   describe ".process" do
     context "when an existent subscription was passed as parameter" do
       let(:pagarme_subscription) { build(:subscription, status: 'paid') }
+      let(:pagarme_subscription_response) do
+        {
+          object: 'Subscription',
+          status: 'canceled'
+        }
+      end
       subject { RecurringContribution::Subscriptions::CancelOnPagarme.process(pagarme_subscription) }
 
       it "should update the pagarme's subscription status to 'canceled'" do
         allow(Pagarme::API).to receive(:find_subscription).and_return(pagarme_subscription)
-        expect { subject }
-          .to change { pagarme_subscription.status }.from('paid').to('canceled')
+        allow(Pagarme::API).to receive(:cancel_subscription).and_return(pagarme_subscription_response)
+
+        expect(subject[:status]).to eq 'canceled'
       end
     end
 
