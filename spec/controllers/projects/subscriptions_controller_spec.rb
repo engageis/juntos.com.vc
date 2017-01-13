@@ -146,7 +146,7 @@ RSpec.describe Projects::SubscriptionsController, type: :controller do
 
     context "when no user is logged in" do
       it "should redirect to registrations path" do
-        post :cancel, { id: subscription.id }.merge(ssl_options)
+        post :cancel, { subscription: { id: subscription.id } }.merge(ssl_options)
         expect(response).to redirect_to new_user_registration_path
       end
     end
@@ -157,37 +157,49 @@ RSpec.describe Projects::SubscriptionsController, type: :controller do
       end
 
       context "when the subscription is successfully updated" do
-        it "should return a success flash message" do
+        before do
           allow_any_instance_of(RecurringContribution::Subscriptions::CancelOnPagarme)
             .to receive(:process).and_return(true)
 
-          post :cancel, { id: subscription.id }.merge(ssl_options)
+          post :cancel, { subscription: { id: subscription.id } }.merge(ssl_options)
+        end
 
+        it "should return a success flash message" do
           expect(flash[:notice]).to match I18n.t('project.subscription.cancel.success')
         end
+
+        it_behaves_like "when a redirect is called on cancel action"
       end
 
       context "when a problem occurs on the subscription updation" do
         context "when the subscription was not found" do
-          it "should return an flash message notifying the error" do
+          before do
             allow_any_instance_of(RecurringContribution::Subscriptions::CancelOnPagarme)
               .to receive(:process).and_raise(Pagarme::API::ResourceNotFound)
 
-            post :cancel, { id: subscription.id }.merge(ssl_options)
+            post :cancel, { subscription: { id: subscription.id } }.merge(ssl_options)
+          end
 
+          it "should return an flash message notifying the error" do
             expect(flash[:notice]).to match I18n.t('project.subscription.cancel.errors.not_found')
           end
+
+          it_behaves_like "when a redirect is called on cancel action"
         end
 
         context "when the connection with PagarMe API was lost" do
-          it "should return an flash message notifying the error" do
+          before do
             allow_any_instance_of(RecurringContribution::Subscriptions::CancelOnPagarme)
               .to receive(:process).and_raise(Pagarme::API::ConnectionError)
 
-            post :cancel, { id: subscription.id }.merge(ssl_options)
+            post :cancel, { subscription: { id: subscription.id } }.merge(ssl_options)
+          end
 
+          it "should return an flash message notifying the error" do
             expect(flash[:notice]).to match I18n.t('project.subscription.cancel.errors.connection_fails')
           end
+
+          it_behaves_like "when a redirect is called on cancel action"
         end
       end
     end
