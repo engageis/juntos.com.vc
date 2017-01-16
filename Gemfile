@@ -52,6 +52,7 @@ gem 'slim-rails'
 gem 'jquery-rails'
 gem 'jquery-minicolors-rails'
 gem 'browser'
+gem 'autoprefixer-rails'
 
 # Static pages
 gem 'high_voltage'
