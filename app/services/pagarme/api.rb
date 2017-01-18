@@ -4,6 +4,12 @@ class Pagarme::API
   class InvalidAttributeError < StandardError; end
 
   class << self
+    def fetch_plans
+      PagarMe::Plan.all(1, 100)
+    rescue PagarMe::ConnectionError
+      raise_connection_error
+    end
+
     def find_plan(plan_id)
       PagarMe::Plan.find_by_id(plan_id)
     rescue PagarMe::ConnectionError
