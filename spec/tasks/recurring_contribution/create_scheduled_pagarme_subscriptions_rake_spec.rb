@@ -7,10 +7,10 @@ RSpec.describe "Subscriptions" do
     Rake::Task.define_task(:environment)
   end
 
-  describe "recurring_contribution:create_scheduled_pagarme_subscriptions" do
+  describe "recurring_contribution:subscriptions:charge_scheduled" do
     let(:run_rake_task) do
-      Rake::Task['recurring_contribution:create_scheduled_pagarme_subscriptions'].reenable
-      Rake.application.invoke_task 'recurring_contribution:create_scheduled_pagarme_subscriptions'
+      Rake::Task['recurring_contribution:subscriptions:charge_scheduled'].reenable
+      Rake.application.invoke_task 'recurring_contribution:subscriptions:charge_scheduled'
     end
 
     it "calls the RecurringContribution::ChargingSubscriptionWorker" do
