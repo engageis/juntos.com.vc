@@ -25,7 +25,7 @@ class RecurringContribution::UpdatePlans
   end
 
   def pagarme_plans
-    PagarMe::Plan.all
+    Pagarme::API.fetch_plans
   end
 
   def plan_exist?(plan)
