@@ -114,6 +114,38 @@ RSpec.describe Subscription, type: :model do
     end
   end
 
+  describe "#available_for_canceling?" do
+    let(:subscription) { build(:subscription, status) }
+
+    context "status" do
+      context "when :canceled" do
+        let(:status) { :canceled }
+
+        it "returns false" do
+          expect(subscription).to_not be_available_for_canceling
+        end
+      end
+
+      context "when :waiting_for_charging_day" do
+        let(:status) { :waiting_for_charging_day }
+
+        it "returns false" do
+          expect(subscription).to_not be_available_for_canceling
+        end
+      end
+
+      [:paid, :unpaid, :pending_payment].each do |s|
+        context "when :#{s}" do
+          let(:status) { s }
+
+          it "returns true" do
+            expect(subscription).to be_available_for_canceling
+          end
+        end
+      end
+    end
+  end
+
   describe ".expired" do
     subject { Subscription.expired }
 
