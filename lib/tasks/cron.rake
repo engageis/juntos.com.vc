@@ -136,8 +136,22 @@ task :deliver_credits_more_than_10, [:percent] => :environment do |t, args|
 end
 
 namespace :recurring_contribution do
-  desc "Create pagarme's subscriptions scheduled for the current day"
-  task create_scheduled_pagarme_subscriptions: :environment do
-    RecurringContribution::ChargingSubscriptionWorker.perform_async
+  namespace :plans do
+    desc "Synchronize pagarme's plans on juntos' database"
+    task update: :environment do
+      RecurringContribution::UpdatePlansWorker.perform_async
+    end
+  end
+
+  namespace :subscriptions do
+    desc "Search for expired subscriptions and cancel them"
+    task cancel_expired: :environment do
+      RecurringContribution::CancelSubscriptionWorker.perform_async
+    end
+
+    desc "Create pagarme's subscriptions scheduled for the current day"
+    task charge_scheduled: :environment do
+      RecurringContribution::ChargingSubscriptionWorker.perform_async
+    end
   end
 end
