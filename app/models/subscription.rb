@@ -35,6 +35,10 @@ class Subscription < ActiveRecord::Base
     end
   end
 
+  def available_for_canceling?
+    !(canceled? || waiting_for_charging_day?)
+  end
+
   private
 
   def permitted_payment_methods
