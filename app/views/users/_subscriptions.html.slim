@@ -12,7 +12,7 @@
           td.date = I18n.l(subscription.created_at.to_date)
           td.status = I18n.t(subscription.status, scope: [:activerecord, :attributes, :subscription, :statuses])
           td.cancel
-            - unless subscription.canceled?
+            - if subscription.available_for_canceling?
               = simple_form_for subscription, url: subscription_cancel_path, method: :post do |form|
                 = form.input :id, as: :hidden, value: subscription.id
                 = form.button :submit, t('.form.submit.cancel'), class: 'bg-red-error'
