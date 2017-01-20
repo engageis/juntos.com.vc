@@ -1,7 +1,17 @@
-.card,
-.card-notification {
+%cards-layout {
   border: 1px solid $border-strong;
   padding: 18px;
+}
+
+.card,
+.card-notification {
+  @extend %cards-layout;
+}
+
+.card {
+  &.warning-message {
+    border-color: $border-yellow;
+  }
 }
 
 .card-notification {
