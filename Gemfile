@@ -174,6 +174,7 @@ end
 # Rails simple carousel
 gem 'slick_rails'
 gem 'sass-rails', '~> 4.0.0'
+gem 'sass', '3.4.5'
 gem 'coffee-rails', '~> 4.0.0'
 gem "compass-rails"
 gem 'uglifier'
