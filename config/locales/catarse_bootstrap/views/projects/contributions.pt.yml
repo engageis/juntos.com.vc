@@ -1,6 +1,13 @@
 pt:
   projects:
     contributions:
+      link_to_new:
+        recurring:
+          disabled_contributions: 'Contribuições desabilitadas'
+          without_plans: '* Esse projeto não possui nenhum plano de contribuição'
+        contribute_project:
+          submit: 'Apoiar este projeto'
+          donate: 'DOAR'
       warnings:
         project_must_be_online: Doações só podem ser feitas para projetos online.
         project_does_not_accept_contributions: Esse projeto não está disponível para doações pela plataforma.
