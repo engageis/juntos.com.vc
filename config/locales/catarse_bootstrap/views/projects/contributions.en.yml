@@ -1,6 +1,13 @@
 en:
   projects:
     contributions:
+      link_to_new:
+        recurring:
+          disabled_contributions: 'Disabled contributions'
+          without_plans: '* This project has no contribution plans associated'
+        contribute_project:
+          submit: 'Support this project'
+          donate: 'DONATE'
       warnings:
         project_must_be_online: Donations only can be made for online projects.
         project_does_not_accept_contributions: This project is not available for online contributions.
