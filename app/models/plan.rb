@@ -9,4 +9,8 @@ class Plan < ActiveRecord::Base
   validates_presence_of :plan_code, :name, :amount, :payment_methods
 
   has_and_belongs_to_many :projects, join_table: 'projects_plans'
+
+  def formatted_amount
+    amount / 100
+  end
 end

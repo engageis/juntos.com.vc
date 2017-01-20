@@ -1,0 +1,25 @@
+- if project.recurring? && !project.plans.any?
+  .card.warning-message.u-margintop-20.u-marginbottom-20
+    .w-row
+      .w-col.w-col-1
+        i.bold.fa.fa-exclamation-triangle
+      .w-col.w-col-11
+        span.bold = t('.recurring.disabled_contributions')
+    .w-row
+      .w-col.w-col-12.u-margintop-10
+        span.font-tiny = t('.recurring.without_plans')
+
+- else
+  .w-hidden-small.w-hidden-tiny
+    = link_to t('.contribute_project.submit'),
+        project.new_contribution_link, id: 'contribute_project_form',
+        class: "btn bt-yellow btn-large u-marginbottom-20 u-margintop-20"
+
+  .w-hidden-main.w-hidden-medium
+    = link_to t('.contribute_project.submit'),
+        project.new_contribution_link, id: 'contribute_project_form',
+        class: "suport-text-mobile uppercase u-marginbottom-20 u-margintop-20 btn bt-yellow btn-large"
+
+    = link_to t('.contribute_project.donate'),
+        project.new_contribution_link, id: 'contribute_project_form',
+        class: "suport-text-mobile uppercase u-marginbottom-20 u-margintop-20  btn-support-fixed" ,  style: "background-color: #{donate_btn_color};"
