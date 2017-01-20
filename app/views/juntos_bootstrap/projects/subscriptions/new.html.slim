@@ -20,7 +20,7 @@
           p = t('.plan_selection')
           .w-row
             .w-col.w-col-12.plans-container
-              = form.collection_radio_buttons :plan_id, @project.plans, :id, :amount, checked: @project.standard_plan_id do |input|
+              = form.collection_radio_buttons :plan_id, @project.plans, :id, :formatted_amount, checked: @project.standard_plan_id do |input|
                 .w-col.w-col-4.w-col-small-3.w-col-tiny-4.u-marginbottom-10
                   = render 'projects/plans/select_plans', input: input, type: :radio_button
           .w-row
