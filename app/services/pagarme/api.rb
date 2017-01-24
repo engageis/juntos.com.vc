@@ -26,6 +26,14 @@ class Pagarme::API
       raise ResourceNotFound
     end
 
+    def find_transaction(transaction_id)
+      PagarMe::Transaction.find_by_id(transaction_id)
+    rescue PagarMe::ConnectionError
+      raise_connection_error
+    rescue PagarMe::NotFound
+      raise ResourceNotFound
+    end
+
     def create_subscription(attributes)
       PagarMe::Subscription.create(attributes)
     rescue PagarMe::ConnectionError
