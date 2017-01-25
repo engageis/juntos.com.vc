@@ -2,43 +2,46 @@ require 'rails_helper'
 require 'json'
 
 RSpec.describe RecurringContribution::UpdatePlans do
-  include RecurringContributionsHelper
-
   describe '#call' do
-    let(:remote_plans) { mocked_plans }
-    let(:update_plans_service) { RecurringContribution::UpdatePlans.call }
-    let(:local_plans) { Plan.all }
-
     before(:each) do
-      allow_any_instance_of(described_class).to receive(:pagarme_plans) { mocked_plans }
+      allow(Pagarme::API).to receive(:fetch_plans) { pagarme_plans }
+
+      RecurringContribution::UpdatePlans.call
     end
 
-    context "when there are remote plans that not exist in junto's database" do
-      it 'must create the plans' do
-        update_plans_service
-        expect(remote_plans.map(&:id)).to match_array(local_plans.map(&:plan_code))
+    context "when there are remote plans" do
+      let(:persisted_plan) { Plan.find_by(plan_code: plan_code) }
+
+      context "and the plan exists on Juntos' database" do
+        let(:plan_code)     { 10 }
+        let(:plan)          { create(:plan, plan_code: 10, name: 'first_created') }
+        let(:pagarme_plans) { [build_plan_mock(plan_id: plan.plan_code, name: 'override_name')] }
+
+        it { expect(persisted_plan.name).to eq('first_created') }
+      end
+
+      context "and the plan does not exist on Juntos' database" do
+        let(:plan_code)     { 5 }
+        let(:pagarme_plans) { [build_plan_mock(plan_id: plan_code, trial_days: trial_days)] }
+
+        context "and it is not a trial plan" do
+          let(:trial_days) { 0 }
+
+          it { expect(persisted_plan.plan_code).to eq(plan_code) }
+        end
+
+        context "and it is a trial plan" do
+          let(:trial_days) { 1 }
+
+          it { expect(persisted_plan).to be_nil }
+        end
       end
     end
 
-    context 'when all plans are updated' do
-      before do
-        allow_any_instance_of(described_class).to receive(:plan_exist?) { true }
-      end
+    context "when there are no remote plans" do
+      let(:pagarme_plans) { [] }
 
-      it 'should return an empty array' do
-        returned_value = update_plans_service
-        expect(returned_value).to be_empty
-      end
-    end
-
-    context 'when ActiveRecord raises an error on Plan creation' do
-      before do
-        allow_any_instance_of(described_class).to receive(:build_plan) { raise ActiveRecord::Rollback }
-      end
-
-      it "does not create the plans returned from PagarMe's API" do
-        expect { update_plans_service }.to_not change { Plan.count }
-      end
+      it { expect(Plan.count).to be_zero }
     end
   end
 end

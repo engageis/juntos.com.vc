@@ -4,15 +4,16 @@ require 'rspec/mocks/standalone'
 module RecurringContributionsHelper
   def mocked_plans
     (1..3).map do |plan_id|
-      build_plan_mock(plan_id)
+      build_plan_mock(plan_id: plan_id)
     end
   end
 
-  def build_plan_mock(plan_id)
+  def build_plan_mock(plan_id:, trial_days: 0, name: 'Foo Plan')
     double("Plan", id: plan_id,
-                   name: 'Foo Plan',
+                   name: name,
                    amount: 30,
-                   payment_methods: ['boleto', 'credit_card'])
+                   payment_methods: ['boleto', 'credit_card'],
+                   trial_days: trial_days)
   end
 
   def build_transaction_mock(subscription_id = nil)
@@ -24,7 +25,7 @@ module RecurringContributionsHelper
 
   end
 
-  def build_subscription_mock(payment_method, plan = build_plan_mock(73197))
+  def build_subscription_mock(payment_method, plan = build_plan_mock(plan_id: 73197))
     double('Subscription', id: 10,
                            payment_method: payment_method,
                            status: 'pending_payment',
