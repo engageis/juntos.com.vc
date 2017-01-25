@@ -71,11 +71,6 @@ en:
       support: 'Support'
       form:
         submit: 'Save'
-    project_bank_info:
-      title: Insert here your bank info
-      subtitle: In order to receive donations, insert the bank info where do you whant to receive it.
-      form:
-        submit: Save
     bank_info_messages:
       waiting:
         title: Wait
