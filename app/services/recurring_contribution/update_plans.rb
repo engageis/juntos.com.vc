@@ -4,23 +4,21 @@ class RecurringContribution::UpdatePlans
   end
 
   def call
-    Plan.transaction do
-      pagarme_plans.map do |plan|
-        build_plan(plan) unless plan_exist?(plan)
-      end.compact
+    pagarme_plans.each do |plan|
+      save(plan) if nontrialing?(plan)
     end
   end
 
   private
 
-  def build_plan(plan)
+  def save(plan)
     normalize_payment_methods(plan)
     Plan.create(plan_code: plan.id, name: plan.name, amount: plan.amount, payment_methods: plan.payment_methods)
   end
 
   def normalize_payment_methods(plan)
-    if plan.payment_methods.include? 'boleto'
-      plan.payment_methods.each { |payment_method| payment_method.gsub!('boleto', 'bank_billet') }
+    plan.payment_methods.index('boleto').tap do |index|
+      plan.payment_methods[index] = 'bank_billet' unless index.nil?
     end
   end
 
@@ -28,7 +26,7 @@ class RecurringContribution::UpdatePlans
     Pagarme::API.fetch_plans
   end
 
-  def plan_exist?(plan)
-    Plan.exists?(plan_code: plan.id)
+  def nontrialing?(plan)
+    plan.trial_days.zero?
   end
 end
