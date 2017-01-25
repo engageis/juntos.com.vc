@@ -79,7 +79,6 @@ Rails.application.routes.draw do
       get 'embed_panel'
       get 'send_to_analysis'
       get :cancel_recurring, to: 'projects/recurring_contributions#cancel'
-      patch 'save_recipient', defaults: { format: 'js' }
     end
   end
   resources :users do
