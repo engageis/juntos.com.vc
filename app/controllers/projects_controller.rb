@@ -80,23 +80,6 @@ class ProjectsController < ApplicationController
     end
   end
 
-  def save_recipient
-    authorize resource
-
-    respond_to do |format|
-      format.js do
-        all_bank_account_params = extract_bank_account_params
-
-        if all_bank_account_params.present?
-          @worker = HandleProjectRecipientWorker.perform_async(
-            @project.id,
-            all_bank_account_params
-          )
-        end
-      end
-    end
-  end
-
   def update
     authorize resource
     @project_update = Project::Update.new(current_user, project_params, resource)
@@ -121,22 +104,6 @@ class ProjectsController < ApplicationController
     @contributions = @project.contributions.available_to_count
     @pending_contributions = @project.contributions.with_state(:waiting_confirmation)
     @plans = Plan.all if @project.recurring?
-
-    if @channel && @channel.recurring?
-      @banks = Bank.order(:code).to_collection
-      @recurring_active = RecurringContribution.where({
-        project: @project,
-        user: current_user
-      }).active.any?
-
-      @bank_account = params[:bank_account] || {}
-
-      if @project.recipient
-        recipient = FindRemoteRecipient.call(@project.recipient)
-        @bank_account = recipient.bank_account
-      end
-    end
-
     @color = (channel.present? && channel.main_color) || @project.color
   end
 
@@ -195,21 +162,6 @@ class ProjectsController < ApplicationController
 
   def use_catarse_boostrap
     ["new", "create", "show", "about_mobile"].include?(action_name) ? 'juntos_bootstrap' : 'application'
-  end
-
-  def extract_bank_account_params
-    expected_keys = [:bank_code, :agencia, :conta, :conta_dv,
-                     :document_number, :legal_name]
-
-    bank_account_params = (params[:bank_account] || {}).slice(*expected_keys)
-
-    if all_bank_account_params?(bank_account_params, expected_keys)
-      bank_account_params
-    end
-  end
-
-  def all_bank_account_params?(bank_account_params, expected_params)
-    bank_account_params.values.count(&:present?) == expected_params.count
   end
 
   private
