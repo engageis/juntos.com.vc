@@ -112,10 +112,6 @@ nav.project-nav.w-hidden-main.w-hidden-medium
           span.u-marginleft-10 = t('.dashboard_nav.rewards')
 
       - if @project.recurring?
-        = link_to '#project_bank_info', id: 'project_bank_info_link', class: 'dashboard-nav-link ' , data: {target: '#project_bank_info'} do
-          span.fa.fa-check-circle
-            span.u-marginleft-10 = t('.dashboard_nav.bank_info')
-
         = link_to '#dashboard_project_plans', id: 'dashboard_project_plans_link', class: 'dashboard-nav-link' , data: {target: '#dashboard_project_plans'} do
           span.fa.fa-check-circle
             span.u-marginleft-10 = t('.dashboard_nav.plans')
@@ -167,8 +163,6 @@ nav.project-nav.w-hidden-main.w-hidden-medium
       #dashboard_rewards.content.w-hidden
         = render 'dashboard_reward'
       - if @project.recurring?
-        #project_bank_info.content.w-hidden
-          = render 'project_bank_info'
         #dashboard_project_plans.content.w-hidden
           = render 'projects/plans/dashboard_project_plans', plans: @plans
       - if current_user and current_user.admin?
@@ -213,34 +207,25 @@ nav.project-nav.w-hidden-main.w-hidden-medium
     #project-sidebar.aside.w-col.w-col-4[data-project-owner-sidebar]
 
       .project-contribution-card
-        - if @recurring_active
-          .u-text-center
-            .fontsize-large.fontweight-light.u-margintop-30
-              = t('.contribute_project.already_contributing')
-            .fontsize-smallest.fontweight-light.u-marginbottom-30
-              = link_to t('.contribute_project.cancel'),
-                  cancel_recurring_project_path(@project),
-                  data: { confirm: t('.contribute_project.confirm') }
-        - else
-          - if @project.accept_contributions?
-            - if project_aumigo
-              = link_to t('.contribute_project.submit'), 'http://acaochego.doemaisdoemelhor.org.br/br/doacao/1/acaochego/aumigo-seu-apoio-e-nossa-esperanca', id: 'contribute_project_form', class: "btn bt-yellow btn-large u-marginbottom-20", target: '_blank'
-            - else
-              = render 'projects/contributions/link_to_new', project: @project, donate_btn_color: @color
+        - if @project.accept_contributions?
+          - if project_aumigo
+            = link_to t('.contribute_project.submit'), 'http://acaochego.doemaisdoemelhor.org.br/br/doacao/1/acaochego/aumigo-seu-apoio-e-nossa-esperanca', id: 'contribute_project_form', class: "btn bt-yellow btn-large u-marginbottom-20", target: '_blank'
+          - else
+            = render 'projects/contributions/link_to_new', project: @project, donate_btn_color: @color
 
-          - if @project.subgoals.empty? && !@project.recurring?
-            .fontsize-smaller.fontweight-light.u-marginbottom-30[class=@project.display_card_class]
-              - if @project.permalink == 'asa'
-                | Este projeto já teve os três primeiros meses financiados pela LIVO e agora estamos correndo atrás para que ele dure um ano!
-                br
-                | Faça parte dessa história!
-              - elsif ! %w(bolsasdazmina amigosdobem jornaljoca marcha2016 paranaue projetooca).include? @project.permalink.downcase
-                = t(".contribute_project.display_status.#{@project.display_status}", goal: @project.display_goal, date: @project.display_expires_at)
-          - if current_user.present? && current_user == @project.user
-            = current_user.display_pending_documents
-            = @project.user.decorate.display_project_not_approved
-          - unless (%w(bolsasdazmina marcha2016 toddynho asa paranaue jornaljoca projetooca).include? @project.permalink.downcase) || @project.recurring?
-            .u-marginbottom-10.w-hidden-small.w-hidden-tiny.project-style= t('.contribution_style')
+        - if @project.subgoals.empty? && !@project.recurring?
+          .fontsize-smaller.fontweight-light.u-marginbottom-30[class=@project.display_card_class]
+            - if @project.permalink == 'asa'
+              | Este projeto já teve os três primeiros meses financiados pela LIVO e agora estamos correndo atrás para que ele dure um ano!
+              br
+              | Faça parte dessa história!
+            - elsif ! %w(bolsasdazmina amigosdobem jornaljoca marcha2016 paranaue projetooca).include? @project.permalink.downcase
+              = t(".contribute_project.display_status.#{@project.display_status}", goal: @project.display_goal, date: @project.display_expires_at)
+        - if current_user.present? && current_user == @project.user
+          = current_user.display_pending_documents
+          = @project.user.decorate.display_project_not_approved
+        - unless (%w(bolsasdazmina marcha2016 toddynho asa paranaue jornaljoca projetooca).include? @project.permalink.downcase) || @project.recurring?
+          .u-marginbottom-10.w-hidden-small.w-hidden-tiny.project-style= t('.contribution_style')
       .card.card-user.u-marginbottom-10.w-hidden-small.w-hidden-tiny
         .proposed_by
           .header
