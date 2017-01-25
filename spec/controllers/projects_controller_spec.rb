@@ -300,63 +300,7 @@ RSpec.describe ProjectsController, type: :controller do
       it { expect(subject["available_permalink"]).to be_truthy }
     end
   end
-
-  describe 'PATCH save_recipient' do
-    let(:bank_account) {
-      {
-        bank_code: '001',
-        agencia: '0001',
-        conta: '000001',
-        conta_dv: '00',
-        document_number: '111.111.111-11',
-        legal_name: 'Juntos com você API'
-      }
-    }
-
-    context 'when user is not allowed' do
-      it 'should not succeed' do
-        patch :save_recipient, id: project.id, bank_account: bank_account, locale: :pt
-        expect(response).not_to be_success
-      end
-    end
-
-    context 'when user is allowed' do
-      let(:current_user){ project.user }
-
-      context 'and params are present' do
-        it 'perform a sidekiq job' do
-          allow(HandleProjectRecipientWorker).to receive(:perform_async)
-
-          patch :save_recipient, format: :js, id: project.id, bank_account: bank_account, locale: :pt
-
-          expect(HandleProjectRecipientWorker).to have_received(:perform_async).once
-        end
-      end
-
-      context 'and no params are present' do
-        it 'do not perform a sidekiq job' do
-          allow(HandleProjectRecipientWorker).to receive(:perform_async)
-
-          patch :save_recipient, format: :js, id: project.id, bank_account: {}, locale: :pt
-
-          expect(HandleProjectRecipientWorker).not_to have_received(:perform_async)
-        end
-      end
-
-      context 'and one param is missing' do
-        it 'do not perform a sidekiq job' do
-          allow(HandleProjectRecipientWorker).to receive(:perform_async)
-
-          bank_account.delete(:agencia)
-          patch :save_recipient, format: :js, id: project.id, bank_account: bank_account, locale: :pt
-
-          expect(HandleProjectRecipientWorker).not_to have_received(:perform_async)
-        end
-      end
-    end
-  end
-
-
+  
   describe "online_days" do
     context "when has a value greater than 60" do
       let(:online_days_error_message) {
