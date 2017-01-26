@@ -22,10 +22,6 @@ class ProjectPolicy < ApplicationPolicy
     create?
   end
 
-  def save_recipient?
-    create?
-  end
-
   def edit_partner?
     is_admin?
   end

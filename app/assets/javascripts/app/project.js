@@ -23,7 +23,6 @@ App.addChild('Project', _.extend({
     this.route('reports');
     this.route('project_metrics');
     this.route('project_reports');
-    this.route('project_bank_info');
   },
 
   toggleWarning: function(){
@@ -42,7 +41,7 @@ App.addChild('Project', _.extend({
     if($tab.length > 0){
       this.onTabClick({ currentTarget: $tab });
 
-      var links = ['project_metrics_link', 'project_reports_link', 'basics_link', 'dashboard_project_link', 'dashboard_project_plans_link', 'dashboard_rewards_link', 'dashboard_subgoals_link', 'project_bank_info_link'];
+      var links = ['project_metrics_link', 'project_reports_link', 'basics_link', 'dashboard_project_link', 'dashboard_project_plans_link', 'dashboard_rewards_link', 'dashboard_subgoals_link'];
 
       $('[data-project-owner-sidebar]').toggle( ($.inArray($tab.prop('id'), links) == -1) );
     }
