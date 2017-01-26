@@ -14,7 +14,7 @@ class Pagarme::API
       PagarMe::Plan.find_by_id(plan_id)
     rescue PagarMe::ConnectionError
       raise_connection_error
-    rescue PagarMe::NotFound
+    rescue PagarMe::NotFound, PagarMe::RequestError
       raise ResourceNotFound
     end
 
@@ -22,7 +22,7 @@ class Pagarme::API
       PagarMe::Subscription.find_by_id(subscription_id)
     rescue PagarMe::ConnectionError
       raise_connection_error
-    rescue PagarMe::NotFound
+    rescue PagarMe::NotFound, PagarMe::RequestError
       raise ResourceNotFound
     end
 
@@ -30,7 +30,7 @@ class Pagarme::API
       PagarMe::Transaction.find_by_id(transaction_id)
     rescue PagarMe::ConnectionError
       raise_connection_error
-    rescue PagarMe::NotFound
+    rescue PagarMe::NotFound, PagarMe::RequestError
       raise ResourceNotFound
     end
 
@@ -53,6 +53,8 @@ class Pagarme::API
 
     def cancel_subscription(pagarme_subscription)
       pagarme_subscription.cancel
+    rescue PagarMe::RequestError
+      raise ResourceNotFound
     end
 
     def create_credit_card(attributes)
