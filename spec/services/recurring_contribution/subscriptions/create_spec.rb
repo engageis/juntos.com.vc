@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe RecurringContribution::Subscriptions::Create do
   describe '.process' do
-    let(:pagarme_plan) { build_plan_mock(plan_id: 100) }
+    let(:pagarme_plan) { build_plan_mock(id: 100) }
     let!(:juntos_plan) { create(:plan, plan_code: pagarme_plan.id) }
     let(:recurring_project) { create(:project) }
     let(:user) { create(:user) }
