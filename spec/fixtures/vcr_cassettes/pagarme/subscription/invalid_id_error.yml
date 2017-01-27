@@ -1,0 +1,78 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://ak_test_pipsnOcK4bpb17wcBkPpx31xULfUQH:x@api.pagar.me/1/subscriptions/0
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      content-type:
+      - application/json; charset=utf8
+      user-agent:
+      - pagarme-ruby/2.1.2
+      content-length:
+      - '2'
+      authorization:
+      - Basic YWtfdGVzdF9waXBzbk9jSzRicGIxN3djQmtQcHgzMXhVTGZVUUg6eA==
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      access-control-allow-credentials:
+      - 'true'
+      access-control-allow-headers:
+      - Content-Type, Authorization, X-Requested-With, X-HTTP-Method-Override
+      access-control-allow-methods:
+      - GET,PUT,POST,DELETE
+      access-control-allow-origin:
+      - "*"
+      charset:
+      - utf-8
+      content-type:
+      - application/json
+      date:
+      - Fri, 27 Jan 2017 17:04:33 GMT
+      server:
+      - nginx
+      x-powered-by:
+      - Express
+      x-ratelimit-limit:
+      - '30'
+      x-ratelimit-remaining:
+      - '29'
+      x-ratelimit-reset:
+      - '1485536672'
+      x-response-time:
+      - 11ms
+      connection:
+      - keep-alive
+      set-cookie:
+      - visid_incap_166741=RIFFdj7cQF6FLeb7DqAQDJx9i1gAAAAAQUIPAAAAAACRUtlnQVa7+fod2ug8sNmh;
+        expires=Sat, 27 Jan 2018 14:30:24 GMT; path=/; Domain=.pagar.me
+      - nlbi_166741=yZrhUDcTWU4MFWKMtCXDpgAAAABbQWeUFo7+To6nlWukxRfI; path=/; Domain=.pagar.me
+      - incap_ses_469_166741=I5s6W/6/UESXh0y4UDmCBp59i1gAAAAAzlum9YniIgjYZGk2u0HyLg==;
+        path=/; Domain=.pagar.me
+      x-iinfo:
+      - 3-19529597-19529615 NNNN CT(27 31 0) RT(1485536669925 208) q(0 0 0 1) r(1
+        1) U5
+      x-cdn:
+      - Incapsula
+      content-encoding:
+      - gzip
+      transfer-encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAA/03MMQ7CMAyF4atUb45U5lyDEaEqNKZUSu3IdgZU9TQchYuR
+        bkxv+D+9HaQqaoi3Hf6uhAgWn57SOCOgJk0bOenEfRG5lRKwkVlaTnttD5t1
+        rb4KD/z9yEA8C7umLDjuAU1LZ6P9ORsvOD/8Jbm3hRzHD5fBEL2IAAAA
+    http_version: '1.1'
+  recorded_at: Fri, 27 Jan 2017 17:04:30 GMT
+recorded_with: VCR 3.0.3
