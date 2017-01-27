@@ -1,0 +1,87 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://ak_test_pipsnOcK4bpb17wcBkPpx31xULfUQH:x@api.pagar.me/1/subscriptions
+    body:
+      encoding: UTF-8
+      string: '{"payment_method":"boleto","customer":{"email":"foo@user.com"},"plan":null,"installments":1,"status":"local","plan_id":73197,"card_expiration_date":""}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      content-type:
+      - application/json; charset=utf8
+      user-agent:
+      - pagarme-ruby/2.1.2
+      content-length:
+      - '151'
+      authorization:
+      - Basic YWtfdGVzdF9waXBzbk9jSzRicGIxN3djQmtQcHgzMXhVTGZVUUg6eA==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      access-control-allow-credentials:
+      - 'true'
+      access-control-allow-headers:
+      - Content-Type, Authorization, X-Requested-With, X-HTTP-Method-Override
+      access-control-allow-methods:
+      - GET,PUT,POST,DELETE
+      access-control-allow-origin:
+      - "*"
+      charset:
+      - utf-8
+      content-type:
+      - application/json
+      date:
+      - Fri, 27 Jan 2017 18:23:04 GMT
+      etag:
+      - '"-228585228"'
+      server:
+      - nginx
+      x-powered-by:
+      - Express
+      x-response-time:
+      - 430ms
+      connection:
+      - keep-alive
+      set-cookie:
+      - visid_incap_166741=f3UwgVL5SUu9xYW77JjssgWQi1gAAAAAQUIPAAAAAACofsvxRYzAqinOFjKaBPES;
+        expires=Sat, 27 Jan 2018 14:33:12 GMT; path=/; Domain=.pagar.me
+      - nlbi_166741=hyxNPfLZ9Qa5e1adtCXDpgAAAACVWVGQ7DVVPNjwqmYb4Prd; path=/; Domain=.pagar.me
+      - incap_ses_469_166741=aFH1Hw8l9yrSy2S4UDmCBgWQi1gAAAAAUc64fazhSKOMHx+C8ma3gw==;
+        path=/; Domain=.pagar.me
+      x-iinfo:
+      - 1-7207212-7207219 NNNN CT(26 28 0) RT(1485541380608 224) q(0 0 0 -1) r(5 5)
+        U5
+      x-cdn:
+      - Incapsula
+      content-encoding:
+      - gzip
+      transfer-encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAA/5VU23LbIBD9lQzPtiOQZNl66kfkKZ2OBgGyaSSgXNq6Gf97
+        F2Hr0qSd9Elod9llzzm7r0i3XwXzqEYutI5ZabzUCm2Q6alC9evsHw0bJDmq
+        qxwfqw2igw4KXHmWZRvE6cXF8wYpOgi44IXz4gHDHW8l7ZsUMEZ60TAr4APJ
+        EMnwfovxNqueCK4xrkm2I9n+OT6CXgahfDMIf9Ycbn9Gre6F1+CDBFz6hlHL
+        0Rf41b22qFah7+HnTO1JuPuvVM7Tvo+pwIavqQtclWQPz2HB2ljEW6ocZWP/
+        y8aX9g2CTD5AFvSDSi/Vqbm9EVxWdMGJBhpzMUWqneInI6LsW5BWWIi/H8Hp
+        jFZwlWku7hcn7w1OLr6LXptbrckbO0Hlvi0Y35clw6ToCp4fSdXtDywGBoDO
+        yl80vn9VwOnON1wk0mfsfMyYjsqF+/EtZ9U2w1tSPeFDTfI6wztSFJGzMTIY
+        /o/IsjjGyLV+7g8VvFk7DJWzKUswKy5Wtj8YvhFMin11KKM2XAqLYmnOuucT
+        rDe9RHtPHeAhT9K7lb2T9n1HC8LgK4uRqhkWEBso3FL20gTbT7aVpgGhWdHU
+        +GDF7BFMD4OwTESwlJedpYE3jmk7VUiXU3509t64+vHR0BO1uyFeu/lbahP1
+        CJO8eCgBl9kpfhppkz4iaxNpZJvlC3px9pxELqJ8QclGNi/iEneCiYkPEEPy
+        HS7LHSZxUhYLpVkOnDM9DK4N/Tyh0DKF2hQG77rsdWm//j+e75L0Hs+3FWCE
+        lRoQ9tT6v/jEItt9y2SLtRBU1Cv60MSU+WHccmet5rHnHNbB4mXO6yHivdhI
+        kxGqaBbG9lUYWjEN8WT2FxMJZaZD98WcIsRAZdRMp/Un2Fp2B1obJWFVQ6fm
+        T9DuIusHlgAeWxrpLnJSHa8J9bdEx//rb/QQYPKABgAA
+    http_version: '1.1'
+  recorded_at: Fri, 27 Jan 2017 18:23:02 GMT
+recorded_with: VCR 3.0.3

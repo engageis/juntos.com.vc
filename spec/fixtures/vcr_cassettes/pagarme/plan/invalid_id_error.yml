@@ -1,0 +1,78 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://ak_test_pipsnOcK4bpb17wcBkPpx31xULfUQH:x@api.pagar.me/1/plans/0
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      content-type:
+      - application/json; charset=utf8
+      user-agent:
+      - pagarme-ruby/2.1.2
+      content-length:
+      - '2'
+      authorization:
+      - Basic YWtfdGVzdF9waXBzbk9jSzRicGIxN3djQmtQcHgzMXhVTGZVUUg6eA==
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      access-control-allow-credentials:
+      - 'true'
+      access-control-allow-headers:
+      - Content-Type, Authorization, X-Requested-With, X-HTTP-Method-Override
+      access-control-allow-methods:
+      - GET,PUT,POST,DELETE
+      access-control-allow-origin:
+      - "*"
+      charset:
+      - utf-8
+      content-type:
+      - application/json
+      date:
+      - Fri, 27 Jan 2017 17:04:32 GMT
+      server:
+      - nginx
+      x-powered-by:
+      - Express
+      x-ratelimit-limit:
+      - '30'
+      x-ratelimit-remaining:
+      - '29'
+      x-ratelimit-reset:
+      - '1485536671'
+      x-response-time:
+      - 23ms
+      connection:
+      - keep-alive
+      set-cookie:
+      - visid_incap_166741=RIFFdj7cQF6FLeb7DqAQDJx9i1gAAAAAQUIPAAAAAACRUtlnQVa7+fod2ug8sNmh;
+        expires=Sat, 27 Jan 2018 14:30:24 GMT; path=/; Domain=.pagar.me
+      - nlbi_166741=7+xJUqH8NGejLQtvtCXDpgAAAACuckSp3z6XakZSsBcYzYK2; path=/; Domain=.pagar.me
+      - incap_ses_469_166741=w9t8GD5I40iXh0y4UDmCBpx9i1gAAAAAKI4gj4Y4CCfZNsuLNlvvHg==;
+        path=/; Domain=.pagar.me
+      x-iinfo:
+      - 3-19529506-19529531 NNNN CT(27 26 0) RT(1485536668651 221) q(0 0 1 1) r(1
+        1) U5
+      x-cdn:
+      - Incapsula
+      content-encoding:
+      - gzip
+      transfer-encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAA/xWLMQrDMBAEv2K2Fji1XpE+BHNEF6eQ7sTpVATj1/gp/pjl
+        amBnZwObqTXE1wb/V0aEqC9f7ZIQUMmosLMtMogoPeeAwq3Ren+fmWSS89CJ
+        5aPiRkmxvwO65aHnOnybH7gb/2ka28qO/QL2GzGFeAAAAA==
+    http_version: '1.1'
+  recorded_at: Fri, 27 Jan 2017 17:04:29 GMT
+recorded_with: VCR 3.0.3
