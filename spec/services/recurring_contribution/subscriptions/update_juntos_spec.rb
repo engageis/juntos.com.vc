@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe RecurringContribution::Subscriptions::UpdateJuntos do
   describe "#process" do
-    let(:pagarme_plan) { build_plan_mock(plan_id: 10) }
+    let(:pagarme_plan) { build_plan_mock(id: 10) }
     let!(:juntos_plan) { create(:plan, plan_code: pagarme_plan.id) }
     let(:project) { create(:project) }
     let(:user) { create(:user) }
