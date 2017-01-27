@@ -15,14 +15,14 @@ RSpec.describe RecurringContribution::UpdatePlans do
       context "and the plan exists on Juntos' database" do
         let(:plan_code)     { 10 }
         let(:plan)          { create(:plan, plan_code: 10, name: 'first_created') }
-        let(:pagarme_plans) { [build_plan_mock(plan_id: plan.plan_code, name: 'override_name')] }
+        let(:pagarme_plans) { [build_plan_mock(id: plan.plan_code, name: 'override_name')] }
 
         it { expect(persisted_plan.name).to eq('first_created') }
       end
 
       context "and the plan does not exist on Juntos' database" do
         let(:plan_code)     { 5 }
-        let(:pagarme_plans) { [build_plan_mock(plan_id: plan_code, trial_days: trial_days)] }
+        let(:pagarme_plans) { [build_plan_mock(id: plan_code, trial_days: trial_days)] }
 
         context "and it is not a trial plan" do
           let(:trial_days) { 0 }
