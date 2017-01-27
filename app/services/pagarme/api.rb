@@ -11,35 +11,23 @@ class Pagarme::API
     end
 
     def find_plan(plan_id)
-      PagarMe::Plan.find_by_id(plan_id)
-    rescue PagarMe::ConnectionError
-      raise_connection_error
-    rescue PagarMe::NotFound, PagarMe::RequestError
-      raise ResourceNotFound
+      rescue_not_found { PagarMe::Plan.find_by_id(plan_id) }
     end
 
     def find_subscription(subscription_id)
-      PagarMe::Subscription.find_by_id(subscription_id)
-    rescue PagarMe::ConnectionError
-      raise_connection_error
-    rescue PagarMe::NotFound, PagarMe::RequestError
-      raise ResourceNotFound
+      rescue_not_found { PagarMe::Subscription.find_by_id(subscription_id) }
     end
 
     def find_transaction(transaction_id)
-      PagarMe::Transaction.find_by_id(transaction_id)
-    rescue PagarMe::ConnectionError
-      raise_connection_error
-    rescue PagarMe::NotFound, PagarMe::RequestError
-      raise ResourceNotFound
+      rescue_not_found { PagarMe::Transaction.find_by_id(transaction_id) }
     end
 
     def create_subscription(attributes)
-      PagarMe::Subscription.create(attributes)
-    rescue PagarMe::ConnectionError
-      raise_connection_error
-    rescue PagarMe::ValidationError => e
-      raise InvalidAttributeError, e.message
+      rescue_invalid_attribute { PagarMe::Subscription.create(attributes) }
+    end
+
+    def create_credit_card(attributes)
+      rescue_invalid_attribute { PagarMe::Card.create(attributes) }
     end
 
     def valid_request_signature?(request)
@@ -53,19 +41,27 @@ class Pagarme::API
 
     def cancel_subscription(pagarme_subscription)
       pagarme_subscription.cancel
-    rescue PagarMe::RequestError
+    rescue PagarMe::RequestError, NoMethodError
       raise ResourceNotFound
     end
 
-    def create_credit_card(attributes)
-      PagarMe::Card.create(attributes)
+    private
+
+    def rescue_not_found
+      yield
+    rescue PagarMe::ConnectionError
+      raise_connection_error
+    rescue PagarMe::NotFound, PagarMe::RequestError
+      raise ResourceNotFound
+    end
+
+    def rescue_invalid_attribute
+      yield
     rescue PagarMe::ConnectionError
       raise_connection_error
     rescue PagarMe::ValidationError => e
       raise InvalidAttributeError, e.message
     end
-
-    private
 
     def raise_connection_error
       raise ConnectionError, 'The connection with our payment server was lost'

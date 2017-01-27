@@ -1,0 +1,75 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://ak_test_pipsnOcK4bpb17wcBkPpx31xULfUQH:x@api.pagar.me/1/cards
+    body:
+      encoding: UTF-8
+      string: '{"card_number":"4929234122840114","card_holder_name":"Jose da Silva","card_expiration_month":"03","card_expiration_year":"18","card_cvv":"875","payment_method":"credit_card","installments":1,"status":"local","card_expiration_date":"0318"}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      content-type:
+      - application/json; charset=utf8
+      user-agent:
+      - pagarme-ruby/2.1.2
+      content-length:
+      - '238'
+      authorization:
+      - Basic YWtfdGVzdF9waXBzbk9jSzRicGIxN3djQmtQcHgzMXhVTGZVUUg6eA==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      access-control-allow-credentials:
+      - 'true'
+      access-control-allow-headers:
+      - Content-Type, Authorization, X-Requested-With, X-HTTP-Method-Override
+      access-control-allow-methods:
+      - GET,PUT,POST,DELETE
+      access-control-allow-origin:
+      - "*"
+      charset:
+      - utf-8
+      content-type:
+      - application/json
+      date:
+      - Fri, 27 Jan 2017 18:35:35 GMT
+      server:
+      - nginx
+      x-powered-by:
+      - Express
+      x-response-time:
+      - 27ms
+      connection:
+      - keep-alive
+      set-cookie:
+      - visid_incap_166741=IAfqjMVJRWC9VYgNECiGsvaSi1gAAAAAQUIPAAAAAACG1+YvaGsdGUN0R6VpK90P;
+        expires=Sat, 27 Jan 2018 14:39:54 GMT; path=/; Domain=.pagar.me
+      - nlbi_166741=Xr12ZaiT9HbRAA1itCXDpgAAAACAprKLYMcXIYqaNOItLP6j; path=/; Domain=.pagar.me
+      - incap_ses_469_166741=VBoSalLXaR43rmi4UDmCBveSi1gAAAAAYSKDLhiWjdKECXy/z4U39g==;
+        path=/; Domain=.pagar.me
+      x-iinfo:
+      - 10-48980620-48980669 NNNN CT(30 27 0) RT(1485542134692 207) q(0 1 1 13) r(2
+        2) U5
+      x-cdn:
+      - Incapsula
+      content-encoding:
+      - gzip
+      transfer-encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAA/32QO08DMQyA/0qV+QpJWu6aGxESEgtIMLFE7iU9QvM4nIcK
+        iP9OUoHExGT782dZ9icJ+1c9JTKSCVCRjhj1k8vJnMDlN14oL4coegVO7YKj
+        H9VSkLScUNfQfE5Zv2Z8zcUTG0bWj1fDRU/F86+ZF/WPOQjazD2Cb0oxEWr5
+        EqzSKD04XeFdiHqlYPVobGndg8GYpDKzSbG2t4ILvqncwl9MGdtWOIXsE75X
+        cHt9nvWzxgWNb3fPx2O6KQ/BXt6f3RxTcBrJ6LO1HSlg20sSZt0RfVoMQjLB
+        y3ZQ27BhO/L1DfvgYTZHAQAA
+    http_version: '1.1'
+  recorded_at: Fri, 27 Jan 2017 18:35:35 GMT
+recorded_with: VCR 3.0.3
