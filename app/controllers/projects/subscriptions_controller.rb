@@ -40,7 +40,7 @@ class Projects::SubscriptionsController < ApplicationController
     subscription = Subscription.find(params[:subscription][:id])
     authorize subscription
 
-    RecurringContribution::Subscriptions::CancelOnPagarme.process(subscription)
+    RecurringContribution::Subscriptions::Cancel.process(subscription)
 
     flash[:notice] = t('project.subscription.cancel.success')
 
