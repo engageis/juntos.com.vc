@@ -1,9 +1,17 @@
 App.addChild('SubscriptionForm', _.extend({
   el: 'form#subscription_form',
 
+  DATEPICKER_CONFIG: {
+    minDate:    0,
+    maxDate:    '+1M -1D',
+    dateFormat: 'dd',
+  },
+
   activate: function () {
     this.creditCardFields = this.$('#credit-card-fields');
     this.bankBilletRadioButton = this.$('#subscription_payment_method_bank_billet');
+    this.chargingDayInput = this.$('#charing-day');
+    this.datePickerInit();
     this.maskFields();
   },
 
@@ -53,6 +61,22 @@ App.addChild('SubscriptionForm', _.extend({
       cardExpirationYear: this.$('[data-payment-card-expiration-year]').val(),
       cardCVV: this.$('[data-payment-card-cvv]').val(),
     });
+  },
+
+  datePickerInit: function () {
+    this.setDatePickerLocale();
+    this.activateDatePickerInputs();
+  },
+
+  activateDatePickerInputs: function () {
+    this.chargingDayInput.datepicker(this.DATEPICKER_CONFIG);
+    this.chargingDayInput.removeAttr('disabled');
+  },
+
+  setDatePickerLocale: function () {
+    var windowLocationPaths = window.location.pathname.split('/').filter(String);
+
+    $.datepicker.setDefaults($.datepicker.regional[windowLocationPaths[0]]);
   },
 
   maskFields: function () {
