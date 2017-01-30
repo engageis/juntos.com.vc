@@ -35,6 +35,7 @@ en:
         plan_id: Plan
         user_id: User
         project_id: Project
+        charging_day: Charging day
       bank_account:
         bank: Bank
         bank_id: Bank
