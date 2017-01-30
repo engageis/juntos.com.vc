@@ -5,7 +5,7 @@ class Subscription < ActiveRecord::Base
   validates_inclusion_of :payment_method, in: 'permitted_payment_methods',
                                           unless: 'plan.nil?'
 
-  validates_numericality_of :charging_day, less_than_or_equal_to: 28, greater_than: 0
+  validates_numericality_of :charging_day, less_than_or_equal_to: 31, greater_than: 0
 
   enum payment_method: [ :credit_card, :bank_billet ]
 

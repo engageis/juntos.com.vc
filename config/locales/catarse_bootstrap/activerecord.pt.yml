@@ -33,6 +33,7 @@ pt:
         plan_id: Plano
         user_id: Usuário
         project_id: Projeto
+        charging_day: Dia de cobrança
       bank_account:
         bank: 'Banco'
         bank_id: 'Banco'
