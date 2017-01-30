@@ -1,28 +1,41 @@
 require 'rails_helper'
 
-RSpec.describe RecurringContribution::Subscriptions::CancelOnPagarme do
+RSpec.describe RecurringContribution::Subscriptions::Cancel do
   describe ".process" do
-    context "when an existent subscription was passed as parameter" do
-      let(:pagarme_subscription) { build(:subscription, status: 'paid') }
+
+    context "when the subscription exists on pagarme" do
+      let(:subscription) { create(:subscription, :paid) }
       let(:pagarme_subscription_response) do
         {
           object: 'Subscription',
           status: 'canceled'
         }
       end
-      subject { RecurringContribution::Subscriptions::CancelOnPagarme.process(pagarme_subscription) }
+
+      before do
+        allow(Pagarme::API).to receive(:find_subscription).and_return(subscription)
+        allow(Pagarme::API).to receive(:cancel_subscription).and_return(pagarme_subscription_response)
+      end
+
+      subject { RecurringContribution::Subscriptions::Cancel.process(subscription) }
 
       it "should update the pagarme's subscription status to 'canceled'" do
-        allow(Pagarme::API).to receive(:find_subscription).and_return(pagarme_subscription)
-        allow(Pagarme::API).to receive(:cancel_subscription).and_return(pagarme_subscription_response)
-
         expect(subject[:status]).to eq 'canceled'
       end
     end
 
+    context "when the subscription exists on local database only" do
+      let(:subscription) { create(:subscription, :paid, subscription_code: nil) }
+
+      before { RecurringContribution::Subscriptions::Cancel.process(subscription) }
+
+      it { expect(subscription.reload).to be_canceled }
+    end
+
     context "when a problem occurs with the PagarMe's API" do
-      let(:pagarme_subscription) { build(:subscription) }
-      subject { RecurringContribution::Subscriptions::CancelOnPagarme.process(pagarme_subscription) }
+      let(:subscription) { build(:subscription) }
+
+      subject { RecurringContribution::Subscriptions::Cancel.process(subscription) }
 
       context "when the pagarme subscription does not exist" do
         it "should raise a Pagarme::API::ResourceNotFound" do
