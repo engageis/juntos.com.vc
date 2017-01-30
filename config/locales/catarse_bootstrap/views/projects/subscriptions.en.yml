@@ -17,5 +17,6 @@ en:
           card_expiration_month: 'Expiration month:'
           card_expiration_year: 'Expiration year:'
           card_expiration_cvv: 'Security code'
-          charging_day: "What's the day you would like to be charged?"
+          charging_day: "When do you wish to start contributing?"
+          charging_day_observation: "* Your contributions will be done every 30 days (one month)."
           expires_at: 'How many months would you like to donate?'
