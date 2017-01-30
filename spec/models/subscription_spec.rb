@@ -27,7 +27,7 @@ RSpec.describe Subscription, type: :model do
     it { is_expected.to validate_presence_of(:project_id) }
 
     it { is_expected.not_to allow_value(0).for(:charging_day) }
-    it { is_expected.not_to allow_value(29).for(:charging_day) }
+    it { is_expected.not_to allow_value(32).for(:charging_day) }
 
     describe "enumerators" do
       it "should define an enum for payment_method" do
