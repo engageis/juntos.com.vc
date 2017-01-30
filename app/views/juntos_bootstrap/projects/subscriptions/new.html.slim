@@ -30,13 +30,19 @@
                 .w-col.w-col-12
                   h4 = t('.form.charging_day')
               .w-row
-                .w-col.w-col-3.w-col-tiny-3
-                  = form.input_field :charging_day
+                .w-col.w-col-1.w-col-small-6.w-col-tiny-1.text-field.prefix.no-hover
+                  .fontcolor-secondary.u-text-center.fontsize-base.lineheight-tightest
+                    i.fa.fa-calendar
+                .w-col.w-col-3.w-col-tiny-3.w-row
+                  = form.input_field :charging_day, disabled: true, readonly: true, class: 'u-marginbottom-5 positive postfix w-input', id: 'charing-day'
+              .w-row
+                .w-col.w-col-12
+                  span.font-tiny.label-helper = t('.form.charging_day_observation')
             .w-row
               .w-col.w-col-12
                 h4 = t('.form.expires_at')
             .w-row
-              .w-col.w-col-12.w-col-tiny-3
+              .w-col.w-col-12.w-col-tiny-12.u-marginbottom-10
                 = form.collection_radio_buttons :charges, Subscription.accepted_charge_options, :last, :first do |rb|
                   = rb.label do
                     .w-col.w-col-1.w-col-tiny-1

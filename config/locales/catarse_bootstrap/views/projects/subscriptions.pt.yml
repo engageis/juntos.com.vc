@@ -17,5 +17,6 @@ pt:
           card_expiration_month: 'Mês de expiração:'
           card_expiration_year: 'Ano de expiração:'
           card_expiration_cvv: 'Código de segurança:'
-          charging_day: 'Qual o dia que você deseja ser cobrado?'
+          charging_day: 'Qual o melhor dia para realizar sua primeira contribuição?'
+          charging_day_observation: '* Suas contribuições serão realizadas a cada 30 dias (1 mês).'
           expires_at: 'Por quantos meses você gostaria de doar?'
