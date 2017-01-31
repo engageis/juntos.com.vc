@@ -51,6 +51,7 @@ gem 'draper'
 gem 'slim-rails'
 gem 'jquery-rails'
 gem 'jquery-minicolors-rails'
+gem 'jquery-ui-rails'
 gem 'browser'
 gem 'autoprefixer-rails'
 
