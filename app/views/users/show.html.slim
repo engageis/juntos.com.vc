@@ -79,6 +79,6 @@
             #user_credit_cards.content.hide
               = render 'credit_cards'
           #user_recurring_contributions.content.hide
-            = render 'subscriptions', subscriptions: current_user.recurring_contributions.charged_at_least_once
+            = render 'subscriptions', subscriptions: current_user.recurring_contributions
     .clearfix
   .clearfix

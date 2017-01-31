@@ -23,7 +23,6 @@ class Subscription < ActiveRecord::Base
   belongs_to :project
   belongs_to :plan
 
-  scope :charged_at_least_once, -> { where.not(status: Subscription.statuses[:waiting_for_charging_day]) }
   scope :charging_day_reached,  -> { waiting_for_charging_day.where(charging_day: DateTime.current.day) }
   scope :expired,               -> { paid.where("expires_at <= ?", Date.current) }
 
@@ -36,7 +35,7 @@ class Subscription < ActiveRecord::Base
   end
 
   def available_for_canceling?
-    !(canceled? || waiting_for_charging_day?)
+    !canceled?
   end
 
   private

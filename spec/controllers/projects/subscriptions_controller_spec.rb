@@ -58,7 +58,7 @@ RSpec.describe Projects::SubscriptionsController, type: :controller do
       end
 
       before do
-        allow_any_instance_of(RecurringContribution::Subscriptions::Processor)
+        allow(RecurringContribution::Subscriptions::Processor)
           .to receive(:process).and_return(subscription)
 
         sign_in current_user
@@ -100,7 +100,7 @@ RSpec.describe Projects::SubscriptionsController, type: :controller do
         end
 
         before do
-          allow_any_instance_of(RecurringContribution::Subscriptions::Processor)
+          allow(RecurringContribution::Subscriptions::Processor)
             .to receive(:process).and_return(subscription)
 
           post :create, { locale: :pt,
@@ -158,7 +158,7 @@ RSpec.describe Projects::SubscriptionsController, type: :controller do
 
       context "when the subscription is successfully updated" do
         before do
-          allow_any_instance_of(RecurringContribution::Subscriptions::CancelOnPagarme)
+          allow(RecurringContribution::Subscriptions::Cancel)
             .to receive(:process).and_return(true)
 
           post :cancel, { subscription: { id: subscription.id } }.merge(ssl_options)
@@ -174,7 +174,7 @@ RSpec.describe Projects::SubscriptionsController, type: :controller do
       context "when a problem occurs on the subscription updation" do
         context "when the subscription was not found" do
           before do
-            allow_any_instance_of(RecurringContribution::Subscriptions::CancelOnPagarme)
+            allow(RecurringContribution::Subscriptions::Cancel)
               .to receive(:process).and_raise(Pagarme::API::ResourceNotFound)
 
             post :cancel, { subscription: { id: subscription.id } }.merge(ssl_options)
@@ -189,7 +189,7 @@ RSpec.describe Projects::SubscriptionsController, type: :controller do
 
         context "when the connection with PagarMe API was lost" do
           before do
-            allow_any_instance_of(RecurringContribution::Subscriptions::CancelOnPagarme)
+            allow(RecurringContribution::Subscriptions::Cancel)
               .to receive(:process).and_raise(Pagarme::API::ConnectionError)
 
             post :cancel, { subscription: { id: subscription.id } }.merge(ssl_options)
