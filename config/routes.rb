@@ -82,6 +82,7 @@ Rails.application.routes.draw do
     end
   end
   resources :users do
+    resources :bank_accounts, controller: 'users/bank_accounts', only: [:index, :new, :create]
     resources :projects, controller: 'users/projects', only: [ :index ]
     resources :credit_cards, controller: 'users/credit_cards', only: [ :destroy ]
     member do
