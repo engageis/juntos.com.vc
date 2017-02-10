@@ -281,6 +281,9 @@ pt:
     zip_code: CEP
     anonymous: Anônimo
   user:
+    bank_account:
+      create:
+        success: Sua conta bancária foi adicionada
     no_name: Sem nome
     contributions_text:
       many: "Apoiou este e mais outros %{total} projetos"
