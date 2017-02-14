@@ -170,6 +170,10 @@ en:
               blank: 'The password cannot be blank'
             reset_password_token:
               invalid: 'expired. Access <a href="/password/new">reset my password</a> and resquest a new password reset token.'
+  user:
+    bank_account:
+      create:
+        success: 'Your bank account was successfully added'
   project:
     subscription:
       create:
