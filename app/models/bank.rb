@@ -10,7 +10,7 @@ class Bank < ActiveRecord::Base
 
   def self.to_collection
     order_popular.map do |bank|
-      [bank.to_s, bank.code]
+      [bank.to_s, bank.id]
     end
   end
 
