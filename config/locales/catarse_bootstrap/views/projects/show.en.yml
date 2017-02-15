@@ -35,6 +35,7 @@ en:
       dashboard_project_plans:
         title: 'Which donation plans are available for your project?'
         subtitle: "Choose the plans that will be available for your project's donators"
+        no_plans_available: 'No plans are available'
         submit: 'Add plans'
     dashboard_reward:
       title: 'Create and edit you rewards here'

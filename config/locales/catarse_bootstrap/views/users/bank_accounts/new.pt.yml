@@ -1,0 +1,11 @@
+pt:
+  users:
+    bank_accounts:
+      new:
+        title: "Insira aqui os seus dados bancários"
+        subtitle: "Para poder receber as doações insira os dados bancários de onde você deseja recebê-las."
+      form:
+        digit: "Dígito"
+        number: "Número"
+        expires_at: "Válido até:"
+        submit: "Adicionar"

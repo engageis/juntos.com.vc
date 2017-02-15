@@ -10,7 +10,9 @@ class Users::BankAccountsController < ApplicationController
     @bank_account = BankAccount.new(user: current_user)
     authorize @bank_account
 
-    head :ok
+    @bank_account.authorization_documents.build
+
+    @banks = Bank.order(:code).to_collection
   end
 
   def create
