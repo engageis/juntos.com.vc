@@ -29,7 +29,7 @@ RSpec.describe Bank, type: :model do
 
   describe '.to_collection' do
     let(:banks) { create_list :bank, 2 }
-    let(:collection) { banks.map { |bank| [bank.to_s, bank.code] } }
+    let(:collection) { banks.map { |bank| [bank.to_s, bank.id] } }
     subject { Bank.to_collection }
 
     before do
