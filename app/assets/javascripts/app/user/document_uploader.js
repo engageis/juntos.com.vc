@@ -10,6 +10,10 @@ App.addChild('DocumentUploader', {
   },
 
   updateUploadField: function (e, content) {
+    var $fileInput = $(e.currentTarget).find('[type="file"]');
+
+    $fileInput.prop('disabled', true);
+    $fileInput.after('<i class="fa fa-paperclip" aria-hidden="true">' + content.filename + '</i>');
     $(e.currentTarget).find('[data-document-field]').val(content.url);
-  }
+  },
 });

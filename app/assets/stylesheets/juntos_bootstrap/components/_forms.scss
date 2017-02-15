@@ -6,3 +6,62 @@
 .ui-datepicker table {
   font-size: .6em;
 }
+
+.w-form.bank-account {
+  .file {
+    margin-bottom: rem-calc(3);
+  }
+}
+
+.date-select {
+  display: inline-block;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+
+  .select-wrapper {
+    float: left;
+    margin-left: 3px;
+    position: relative;
+
+    select {
+      appearance: none;
+      background-color: transparent;
+      background-image: none;
+      border-radius: 3px;
+      border: 1px solid $border-gray;
+      height: rem-calc($input-height);
+      padding: 5px 8px;
+      width: 100%;
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    &:before {
+      content: '\f0dd';
+      font-family: FontAwesome;
+      font-size: 13px;
+      height: 15px;
+      pointer-events: none;
+      position: absolute;
+      right: 5px;
+      top: 10px;
+      width: 15px;
+    }
+
+    &:first-of-type{
+      width: 10%;
+    }
+
+    &:nth-of-type(2),
+    &:nth-of-type(3) {
+      width: 25%;
+    }
+
+    &:last-of-type{
+      margin-right: 0;
+    }
+  }
+}
