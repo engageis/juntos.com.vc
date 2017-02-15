@@ -103,8 +103,13 @@ class ProjectsController < ApplicationController
     @post = resource.posts.where(id: params[:project_post_id]).first if params[:project_post_id].present?
     @contributions = @project.contributions.available_to_count
     @pending_contributions = @project.contributions.with_state(:waiting_confirmation)
-    @plans = Plan.all if @project.recurring?
     @color = (channel.present? && channel.main_color) || @project.color
+
+    if @project.recurring?
+      @plans = Plan.all
+      @banks = Bank.order(:code).to_collection
+      @bank_account = BankAccount.setup_with_authorization_documents
+    end
   end
 
   def video
