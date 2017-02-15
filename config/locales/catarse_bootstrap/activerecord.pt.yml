@@ -1,4 +1,9 @@
 pt:
+  enums:
+      authorization_document:
+        category:
+          bank_authorization: 'Autorização do banco'
+          organization_authorization: 'Autorização da organização'
   activerecord:
     models:
       channel: Canal
