@@ -32,6 +32,7 @@ RSpec.describe BankAccountPolicy do
         [
           :bank_id,
           :agency,
+          :agency_digit,
           :account,
           :owner_name,
           :owner_document,

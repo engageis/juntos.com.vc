@@ -1,0 +1,89 @@
+= simple_form_for bank_account, url: user_bank_accounts_path(current_user),
+                  html: { id: 'user-bank-account-form', class: 'w-form bank-account' } do |form|
+  .section
+    .w-container
+      .w-row
+        .w-col.w-col-8.w-hidden-small.w-hidden-tiny
+          .w-form
+            .w-row
+              .w-col.w-col-12
+                = render 'devise/shared/alert', resource: bank_account
+
+            .w-row.u-marginbottom-20
+              .w-col.w-col-12
+                label.field-label.bold = t('activerecord.attributes.bank_account.owner_name')
+              .w-col.w-col-12
+                = form.input_field :owner_name, as: :string, maxlength: 30,
+                  minlength: 5, required: true, class: 'text required w-input text-field'
+
+            .w-row.u-marginbottom-20
+              .w-col.w-col-12
+                label.field-label.bold = t('activerecord.attributes.bank_account.owner_document')
+              .w-col.w-col-12
+                = form.input_field :owner_document, as: :string
+
+            .w-row.u-marginbottom-40
+              .w-col.w-col-12
+                = form.input :bank,
+                  label: t('activerecord.attributes.bank_account.bank') do
+                  = select_tag 'bank_account[bank_id]',
+                    options_for_select(banks),
+                    class: 'select required w-select text-field',
+                    prompt: t('simple_form.prompts.project.select'),
+                    required: true,
+                    data: 'select2'
+
+            .w-row.u-marginbottom-20
+              .w-row
+                .w-col.w-col-12
+                  label.field-label.bold = t('activerecord.attributes.bank_account.agency')
+              .w-row
+                .w-col.w-col-8
+                  = form.input_field :agency, as: :string,
+                    placeholder: t('users.bank_accounts.form.number')
+                .w-col.w-col-4
+                  .u-paddingleft-5
+                    = form.input_field :agency_digit, label: false, as: :string,
+                      placeholder: t('users.bank_accounts.form.digit')
+
+            .w-row.u-marginbottom-20
+              .w-row
+                .w-col.w-col-12
+                  label.field-label.bold = t('activerecord.attributes.bank_account.account')
+              .w-row
+                .w-col.w-col-8
+                  = form.input_field :account, as: :string,
+                    placeholder: t('users.bank_accounts.form.number')
+                .w-col.w-col-4
+                  .u-paddingleft-5
+                    = form.input_field :account_digit, as: :string,
+                      placeholder: t('users.bank_accounts.form.digit')
+
+            .w-row.u-marginbottom-20
+              = form.simple_fields_for :authorization_documents do |document_form|
+                .w-row.u-marginbottom-20
+                  label.field-label.bold = document_form.object.category_i18n
+                  = document_form.simple_fields_for :attachment do |attachment_form|
+                    div data-document-uploader="true"
+                      = attachment_form.hidden_field :url, data: { document_field: true }
+                      = s3_uploader_form callback_param: 'authorization_documents[attachment]',
+                        max_file_size: 5.megabytes, data: { s3_uploader: true },
+                        key: "uploads/user/bank_account/document/#{current_user.id}/${filename}" do
+                          = file_field_tag :file, class: 'w-input text-field file',
+                          data: { url: s3_uploader_url }
+                      .u-marginbottom-10.u-margintop-10
+                        .w-row.
+                          .w-col.w-col-12
+                            label.font-tiny.bold = t('users.bank_accounts.form.expires_at')
+                          .date-select.w-col.w-col-12
+                            = document_form.date_select :expires_at, html_options: { class: 'select-date' }
+
+
+  .divider
+    .section
+      .w-container
+        .w-row
+          .w-col.w-col-4
+          .w-col.w-col-4
+            = form.button :submit, t('.submit'), class:'btn btn-large'
+          .w-col.w-col-4
