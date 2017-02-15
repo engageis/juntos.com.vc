@@ -5,4 +5,6 @@ class AuthorizationDocument < ActiveRecord::Base
   validates_presence_of :expires_at
 
   accepts_nested_attributes_for :attachment
+
+  enum category: [:uncategorized, :bank_authorization, :organization_authorization]
 end
