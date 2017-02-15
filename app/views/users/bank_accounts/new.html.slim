@@ -1,0 +1,10 @@
+.project-bank_info
+  .dashboard-header.u-text-center
+    .w-container
+      .w-row
+        .w-col.w-col-2
+        .w-col.w-col-8
+          .fontweight-semibold.fontsize-large= t('.title')
+          p.fontsize-base= t('.subtitle')
+        .w-col.w-col-2
+= render "form", bank_account: @bank_account, banks: @banks
