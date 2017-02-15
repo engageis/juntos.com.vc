@@ -200,6 +200,8 @@ GEM
       activemodel (>= 3.0)
       activesupport (>= 3.0)
       request_store (~> 1.0)
+    enum_help (0.0.17)
+      activesupport (>= 3.0.0)
     enumerate_it (1.2.8)
       activesupport (>= 3.0.0)
     enumerize (2.0.1)
@@ -631,6 +633,7 @@ DEPENDENCIES
   devise
   dotenv-rails
   draper
+  enum_help
   enumerize
   ezcrypto
   factory_girl_rails
