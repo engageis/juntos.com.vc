@@ -36,6 +36,7 @@ pt:
         title: 'Quais planos de contribuição estarão disponíveis no seu projeto?'
         subtitle: 'Selecione quais planos estarão disponíveis aos doadores do seu projeto'
         submit: 'Adicionar planos'
+        no_plans_available: 'Nenhum plano está disponível'
     dashboard_reward:
       title: 'Crie e edite aqui suas recompensas'
       subtitle: 'Pense bem como você irá entregá-las e coloque tudo isso no orçamento! Entregue suas recompensas, senão a confiabilidade do seu projeto pode ser prejudicada.'
