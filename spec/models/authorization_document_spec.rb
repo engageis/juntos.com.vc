@@ -8,5 +8,12 @@ RSpec.describe AuthorizationDocument, type: :model do
 
   describe "validations" do
     it { is_expected.to validate_presence_of(:expires_at) }
+
+    describe "enumerators" do
+      it "defines an enum for description" do
+        is_expected.to define_enum_for(:category)
+          .with([ :uncategorized, :bank_authorization, :organization_authorization ])
+      end
+    end
   end
 end

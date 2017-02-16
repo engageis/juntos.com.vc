@@ -9,6 +9,17 @@ class BankAccount < ActiveRecord::Base
 
   scope :by_user, -> (user) { where(user_id: user.id) }
 
+  def self.setup_with_authorization_documents
+    bank_account = BankAccount.new
+
+    [:bank_authorization, :organization_authorization].each do |category|
+      document = bank_account.authorization_documents.build(category: category)
+      document.build_attachment
+    end
+
+    bank_account
+  end
+
   def bank_code
     self.bank.code
   end

@@ -91,6 +91,7 @@ gem 'spectator-validates_email',  require: 'validates_email'
 gem 'video_info', '>= 1.1.1'
 gem 'httparty', '~> 0.6.1' # this version is required by moip gem, otherwise payment confirmation will break
 gem 'enumerize'
+gem 'enum_help'
 
 # Translations
 gem 'http_accept_language'
