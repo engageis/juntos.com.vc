@@ -36,7 +36,7 @@
             .w-col.w-col-6.w-sub-col
               = form.button :submit, t('.save'),  class:'btn btn-small'
             .w-col.w-col-5.w-sub-col
-              input.w-button.btn-terciary.btn.btn-small.reward-close-button type="submit" value="#{t('.close')}"
+              input.btn-secondary.btn.btn-small.reward-close-button type="submit" value="#{t('.close')}"
             - if resource.persisted? && policy(resource).destroy?
               .w-col.w-col-1
                 = link_to [parent, resource], method: :delete, data: {confirm: t('.are_you_sure')} do
