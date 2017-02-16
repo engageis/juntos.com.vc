@@ -7,6 +7,7 @@ $base-font-size: 14px !default;
 $font-tiny: 10px;
 
 //Colors
+$black: #000;
 $blue-facebook: #3b5998;
 $blue-note: #409bff;
 $blue-one: #3f4752;
@@ -15,20 +16,34 @@ $blue-three: #1a237e;
 $border-gray: #e9e9ec;
 $border-strong: #ddd;
 $border-yellow: #ffb74d;
+$blue-shadow: rgba(64, 155, 255, .2);
+$black-shadow: rgba(37, 49, 57, .88);
 $box-shadow-color-lighten: rgba(121, 128, 139, .2);
 $box-shadow-color-darken: rgba(0, 0, 0, .61);
 $dark-yellow: #ffcc40;
+$deep-sea-green: #0c556e;
 $gray-one: #f1f4f4;
 $gray-two: #f1f2f3;
 $gray-three: #e6e6e6;
 $green: #00b22d;
+$havelock-blue: #547fd6;
 $lighten-orange: #feb84c;
-$orange: #f69219;
+$lightning-yellow: #f8bc1c;
+$malachite: #08bd35;
+$malibu: #7ed9f7;
+$orange: #fe6327;
+$tuna: #30353d;
+$tree-poppy: #f69219;
+$picton-blue: #27bff2;
 $purple: #2e172b;
 $red: #e86666;
 $red-two: #b71c1c;
+$royal-blue: #2685eb;
+$san-marino: #4b6fb8;
 $texas-rose: #fdb64c;
 $text-green: #29e357;
+$trout: #505966;
+$twitter: #3cf;
 $white: #fff;
 $yellow: #faf64d;
 
@@ -37,6 +52,9 @@ $images_path: "/assets/juntos/";
 
 //Units config
 $rem-base: $base-font-size;
+
+//Devices config
+$tablet-size: 768px;
 
 //Forms
 $input-height: 40px;

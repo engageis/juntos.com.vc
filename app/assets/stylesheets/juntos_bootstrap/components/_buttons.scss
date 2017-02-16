@@ -1,0 +1,358 @@
+.btn {
+  background-color: $border-yellow;
+  border: 1px solid $border-yellow;
+  border-radius: 5px;
+  color: $white;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  text-decoration: none;
+  transition: all 500ms ease;
+  width: 100%;
+
+  &.bt-yellow {
+    background-color: $lightning-yellow;
+    border-color: $lightning-yellow;
+  }
+
+  &.bt-yellow:hover {
+    background-color: $lightning-yellow;
+  }
+
+  &.bt-blue {
+    background-color: $blue-note;
+  }
+
+  &.bt-blue:hover {
+    background-color: $royal-blue;
+  }
+
+  &.bt-dark {
+    background-color: $blue-one;
+    margin-top: 31px;
+    position: relative;
+    top: -2px;
+
+    &.bt-channel-project-banner {
+      margin-bottom: 0;
+      margin-top: 11px;
+      width: 71%;
+    }
+  }
+
+  &.bt-dark:hover {
+    background-color: $trout;
+  }
+
+  &.bt-small {
+    font-size: 15px;
+    padding-bottom: 9px;
+    padding-top: 9px;
+  }
+
+  &.bt-medium {
+    border-radius: 5px;
+    display: block;
+    font-size: 16px;
+    height: auto;
+    margin-top: -20px;
+    padding-bottom: 12px;
+    padding-top: 12px;
+    transition: all 500ms ease, all 500ms ease;
+
+    &.bt-fb {
+      background-color: $san-marino;
+      font-family: proxima-nova, sans-serif;
+      margin-top: 16px;
+    }
+
+    &.bt-fb:hover {
+      background-color: $havelock-blue;
+    }
+  }
+}
+
+.btn-send-draft {
+  display: inline-block;
+  float: right;
+  width: 210px;
+}
+
+.btn-large {
+  font-size: 18px;
+  padding-bottom: 19px;
+  padding-top: 19px;
+  text-decoration: none;
+}
+
+.btn-medium {
+  font-size: 16px;
+  padding-bottom: 12px;
+  padding-top: 12px;
+  text-decoration: none;
+}
+
+.btn-small {
+  font-size: 15px;
+  height: 40px;
+  padding-bottom: 9px;
+  padding-top: 9px;
+  text-decoration: none;
+}
+
+.btn-terciary {
+  background-color: transparent;
+  border-color: $box-shadow-color-lighten;
+  border-style: solid;
+  border-width: 1px;
+  color: $box-shadow-color-lighten;
+
+  &:hover {
+    background-color: transparent;
+    border-color: $blue-two;
+    color: $blue-two;
+  }
+}
+
+.btn-no-border {
+  border: 1px solid transparent;
+
+  &:hover {
+    border: 1px solid transparent;
+  }
+}
+
+.btn-attached {
+  width: auto;
+}
+
+.btn-recommend {
+  margin-right: 20px;
+  text-align: left;
+  width: 129px;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  border: 1px solid $blue-one;
+  color: $blue-one;
+
+  &:hover {
+    color: $black;
+  }
+}
+
+.btn-message {
+  background-color: $blue-shadow;
+  border-color: $blue-shadow;
+  border-style: solid;
+  border-width: 1px;
+  margin-bottom: 0;
+  padding-bottom: 12px;
+  padding-top: 12px;
+  text-decoration: none;
+  transition-delay: initial;
+
+  &:hover {
+    background-color: $blue-shadow;
+    border-color: $blue-shadow;
+  }
+}
+
+.btn-collapse {
+  background-color: $white;
+  border-radius: 4px;
+  color: $border-yellow;
+  display: inline-block;
+  font-size: 13px;
+  line-height: 13px;
+  margin: 5px 5px 5px 0;
+  padding: 8px;
+  position: absolute;
+  right: 7px;
+  text-decoration: none;
+  top: 1px;
+  transition: all 500ms ease;
+}
+
+.btn-translation {
+  background-color: $white;
+  border-radius: 4px;
+  color: $border-yellow;
+  display: inline-block;
+  font-size: 13px;
+  height: 30px;
+  line-height: 1;
+  margin: 10px 5px 5px 40px;
+  padding: 8px 5px;
+  position: static;
+  text-decoration: none;
+  top: 5px;
+  transition: all 500ms ease;
+
+  &:hover,
+  &:last-child:hover {
+    background-color: $black;
+    color: $white;
+  }
+
+  &.active {
+    background-color: $border-yellow;
+    color: $white;
+  }
+
+  &:last-child {
+    margin-left: 2px;
+  }
+}
+
+.btn-dark {
+  background-color: $blue-one;
+  border: 1px solid $blue-one;
+  color: $white;
+  text-decoration: none;
+
+  &.btn-attached {
+    background-color: $black-shadow;
+    border-color: $black-shadow;
+  }
+
+  &.btn-attached:hover {
+    background-color: $black-shadow;
+    border-color: $black-shadow;
+  }
+
+  &:hover {
+    background-color: $tuna;
+    border-color: $tuna;
+  }
+}
+
+.btn-edit {
+  background-color: $blue-note;
+  border-color: $blue-note;
+  color: $white;
+  text-decoration: none;
+
+  &.btn-attached {
+    width: auto;
+  }
+
+  &:hover {
+    background-color: $blue-facebook;
+    border-color: $blue-facebook;
+    color: $white
+  }
+}
+
+.btn-delete {
+  background-color: $red;
+  border-color: $red;
+  color: $white;
+  text-decoration: none;
+
+  &:hover {
+    background-color: $red-two;
+    border-color: $red-two;
+    color: $white;
+  }
+}
+
+.btn-secondary-dark {
+  background-color: transparent;
+  border: 1px solid $white;
+}
+
+.btn-fb {
+  background-color: $havelock-blue;
+  border: 1px solid $havelock-blue;
+  color: $white;
+
+  &:hover {
+    background-color: $san-marino;
+    border-color: $san-marino;
+  }
+}
+
+.btn-tweet {
+  background-color: $twitter;
+  border-color: $twitter;
+  color: $white;
+
+  &:hover {
+    background-color: $malibu;
+    border: 1px solid $malibu;
+    color: $white;
+  }
+}
+
+.btn-support-fixed {
+  border-radius: 60px;
+  bottom: 0;
+  color: $white;
+  padding: 36px 14px;
+  position: fixed;
+  right: 20px;
+  text-decoration: none;
+  z-index: 2;
+}
+
+.btn-move-project-channel {
+  margin: 2em 0;
+  padding: 14px 0;
+}
+
+@media(max-width: $tablet-size){
+  .btn-login-mobile {
+    background-color: $white;
+    border-radius: 3px;
+    color: $lighten-orange;
+    font-weight: bold;
+    margin: .5em 0;
+    padding: 10px 25px;
+  }
+
+  .btn.bt-medium.bt-fb.bt-fb-mobile {
+    display: inline-block;
+    margin-right: 15px;
+    width: 90%;
+  }
+
+  .mobile-header-link {
+    font-size: 1.3em;
+    font-weight: bold;
+    margin: 0 auto;
+    padding-top: 1em;
+  }
+}
+
+@media (max-width: 479px) {
+  .btn.bt-medium.bt-fb.bt-fb-mobile {
+    font-size: 14px;
+    padding-left: 10px;
+    width: 92%;
+  }
+
+  .btn-contribution-mobile {
+    background-color: $green;
+    border-radius: 50px;
+    border: solid 2px $green;
+    bottom: 0;
+    color: $white;
+    font-size: 1.2em;
+    font-weight: bold;
+    padding: 30px 10px;
+    position: fixed;
+    right:4%;
+    z-index: 2;
+  }
+
+  .btn-select-reward-mobile {
+    background-color: $deep-sea-green;
+    border-radius: 0;
+    color: $white;
+    margin: 1em 0;
+    padding: 8px 20px;
+  }
+}
