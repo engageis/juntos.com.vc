@@ -268,42 +268,6 @@ RSpec.describe UserDecorator do
     end
   end
 
-  describe "#display_bank_account" do
-    subject { user.reload.decorate.display_bank_account }
-
-    context "when user has no bank account" do
-      it { is_expected.to eq(I18n.t('not_filled')) }
-    end
-
-    context "when user has bank account" do
-      let(:bank)           { create(:bank, code: 100) }
-      let(:account_name)   { "100 - Foo" }
-      let(:account_agency) { "AG. 1" }
-      let(:account_number) { "CC. 1-1" }
-
-      before { create(:bank_account, bank: bank, user: user) }
-
-      it { is_expected.to include(account_name, account_agency, account_number) }
-    end
-  end
-
-  describe "#display_bank_account_owner" do
-    subject { user.reload.decorate.display_bank_account_owner }
-
-    context "when user has no bank account" do
-      it { is_expected.to be_nil }
-    end
-
-    context "when user has bank account" do
-      let(:bank_account_name) { "Foo" }
-      let(:bank_account_cpf)  { "CPF: 000" }
-
-      before { create(:bank_account, user: user) }
-
-      it { is_expected.to include(bank_account_name, bank_account_cpf) }
-    end
-  end
-
   describe "#display_pending_documents" do
     subject { user.decorate.display_pending_documents }
 
