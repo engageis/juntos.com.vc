@@ -37,7 +37,6 @@ class UsersController < ApplicationController
       @unsubscribes = @user.project_unsubscribes
       @credit_cards = @user.credit_cards
       @projects = projects
-      build_bank_account
     }
   end
 
@@ -96,10 +95,6 @@ class UsersController < ApplicationController
   end
 
   private
-
-  def build_bank_account
-    @user.build_bank_account unless @user.bank_account
-  end
 
   def permitted_params
     params.permit(policy(resource).permitted_attributes)
