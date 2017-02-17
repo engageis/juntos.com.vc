@@ -1,6 +1,39 @@
+.association-form {
+  .notification {
+    position: relative;
+    height: auto;
+  }
+
+  .success,
+  .fail {
+    position: absolute;
+    top: rem-calc(10);
+
+    span {
+      font-weight: bold;
+    }
+
+    i {
+      font-size: rem-calc($font-medium);
+    }
+  }
+
+  .success {
+    i {
+      color: $green;
+    }
+  }
+
+  .fail {
+    i {
+      color: $red;
+    }
+  }
+}
+
 .label-helper {
-  display: block;
   color: $box-shadow-color-darken;
+  display: block;
 }
 
 .ui-datepicker table {
@@ -11,6 +44,10 @@
   .file {
     margin-bottom: rem-calc(3);
   }
+}
+
+select + .label-helper {
+  margin-top: rem-calc(-20);
 }
 
 .date-select {

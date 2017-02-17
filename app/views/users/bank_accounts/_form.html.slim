@@ -1,13 +1,20 @@
-= simple_form_for bank_account, url: user_bank_accounts_path(current_user),
+.w-row
+  .w-col.w-col-12
+    h3 = 'Adicionar conta'
+
+= simple_form_for bank_accounts_manager.bank_account, url: user_bank_accounts_path(current_user),
+                  remote: true,
                   html: { id: 'user-bank-account-form', class: 'w-form bank-account' } do |form|
   .section
     .w-container
       .w-row
-        .w-col.w-col-8.w-hidden-small.w-hidden-tiny
+        .w-col.w-col-12.w-hidden-small.w-hidden-tiny
           .w-form
             .w-row
               .w-col.w-col-12
-                = render 'devise/shared/alert', resource: bank_account
+                .card.card-error.u-radius.zindex-10.u-marginbottom-30.w-hidden
+                  .fontsize-smaller.fontweight-bold.u-marginbottom-10 = t('failure_title')
+                  .fontsize-smaller.message
 
             .w-row.u-marginbottom-20
               .w-col.w-col-12
@@ -27,7 +34,7 @@
                 = form.input :bank,
                   label: t('activerecord.attributes.bank_account.bank') do
                   = select_tag 'bank_account[bank_id]',
-                    options_for_select(banks),
+                    options_for_select(bank_accounts_manager.banks),
                     class: 'select required w-select text-field',
                     prompt: t('simple_form.prompts.project.select'),
                     required: true,
@@ -59,7 +66,7 @@
                     = form.input_field :account_digit, as: :string,
                       placeholder: t('users.bank_accounts.form.digit')
 
-            .w-row.u-marginbottom-20
+            .w-row
               = form.simple_fields_for :authorization_documents do |document_form|
                 .w-row.u-marginbottom-20
                   label.field-label.bold = document_form.object.category_i18n
@@ -77,13 +84,8 @@
                             label.font-tiny.bold = t('users.bank_accounts.form.expires_at')
                           .date-select.w-col.w-col-12
                             = document_form.date_select :expires_at, html_options: { class: 'select-date' }
-
-
-  .divider
-    .section
-      .w-container
-        .w-row
-          .w-col.w-col-4
-          .w-col.w-col-4
-            = form.button :submit, t('.submit'), class:'btn btn-large'
-          .w-col.w-col-4
+              .w-row
+                .w-col.w-col-4
+                  = form.button :submit, t('users.bank_accounts.form.submit'), class:'btn btn-small'
+                .w-col.w-col-4.u-marginleft-5
+                  a.btn.btn-small.btn-secondary#close-form = t('users.bank_accounts.form.cancel')
