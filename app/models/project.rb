@@ -33,6 +33,7 @@ class Project < ActiveRecord::Base
   has_and_belongs_to_many :channels
   has_and_belongs_to_many :plans, join_table: 'projects_plans'
   has_one :project_total
+  has_one :bank_account
   has_many :rewards
   has_many :contributions
   has_many :posts, class_name: "ProjectPost"
@@ -56,6 +57,7 @@ class Project < ActiveRecord::Base
   accepts_nested_attributes_for :channels
   accepts_nested_attributes_for :posts
   accepts_nested_attributes_for :subgoals
+  accepts_nested_attributes_for :bank_account
 
   catarse_auto_html_for field: :about, video_width: 600, video_height: 403
 
