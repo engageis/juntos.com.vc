@@ -4,8 +4,13 @@ pt:
       new:
         title: "Insira aqui os seus dados bancários"
         subtitle: "Para poder receber as doações insira os dados bancários de onde você deseja recebê-las."
+        success: "A conta foi adicionada"
+        fail: "Erro na associação"
       form:
+        bank_account: "Conta bancária"
         digit: "Dígito"
         number: "Número"
         expires_at: "Válido até:"
         submit: "Adicionar"
+        associate: "Associar ao projeto"
+        cancel: "Cancelar"
