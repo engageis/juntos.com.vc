@@ -7,11 +7,13 @@
 @import 'juntos_bootstrap/abstract/variables';
 @import 'juntos_bootstrap/abstract/functions';
 @import 'juntos_bootstrap/abstract/fonts';
+@import 'juntos_bootstrap/abstract/animations';
 
 @import 'juntos_bootstrap/components/cards';
 @import 'juntos_bootstrap/components/flash_messages';
 @import 'juntos_bootstrap/components/forms';
 @import 'juntos_bootstrap/components/buttons';
+@import 'juntos_bootstrap/components/tables';
 
 // The order below doesn't matter
 @import 'juntos_bootstrap/grid/webflow';

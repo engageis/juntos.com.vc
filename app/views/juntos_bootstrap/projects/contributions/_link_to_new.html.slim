@@ -1,13 +1,6 @@
 - if project.recurring? && !project.plans.any?
-  .card.warning-message.u-margintop-20.u-marginbottom-20
-    .w-row
-      .w-col.w-col-1
-        i.bold.fa.fa-exclamation-triangle
-      .w-col.w-col-11
-        span.bold = t('.recurring.disabled_contributions')
-    .w-row
-      .w-col.w-col-12.u-margintop-10
-        span.font-tiny = t('.recurring.without_plans')
+    = render 'shared/warning_message', title: t('.recurring.disabled_contributions'),
+                                       message: t('.recurring.without_plans')
 
 - else
   .w-hidden-small.w-hidden-tiny

@@ -1,0 +1,14 @@
+.table_content
+  table.table.table-striped
+    thead
+      th = t('users.bank_accounts.management.table.bank')
+      th = t('users.bank_accounts.management.table.account')
+      th = t('users.bank_accounts.management.table.agency')
+      th
+    - user.bank_accounts.each do |bank_account|
+        tr
+          td.bank    = bank_account.bank
+          td.account = bank_account.account
+          td.agency  = bank_account.agency
+          td.action
+            a.account-association-link data-id = bank_account.id

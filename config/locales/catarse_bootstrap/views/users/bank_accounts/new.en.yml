@@ -4,8 +4,13 @@ en:
       new:
         title: Insert your bank account details below
         subtitle: To receive the donations amount, you need to tell us where do you want to receive this value
-        form:
-          digit: Digit
-          number: Number
-          expires_at: "Expires at:"
-          submit: Add
+        success: The bank account was successfully added
+        fail: A problem occurs with the association
+      form:
+        bank_account: Bank account
+        digit: Digit
+        number: Number
+        expires_at: "Expires at:"
+        submit: Add
+        associate: Associate to the project
+        cancel: Cancel
