@@ -82,7 +82,8 @@ Rails.application.routes.draw do
     end
   end
   resources :users do
-    resources :bank_accounts, controller: 'users/bank_accounts', only: [:index, :new, :create]
+    put :associate_with_project , to: 'users/bank_accounts#update', as: :associate_bank_account_with_project
+    resources :bank_accounts, controller: 'users/bank_accounts', except: [:destroy, :edit, :update]
     resources :projects, controller: 'users/projects', only: [ :index ]
     resources :credit_cards, controller: 'users/credit_cards', only: [ :destroy ]
     member do
