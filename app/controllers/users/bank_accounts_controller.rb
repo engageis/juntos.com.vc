@@ -11,7 +11,6 @@ class Users::BankAccountsController < ApplicationController
     authorize @bank_account
 
     @bank_account.authorization_documents.build
-
     @banks = Bank.order(:code).to_collection
   end
 
@@ -23,12 +22,23 @@ class Users::BankAccountsController < ApplicationController
     @bank_account.attributes = bank_account_params
 
     if @bank_account.save
-      flash[:notice] = t(:success, scope: 'user.bank_account.create')
+      render json: @bank_account.as_json(include: :bank), status: :created
     else
-      flash[:alert] = @bank_account.errors.full_messages.to_sentence
+      render json: { errors: @bank_account.errors.full_messages.to_sentence }, status: :bad_request
     end
+  end
 
-    head :ok
+
+  def update
+    @bank_account = BankAccount.find(params[:id])
+
+    authorize @bank_account
+
+    if @bank_account.update(bank_account_params)
+      head :no_content
+    else
+      render json: { errors: @bank_account.errors.full_messages.to_sentence }, status: :bad_request
+    end
   end
 
   private

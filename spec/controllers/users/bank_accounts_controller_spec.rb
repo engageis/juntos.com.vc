@@ -79,6 +79,7 @@ RSpec.describe Users::BankAccountsController, type: :controller do
 
       context "and all parameters sent are valid" do
         let(:bank) { create(:bank) }
+        let(:created_bank_account) { BankAccount.first }
         let(:params) do
           attributes_for(:bank_account).merge(
             {
@@ -94,8 +95,9 @@ RSpec.describe Users::BankAccountsController, type: :controller do
           )
         end
 
-        it "returns a success flash message" do
-          expect(flash[:notice]).to match I18n.t(:success, scope: 'user.bank_account.create')
+        it "returns a json with the persisted bank account" do
+          json_response = JSON.parse(response.body)
+          expect(json_response['id']).to eq created_bank_account.id
         end
       end
 
@@ -106,8 +108,56 @@ RSpec.describe Users::BankAccountsController, type: :controller do
           I18n.t('activerecord.errors.messages.blank')
         end
 
-        it "returns an error flash message" do
-          expect(flash[:alert]).to match error_message
+        it "returns a json with the error message" do
+          json_response = JSON.parse(response.body)
+          expect(json_response['errors']).to match error_message
+        end
+      end
+    end
+  end
+
+  describe "PUT update" do
+    let(:user) { create(:user) }
+    let(:bank_account) { create(:bank_account, user: user) }
+
+    context "when the user is a guest" do
+      it "redirects to login path" do
+        put :update, { user_id: user.id, id: bank_account.id, locale: 'pt' }
+        expect(response).to redirect_to(new_user_registration_path)
+      end
+    end
+
+    context "when the user is logged in" do
+      before do
+        sign_in user
+        put :update, { user_id: user.id, id: bank_account.id, bank_account: params, locale: 'pt' }
+      end
+
+      context "and all update params are valid" do
+        let(:project) { create(:project) }
+        let(:params)  { { project_id: project.id } }
+        let(:updated_bank_account) { bank_account.reload }
+
+        it "returns the 204 HTTP status" do
+          expect(response.code).to eq '204'
+        end
+
+        it "updates the bank account resource" do
+          expect(updated_bank_account.project_id).to eq project.id
+        end
+      end
+
+      context "and invalid update params were sent" do
+        let(:params) { { bank_id: '' } }
+
+        let(:error_message) do
+          I18n.t('activerecord.attributes.bank_account.bank') + ' ' + \
+          I18n.t('activerecord.errors.messages.blank')
+        end
+
+        it "returns a json with the error message" do
+          json_response = JSON.parse(response.body)
+          expect(json_response['errors']).to match error_message
         end
       end
     end
