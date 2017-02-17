@@ -1,6 +1,7 @@
 class BankAccount < ActiveRecord::Base
   belongs_to :user
   belongs_to :bank
+  belongs_to :project
   has_many   :authorization_documents
 
   validates :bank_id, :agency, :account, :owner_name, :owner_document, :account_digit, presence: true
@@ -18,9 +19,5 @@ class BankAccount < ActiveRecord::Base
     end
 
     bank_account
-  end
-
-  def bank_code
-    self.bank.code
   end
 end
