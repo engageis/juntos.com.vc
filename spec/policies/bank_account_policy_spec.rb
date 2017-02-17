@@ -22,6 +22,12 @@ RSpec.describe BankAccountPolicy do
     end
   end
 
+  permissions :update? do
+    it_behaves_like "create permissions" do
+      let(:resource) { bank_account }
+    end
+  end
+
   describe ".permitted_attributes" do
     subject { BankAccountPolicy.new(user, resource).permitted_attributes }
 
@@ -31,6 +37,7 @@ RSpec.describe BankAccountPolicy do
       let(:permitted_attributes) do
         [
           :bank_id,
+          :project_id,
           :agency,
           :agency_digit,
           :account,
