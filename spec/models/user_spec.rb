@@ -16,7 +16,7 @@ RSpec.describe User, type: :model do
     it { is_expected.to belong_to(:channel) }
     it { is_expected.to belong_to(:country) }
     it { is_expected.to have_one(:user_total) }
-    it { is_expected.to have_one(:bank_account) }
+    it { is_expected.to have_many(:bank_accounts) }
     it { is_expected.to have_many(:credit_cards) }
     it { is_expected.to have_many(:contributions) }
     it { is_expected.to have_many(:authorizations) }
