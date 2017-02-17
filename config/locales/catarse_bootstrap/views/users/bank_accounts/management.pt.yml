@@ -1,0 +1,12 @@
+pt:
+  users:
+    bank_accounts:
+      management:
+        notification:
+          no_accounts_registered: "Você não possui nenhuma conta cadastrada, clique no '+' pra adicionar uma conta."
+        table:
+          bank: 'Banco'
+          account: 'Conta'
+          agency: 'Agência'
+        button:
+          add: 'Adicionar conta'

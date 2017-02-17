@@ -1,0 +1,19 @@
+table,
+th,
+td {
+  border: 1px solid $border-strong;
+}
+
+table {
+  width: 100%;
+
+  th,
+  td {
+    height: rem-calc(30);
+    padding: rem-calc(15);
+  }
+
+  th {
+    text-align: left;
+  }
+}
