@@ -107,8 +107,11 @@ class ProjectsController < ApplicationController
 
     if @project.recurring?
       @plans = Plan.all
-      @banks = Bank.order(:code).to_collection
-      @bank_account = BankAccount.setup_with_authorization_documents
+
+      @bank_accounts_manager = BankAccountsManagerViewObject.new(
+        banks: Bank.order(:code).to_collection,
+        project: @project
+      )
     end
   end
 
