@@ -140,6 +140,8 @@ en:
         rewards: 'Rewards'
         plans: 'Plans'
         bank_info: 'Bank info'
+        documents: 'Documents'
+        required_documentation: 'Required Documentation'
         subgoals: 'Subgoals'
         preview: 'Preview'
         send_to_analysis: 'Send project to analysis'

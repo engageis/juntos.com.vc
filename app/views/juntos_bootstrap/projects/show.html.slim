@@ -112,9 +112,9 @@ nav.project-nav.w-hidden-main.w-hidden-medium
           span.u-marginleft-10 = t('.dashboard_nav.rewards')
 
       - if @project.recurring?
-        = link_to '#project_bank_info', id: 'project_bank_info_link', class: 'dashboard-nav-link ' , data: {target: '#project_bank_info'} do
+        = link_to '#dashboard_project_documents', id: 'dashboard_project_documents_link', class: 'dashboard-nav-link ' , data: {target: '#project_bank_info'} do
           span.fa.fa-check-circle
-            span.u-marginleft-10 = t('.dashboard_nav.bank_info')
+            span.u-marginleft-10 = t('.dashboard_nav.required_documentation')
         = link_to '#dashboard_project_plans', id: 'dashboard_project_plans_link', class: 'dashboard-nav-link' , data: {target: '#dashboard_project_plans'} do
           span.fa.fa-check-circle
             span.u-marginleft-10 = t('.dashboard_nav.plans')
@@ -167,7 +167,7 @@ nav.project-nav.w-hidden-main.w-hidden-medium
         = render 'dashboard_reward'
       - if @project.recurring?
         #project_bank_info.content.w-hidden
-          = render "projects/bank_accounts/associate", bank_accounts_manager: @bank_accounts_manager
+          = render "dashboard_documents", bank_accounts_manager: @bank_accounts_manager
         #dashboard_project_plans.content.w-hidden
           = render 'projects/plans/dashboard_project_plans', plans: @plans
       - if current_user and current_user.admin?
