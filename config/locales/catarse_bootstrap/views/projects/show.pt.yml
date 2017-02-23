@@ -144,6 +144,8 @@ pt:
         plans: 'Planos'
         rewards: 'Recompensas'
         bank_info: 'Dados bancários'
+        documents: 'Documentos'
+        required_documentation: 'Documentação Requerida'
         subgoals: 'Submetas'
         preview: 'Preview'
         send_to_analysis: 'Enviar projeto para análise'
