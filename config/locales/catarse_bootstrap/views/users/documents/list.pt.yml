@@ -1,0 +1,6 @@
+pt:
+  users:
+    required_documents:
+      list:
+        title: 'Documentação necessária'
+        subtitle: 'Antes do seu projeto ficar online, precisamos de alguns documentos sobre sua organização:'
