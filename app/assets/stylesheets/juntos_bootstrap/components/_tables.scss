@@ -1,14 +1,9 @@
-table,
-th,
-td {
-  border: 1px solid $border-strong;
-}
-
-table {
+.bank-accounts-table {
   width: 100%;
 
   th,
   td {
+    border: 1px solid $border-strong;
     height: rem-calc(30);
     padding: rem-calc(15);
   }

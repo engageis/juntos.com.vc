@@ -17,20 +17,20 @@
                   .fontsize-smaller.message
 
             .w-row.u-marginbottom-20
-              .w-col.w-col-12
+              .w-col.w-col-11
                 label.field-label.bold = t('activerecord.attributes.bank_account.owner_name')
-              .w-col.w-col-12
+              .w-col.w-col-11
                 = form.input_field :owner_name, as: :string, maxlength: 30,
                   minlength: 5, required: true, class: 'text required w-input text-field'
 
             .w-row.u-marginbottom-20
-              .w-col.w-col-12
+              .w-col.w-col-11
                 label.field-label.bold = t('activerecord.attributes.bank_account.owner_document')
-              .w-col.w-col-12
+              .w-col.w-col-11
                 = form.input_field :owner_document, as: :string
 
             .w-row.u-marginbottom-40
-              .w-col.w-col-12
+              .w-col.w-col-11
                 = form.input :bank,
                   label: t('activerecord.attributes.bank_account.bank') do
                   = select_tag 'bank_account[bank_id]',
@@ -42,26 +42,26 @@
 
             .w-row.u-marginbottom-20
               .w-row
-                .w-col.w-col-12
+                .w-col.w-col-11
                   label.field-label.bold = t('activerecord.attributes.bank_account.agency')
               .w-row
                 .w-col.w-col-8
                   = form.input_field :agency, as: :string,
                     placeholder: t('users.bank_accounts.form.number')
-                .w-col.w-col-4
+                .w-col.w-col-3
                   .u-paddingleft-5
                     = form.input_field :agency_digit, label: false, as: :string,
                       placeholder: t('users.bank_accounts.form.digit')
 
             .w-row.u-marginbottom-20
               .w-row
-                .w-col.w-col-12
+                .w-col.w-col-11
                   label.field-label.bold = t('activerecord.attributes.bank_account.account')
               .w-row
                 .w-col.w-col-8
                   = form.input_field :account, as: :string,
                     placeholder: t('users.bank_accounts.form.number')
-                .w-col.w-col-4
+                .w-col.w-col-3
                   .u-paddingleft-5
                     = form.input_field :account_digit, as: :string,
                       placeholder: t('users.bank_accounts.form.digit')
@@ -76,11 +76,11 @@
                       = s3_uploader_form callback_param: 'authorization_documents[attachment]',
                         max_file_size: 5.megabytes, data: { s3_uploader: true },
                         key: "uploads/user/bank_account/document/#{current_user.id}/${filename}" do
-                          = file_field_tag :file, class: 'w-input text-field file',
+                          = file_field_tag :file, class: 'w-input text-field file w-col w-col-11',
                           data: { url: s3_uploader_url }
                       .u-marginbottom-10.u-margintop-10
                         .w-row.
-                          .w-col.w-col-12
+                          .w-col.w-col-11
                             label.font-tiny.bold = t('users.bank_accounts.form.expires_at')
                           .date-select.w-col.w-col-12
                             = document_form.date_select :expires_at, html_options: { class: 'select-date' }

@@ -1,0 +1,28 @@
+.user-authorization-documents.dashboard.u-margintop-40.u-marginbottom-40
+  .w-row
+    .dashboard-menu.w-col.w-col-3
+      .w-row
+        .w-col.w-col-12
+          nav.u-text-center.u-margintop-5
+          .w-row
+            .w-col.w-col-12
+              = link_to '#authorization-documents', id: 'authorization-documents', class: 'link' , data: { target: '#project_authorization_documents' } do
+                span
+                  span.bold = t('projects.show.dashboard_nav.documents')
+            .w-row
+              .w-col.w-col-12
+                = link_to '#bank-accounts', id: 'bank-accounts', class: 'link' , data: { target: '#project_bank_info' } do
+                  span
+                    span.bold = t('projects.show.dashboard_nav.bank_info')
+    .dashboard-content.w-col.w-col-9
+      .w-row
+        .w-col.w-col-10.w-col-offset-1
+          .w-row
+            .w-row
+              .w-col.w-col-12
+                #project_authorization_documents.content.w-hidden
+                  = render "projects/required_documents/list"
+            .w-row
+              .w-col.w-col-12
+                #project_bank_info.content.w-hidden
+                  = render "projects/bank_accounts/associate", bank_accounts_manager: bank_accounts_manager

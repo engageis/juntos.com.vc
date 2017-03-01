@@ -12,7 +12,7 @@
       .w-row.u-margintop-20
         .w-col.w-col-12
           .w-row
-            .w-col.w-col-8.w-col-offset-2
+            .w-col.w-col-12
               = simple_form_for :bank_account, url: user_associate_bank_account_with_project_path(bank_accounts_manager.user),
                                 method: :put, remote: true,
                                 html: { id: 'associate-project-bank-account', class: 'w-form association-form' } do |form|
@@ -47,5 +47,5 @@
 
 
   .w-row.content.w-hidden
-    .w-col.w-col-8.w-col-offset-2
+    .w-col.w-col-12
       = render '/users/bank_accounts/form', bank_accounts_manager: bank_accounts_manager

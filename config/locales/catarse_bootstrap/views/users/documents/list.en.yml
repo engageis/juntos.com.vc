@@ -1,0 +1,6 @@
+en:
+  users:
+    required_documents:
+      list:
+        title: 'Required documentation'
+        subtitle: 'Before your project be online, we need some documents about your organization:'
