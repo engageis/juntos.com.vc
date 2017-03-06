@@ -24,7 +24,19 @@ class UserPolicy < ApplicationPolicy
   end
 
   def permitted_attributes
-    u_attrs = [ bank_account_attributes: [:bank_id, :name, :agency, :account, :owner_name, :owner_document, :account_digit, :agency_digit] ]
+    u_attrs = [
+      bank_account_attributes: [
+        :bank_id, :name, :agency, :account, :owner_name,
+        :owner_document, :account_digit, :agency_digit
+      ],
+      authorization_documents_attributes: [
+        :id,
+        :category,
+        :expires_at,
+        attachment_attributes: [ :url, :file_type ]
+      ]
+    ]
+
     u_attrs << record.attribute_names.map(&:to_sym)
     u_attrs << { staffs: [] }
 
@@ -36,4 +48,3 @@ class UserPolicy < ApplicationPolicy
     record == user || user.try(:admin?)
   end
 end
-

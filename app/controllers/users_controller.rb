@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   inherit_resources
   defaults finder: :find_first_active
   actions :show, :update, :update_password, :unsubscribe_notifications, :credits, :destroy
-  respond_to :json, only: [:contributions, :projects]
+  respond_to :json, only: [:contributions, :projects, :update]
 
   before_action :update_staffs, only: :update
 
@@ -65,12 +65,22 @@ class UsersController < ApplicationController
     update! do |success,failure|
       success.html do
         flash[:notice] = t('users.current_user_fields.updated')
+        return redirect_to user_path(@user, anchor: 'settings')
       end
+
       failure.html do
         flash[:error] = @user.errors.full_messages.to_sentence
+        return redirect_to user_path(@user, anchor: 'settings')
+      end
+
+      success.js do
+        head :no_content
+      end
+
+      failure.js do
+        render json: { errors: @user.errors.full_messages.to_sentence }, status: :bad_request
       end
     end
-    return redirect_to user_path(@user, anchor: 'settings')
   end
 
   def update_password
