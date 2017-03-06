@@ -12,6 +12,13 @@ RSpec.describe User, type: :model do
     end
   end
 
+  describe '::LEGAL_ENTITY_AUTHORIZATION_DOCUMENTS' do
+    it 'defines a constant' do
+      expect(described_class.const_defined?(:LEGAL_ENTITY_AUTHORIZATION_DOCUMENTS))
+        .to be_truthy
+    end
+  end
+
   describe "associations" do
     it { is_expected.to belong_to(:channel) }
     it { is_expected.to belong_to(:country) }
