@@ -2,7 +2,7 @@
   .w-col.w-col-12
     h3 = 'Adicionar conta'
 
-= simple_form_for bank_accounts_manager.bank_account, url: user_bank_accounts_path(current_user),
+= simple_form_for bank_accounts_manager.bank_account, url: user_bank_accounts_path(bank_accounts_manager.user),
                   remote: true,
                   html: { id: 'user-bank-account-form', class: 'w-form bank-account' } do |form|
   .section
@@ -70,6 +70,7 @@
               = form.simple_fields_for :authorization_documents do |document_form|
                 .w-row.u-marginbottom-20
                   label.field-label.bold = document_form.object.category_i18n
+                  = document_form.hidden_field :category, value: document_form.object.category
                   = document_form.simple_fields_for :attachment do |attachment_form|
                     div data-document-uploader="true"
                       = attachment_form.hidden_field :url, data: { document_field: true }
@@ -79,9 +80,9 @@
                           = file_field_tag :file, class: 'w-input text-field file w-col w-col-11',
                           data: { url: s3_uploader_url }
                       .u-marginbottom-10.u-margintop-10
-                        .w-row.
+                        .w-row
                           .w-col.w-col-11
-                            label.font-tiny.bold = t('users.bank_accounts.form.expires_at')
+                            label.font-tiny.bold = AuthorizationDocument.human_attribute_name(:expires_at)
                           .date-select.w-col.w-col-12
                             = document_form.date_select :expires_at, html_options: { class: 'select-date' }
               .w-row

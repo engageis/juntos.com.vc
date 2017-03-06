@@ -4,6 +4,18 @@ pt:
         category:
           bank_authorization: 'Autorização do banco'
           organization_authorization: 'Autorização da organização'
+          bylaw_registry: 'Estatuto social registrado em cartório'
+          last_general_meeting_minute: 'Última ata de assembleia geral registrada em cartório'
+          fiscal_council_report: 'Último parecer do conselho fiscal'
+          directory_proof: 'Ata de eleição dos dirigentes atuais registrada em cartório'
+          last_mandate_balance: 'Balanço do último exercício'
+          cnpj_card: 'Cartão do CNPJ'
+          certificates: 'Documentos atuais que comprovam títulos, qualificações, certificados e registros municipais, estaduais e federais que a organização possui'
+          last_year_activities_report: 'Relatório de atividades do ano anterior'
+          organization_current_plan: 'Plano de ação atual'
+          federal_tributes_certificate: 'Certidão conjunta negativa de débitos relativos aos tributos federais e a dívida ativa da união'
+          federal_court_debt_certificate: 'Certidão negativa da justiça federal'
+          manager_id: 'RG e CPF ou CNH da pessoa responsável pela ONG, o nome da pessoa precisa constar no estatuto ou atas'
   activerecord:
     models:
       channel: Canal
@@ -39,15 +51,20 @@ pt:
         user_id: Usuário
         project_id: Projeto
         charging_day: Dia de cobrança
+      authorization_documents:
+        attachment: Documento
+      authorization_document:
+        expires_at: "Válido até"
       bank_account:
         bank: 'Banco'
         bank_id: 'Banco'
         owner_name: 'Nome do titular'
         owner_document: 'CPF / CNPJ do titular'
         agency: 'Agência'
-        agency_digit: 'Dígito da agência'
+        agency_digit: 'Dígito verificador da agência'
         account: 'Número da conta'
         account_digit: 'Dígito da conta'
+        authorization_documents: 'Documento'
       contribution:
         payer_name: "Nome Completo"
         payer_email: "Email"
@@ -137,6 +154,7 @@ pt:
         original_doc13_url: Comprovante de residência da pessoa ou da instituição
         job_title: 'Cargo'
         admin: 'Administrador do Site'
+        authorization_documents: 'Documento'
       channel:
         ga_code: Código do Analytics
         description: Descrição
@@ -204,6 +222,9 @@ pt:
             credit_card_key:
               connection_fails: "Serviço de pagamento fora do ar"
               credit_card_invalid: "Cartão de crédito inválido"
+        attachment:
+          attributes:
+            without_attachment: "%{category} precisa ser enviado"
         project:
           attributes:
             name:
@@ -246,6 +267,10 @@ pt:
               blank: "A senha não pode ficar em branco"
             reset_password_token:
               invalid: 'expirou. Vá para <a href="/password/new">redefinir senha</a> e solicite novamente a redefinição da senha.'
+        authorization_document:
+          attributes:
+            attachment:
+              without_attachment: "%{category} precisa ser enviado"
   project:
     subscription:
       create:
