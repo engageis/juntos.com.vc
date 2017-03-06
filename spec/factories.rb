@@ -463,6 +463,16 @@ FactoryGirl.define do
     end
   end
 
+  factory :authorization_document do
+    expires_at Date.current
+    category :uncategorized
+    association :attachment
+  end
+
+  factory :attachment do
+    url 'http://foo.link.com'
+  end
+
   factory :transaction do |f|
     f.transaction_code { rand(1..100) }
     f.status :processing
