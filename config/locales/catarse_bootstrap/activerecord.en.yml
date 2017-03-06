@@ -4,6 +4,18 @@ en:
         category:
           bank_authorization: 'Bank authorization'
           organization_authorization: 'Organization authorization'
+          bylaw_registry: 'Estatuto social registrado em cartório'
+          last_general_meeting_minute: 'Última ata de assembleia geral registrada em cartório'
+          fiscal_council_report: 'Último parecer do conselho fiscal'
+          directory_proof: 'Ata de eleição dos dirigentes atuais registrada em cartório'
+          last_mandate_balance: 'Balanço do último exercício'
+          cnpj_card: 'Cartão do CNPJ'
+          certificates: 'Documentos atuais que comprovam títulos, qualificações, certificados e registros municipais, estaduais e federais que a organização possui'
+          last_year_activities_report: 'Relatório de atividades do ano anterior'
+          organization_current_plan: 'Plano de ação atual'
+          federal_tributes_certificate: 'Certidão conjunta negativa de débitos relativos aos tributos federais e a dívida ativa da união'
+          federal_court_debt_certificate: 'Certidão negativa da justiça federal'
+          manager_id: 'RG e CPF ou CNH da pessoa responsável pela ONG, o nome da pessoa precisa constar no estatuto ou atas'
   activerecord:
     models:
       channel: 'Channel'
@@ -41,6 +53,10 @@ en:
         user_id: User
         project_id: Project
         charging_day: Charging day
+      authorization_documents:
+        attachment: Document
+      authorization_document:
+        expires_at: Expires at
       bank_account:
         bank: Bank
         bank_id: Bank
@@ -50,6 +66,7 @@ en:
         agency_digit: Agency digit
         account: Account
         account_digit: Account digit
+        authorization_documents: Document
       contribution:
         payer_name: Name
         payer_email: Email
@@ -109,6 +126,7 @@ en:
         original_doc13_url: 'Proof of residence of the person or institution'
         job_title: 'Role'
         admin: 'Admin'
+        authorization_documents: 'Document'
       project:
         channels: 'Channels'
         category: 'Category'
@@ -133,6 +151,9 @@ en:
             credit_card_key:
               connection_fails: "The payment gateway is offline"
               credit_card_invalid: "Invalid credit card"
+        attachment:
+          attributes:
+            without_attachment: "%{category} needs to be sent"
         project:
           attributes:
             name:
@@ -175,6 +196,11 @@ en:
               blank: 'The password cannot be blank'
             reset_password_token:
               invalid: 'expired. Access <a href="/password/new">reset my password</a> and resquest a new password reset token.'
+        authorization_document:
+          attributes:
+            attachment:
+              without_attachment: "%{category} needs to be sent"
+
   user:
     bank_account:
       create:

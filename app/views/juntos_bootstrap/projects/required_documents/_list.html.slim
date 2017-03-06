@@ -1,4 +1,4 @@
-#bank-account-associate
+#authorization-documents-list
   .w-row
     .w-row
       .w-col.w-col-12.u-text-center
@@ -6,3 +6,8 @@
     .w-row
       .w-col.w-col-12.u-text-center
         p = t('users.required_documents.list.subtitle')
+
+    .w-row
+      .w-col.w-col-12
+        .form
+          = render '/users/authorization_documents/form', user: user

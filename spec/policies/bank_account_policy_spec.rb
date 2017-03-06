@@ -45,6 +45,7 @@ RSpec.describe BankAccountPolicy do
           :owner_document,
           :account_digit,
           authorization_documents_attributes: [
+            :category,
             :expires_at,
             attachment_attributes: [ :url, :file_type ]
           ]

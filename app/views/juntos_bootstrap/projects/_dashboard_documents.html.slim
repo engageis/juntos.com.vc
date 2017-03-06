@@ -5,7 +5,7 @@
         .w-col.w-col-12
           nav.u-text-center.u-margintop-5
           .w-row
-            .w-col.w-col-12
+            .w-col.w-col-12.selected
               = link_to '#authorization-documents', id: 'authorization-documents', class: 'link' , data: { target: '#project_authorization_documents' } do
                 span
                   span.bold = t('projects.show.dashboard_nav.documents')
@@ -21,7 +21,7 @@
             .w-row
               .w-col.w-col-12
                 #project_authorization_documents.content.w-hidden
-                  = render "projects/required_documents/list"
+                  = render "projects/required_documents/list", user: bank_accounts_manager.user
             .w-row
               .w-col.w-col-12
                 #project_bank_info.content.w-hidden

@@ -1,4 +1,4 @@
-#bank-account-associate
+ #bank-account-associate
   .w-row
     .w-row
       .w-col.w-col-12.u-text-center
@@ -17,7 +17,6 @@
                                 method: :put, remote: true,
                                 html: { id: 'associate-project-bank-account', class: 'w-form association-form' } do |form|
                 = form.hidden_field :project_id, value: bank_accounts_manager.project_id
-
                 .w-row
                   .w-col.w-col-12
                     label.field-label.bold = t('users.bank_accounts.form.bank_account')
@@ -29,22 +28,14 @@
                       span.u-marginbottom-10.font-tiny.label-helper = t('users.bank_accounts.management.notification.no_accounts_registered')
                   .w-col.w-col-1.u-marginleft-5
                     a.btn.btn-small.btn-secondary#new-account
-                      i.fa.fa-plus
-
-
+                      i.fa.fa-plus.new-account
                 .w-row
                   .w-col.w-col-4
                     = form.button :submit, t('users.bank_accounts.form.associate'), id:'association-button',
                                   class:'btn btn-small', disabled: bank_accounts_manager.user_without_bank_accounts?
-                  .notification.w-col.w-col-4.u-marginleft-5
-                    .success.animated.w-hidden
-                      i.fa.fa-check
-                      span = t('users.bank_accounts.new.success')
-                    .fail.animated.w-hidden
-                      i.fa.fa-times
-                      span = t('users.bank_accounts.new.fail')
-
-
+                  .w-col.w-col-4.u-marginleft-5
+                    = render 'shared/form_notifications', success: t('users.bank_accounts.new.success'),
+                      fail: t('users.bank_accounts.new.success')
 
   .w-row.content.w-hidden
     .w-col.w-col-12
