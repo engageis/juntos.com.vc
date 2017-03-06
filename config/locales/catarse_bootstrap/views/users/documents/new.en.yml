@@ -1,0 +1,7 @@
+en:
+  users:
+    authorization_documents:
+      new:
+        success: "The documents are sent"
+      form:
+        submit: "Send"

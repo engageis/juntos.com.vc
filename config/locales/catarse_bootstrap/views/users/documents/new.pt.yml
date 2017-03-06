@@ -1,0 +1,7 @@
+pt:
+  users:
+    authorization_documents:
+      new:
+        success: "Documentos enviados"
+      form:
+        submit: "Enviar"

@@ -1,6 +1,10 @@
 App.addChild('DashboardDocuments', _.extend({
   el: '.user-authorization-documents',
 
+  events: {
+    'click .dashboard-menu .link': 'onSelectTab',
+  },
+
   activate: function () {
     this.subViewsManager = new SubViewsManager({
       parent: this.$el,
@@ -14,5 +18,10 @@ App.addChild('DashboardDocuments', _.extend({
 
   followRoute: function (subViewRoute) {
     this.subViewsManager.render(subViewRoute);
+  },
+
+  onSelectTab: function (e) {
+    $('.dashboard-menu .selected').removeClass('selected');
+    $(e.target).closest('div').toggleClass('selected');
   },
 }, Skull.Tabs));
