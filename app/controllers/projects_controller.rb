@@ -108,7 +108,7 @@ class ProjectsController < ApplicationController
     if @project.recurring?
       @plans = Plan.all
 
-      @bank_accounts_manager = BankAccountsManagerViewObject.new(
+      @project_documentation = ProjectDocumentationViewObject.new(
         banks: Bank.order(:code).to_collection,
         project: @project
       )

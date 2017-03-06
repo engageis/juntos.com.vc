@@ -167,7 +167,7 @@ nav.project-nav.w-hidden-main.w-hidden-medium
         = render 'dashboard_reward'
       - if @project.recurring?
         #project_bank_info.content.w-hidden
-          = render "dashboard_documents", bank_accounts_manager: @bank_accounts_manager
+          = render "dashboard_documents", project_documentation: @project_documentation
         #dashboard_project_plans.content.w-hidden
           = render 'projects/plans/dashboard_project_plans', plans: @plans
       - if current_user and current_user.admin?
