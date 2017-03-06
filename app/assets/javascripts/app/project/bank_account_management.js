@@ -1,12 +1,11 @@
-App.addChild('BankAccountAssociate', {
+App.addChild('BankAccountAssociate', _.extend({
   el: '#bank-account-associate',
 
   events: {
     'click #new-account': 'showNewBankAccountForm',
     'click #close-form':  'hideNewBankAccountForm',
-    'click #submit-form': 'createBankAccount',
-    'ajax:success':       'onPostSuccess',
-    'ajax:error':         'onPostError',
+    'ajax:success':       'onAjaxPostSuccess',
+    'ajax:error':         'onAjaxError',
   },
 
   activate: function () {
@@ -18,7 +17,7 @@ App.addChild('BankAccountAssociate', {
     this.$associationButton = this.$('#association-button');
   },
 
-  onPostSuccess: function (e, data) {
+  onAjaxPostSuccess: function (e, data) {
     if ($(e.target).is('#associate-project-bank-account')) {
       this.$associationNotification.find('.success')
         .removeClass('w-hidden');
@@ -30,31 +29,12 @@ App.addChild('BankAccountAssociate', {
     }
   },
 
-  onPostError: function (e, data) {
-    if ($(e.target).is('#associate-project-bank-account')) {
-      this.$associationNotification.find('.fail')
-        .removeClass('w-hidden');
-    } else {
-      this.showErrorCard(data.responseJSON.errors);
-      this.scroller.scrollTo(this.$errorCard);
-    }
-  },
-
   showNewBankAccountForm: function () {
     this.$bankAccountForm.closest('.content').removeClass('w-hidden');
   },
 
   hideNewBankAccountForm: function () {
     this.$bankAccountForm.closest('.content').addClass('w-hidden');
-  },
-
-  showErrorCard: function (message) {
-    this.$errorCard.removeClass('w-hidden');
-    this.appendErrorMessage(message);
-  },
-
-  hideErrorCard: function () {
-    this.$errorCard.addClass('w-hidden');
   },
 
   appendNewAccount: function (bankAccount) {
@@ -65,8 +45,4 @@ App.addChild('BankAccountAssociate', {
       })
     );
   },
-
-  appendErrorMessage: function (message) {
-    this.$errorCard.find('.message').empty().append(message);
-  },
-});
+}, new RemoteRequestsForm($('#bank-account-associate'))));
