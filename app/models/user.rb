@@ -21,6 +21,21 @@ class User < ActiveRecord::Base
     advice_board:     3
   }
 
+  LEGAL_ENTITY_AUTHORIZATION_DOCUMENTS = [
+    :bylaw_registry,
+    :last_general_meeting_minute,
+    :fiscal_council_report,
+    :directory_proof,
+    :last_mandate_balance,
+    :cnpj_card,
+    :certificates,
+    :last_year_activities_report,
+    :organization_current_plan,
+    :federal_tributes_certificate,
+    :federal_court_debt_certificate,
+    :manager_id
+  ]
+
   mount_uploader :uploaded_image, UserUploader
 
   validates :bio, length: { maximum: 140 }
@@ -53,11 +68,13 @@ class User < ActiveRecord::Base
   has_many   :category_followers
   has_many   :categories, through: :category_followers
   has_many   :recurring_contributions, class_name: 'Subscription'
+  has_many   :authorization_documents, as: :authable
   has_and_belongs_to_many :recommended_projects, join_table: :recommendations, class_name: 'Project'
   has_and_belongs_to_many :subscriptions, join_table: :channels_subscribers, class_name: 'Channel'
 
   accepts_nested_attributes_for :unsubscribes, allow_destroy: true rescue puts "No association found for name 'unsubscribes'. Has it been defined yet?"
   accepts_nested_attributes_for :bank_accounts, allow_destroy: true
+  accepts_nested_attributes_for :authorization_documents, allow_destroy: true
 
   scope :active,                        -> { where(deactivated_at: nil) }
   scope :staff,                         -> { where(staff_members_query) }
@@ -216,6 +233,7 @@ class User < ActiveRecord::Base
   end
 
   private
+
   def password_required?
     !persisted? || !password || !password_confirmation
   end
