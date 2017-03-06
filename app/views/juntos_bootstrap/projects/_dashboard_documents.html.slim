@@ -21,8 +21,8 @@
             .w-row
               .w-col.w-col-12
                 #project_authorization_documents.content.w-hidden
-                  = render "projects/required_documents/list", user: bank_accounts_manager.user
+                  = render "projects/required_documents/list", user: project_documentation.user
             .w-row
               .w-col.w-col-12
                 #project_bank_info.content.w-hidden
-                  = render "projects/bank_accounts/associate", bank_accounts_manager: bank_accounts_manager
+                  = render "projects/bank_accounts/associate", project_documentation: project_documentation

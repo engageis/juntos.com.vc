@@ -13,18 +13,18 @@
         .w-col.w-col-12
           .w-row
             .w-col.w-col-12
-              = simple_form_for :bank_account, url: user_associate_bank_account_with_project_path(bank_accounts_manager.user),
+              = simple_form_for :bank_account, url: user_associate_bank_account_with_project_path(project_documentation.user),
                                 method: :put, remote: true,
                                 html: { id: 'associate-project-bank-account', class: 'w-form association-form' } do |form|
-                = form.hidden_field :project_id, value: bank_accounts_manager.project_id
+                = form.hidden_field :project_id, value: project_documentation.project_id
                 .w-row
                   .w-col.w-col-12
                     label.field-label.bold = t('users.bank_accounts.form.bank_account')
                 .w-row
                   .w-col.w-col-10
-                    = select_tag :id, options_from_collection_for_select(bank_accounts_manager.user_bank_accounts, 'id', 'bank_name'),
+                    = select_tag :id, options_from_collection_for_select(project_documentation.user_bank_accounts, 'id', 'bank_name'),
                                       id: 'select-account-id', class: 'select required w-input text-field'
-                    - if bank_accounts_manager.user_without_bank_accounts?
+                    - if project_documentation.user_without_bank_accounts?
                       span.u-marginbottom-10.font-tiny.label-helper = t('users.bank_accounts.management.notification.no_accounts_registered')
                   .w-col.w-col-1.u-marginleft-5
                     a.btn.btn-small.btn-secondary#new-account
@@ -32,11 +32,11 @@
                 .w-row
                   .w-col.w-col-4
                     = form.button :submit, t('users.bank_accounts.form.associate'), id:'association-button',
-                                  class:'btn btn-small', disabled: bank_accounts_manager.user_without_bank_accounts?
+                                  class:'btn btn-small', disabled: project_documentation.user_without_bank_accounts?
                   .w-col.w-col-4.u-marginleft-5
                     = render 'shared/form_notifications', success: t('users.bank_accounts.new.success'),
                       fail: t('users.bank_accounts.new.success')
 
   .w-row.content.w-hidden
     .w-col.w-col-12
-      = render '/users/bank_accounts/form', bank_accounts_manager: bank_accounts_manager
+      = render '/users/bank_accounts/form', project_documentation: project_documentation

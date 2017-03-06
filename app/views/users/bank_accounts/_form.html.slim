@@ -2,7 +2,7 @@
   .w-col.w-col-12
     h3 = 'Adicionar conta'
 
-= simple_form_for bank_accounts_manager.bank_account, url: user_bank_accounts_path(bank_accounts_manager.user),
+= simple_form_for project_documentation.bank_account, url: user_bank_accounts_path(project_documentation.user),
                   remote: true,
                   html: { id: 'user-bank-account-form', class: 'w-form bank-account' } do |form|
   .section
@@ -34,7 +34,7 @@
                 = form.input :bank,
                   label: t('activerecord.attributes.bank_account.bank') do
                   = select_tag 'bank_account[bank_id]',
-                    options_for_select(bank_accounts_manager.banks),
+                    options_for_select(project_documentation.banks),
                     class: 'select required w-select text-field',
                     prompt: t('simple_form.prompts.project.select'),
                     required: true,
