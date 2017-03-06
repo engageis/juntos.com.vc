@@ -32,29 +32,4 @@ RSpec.describe BankAccount, type: :model do
       end
     end
   end
-
-  describe ".setup_with_authorization_documents" do
-    subject { BankAccount.setup_with_authorization_documents }
-
-    it "returns an BankAccount instance" do
-      expect(subject).to be_an_instance_of(BankAccount)
-    end
-
-    context "authorization_documents" do
-      let(:first_auth_document) { subject.authorization_documents.first }
-      let(:last_auth_document) { subject.authorization_documents.last }
-
-      it "returns an BankAccount instance with two authorization documents" do
-        expect(subject.authorization_documents.length).to eq 2
-      end
-
-      it "returns a :bank_authorization as the first authorization_document" do
-        expect(first_auth_document.category).to match 'bank_authorization'
-      end
-
-      it "returns a :organization_authorization as the last authorization_document" do
-        expect(last_auth_document.category).to match 'organization_authorization'
-      end
-    end
-  end
 end
