@@ -62,23 +62,22 @@ class UsersController < ApplicationController
 
   def update
     authorize resource
-    update! do |success,failure|
-      success.html do
-        flash[:notice] = t('users.current_user_fields.updated')
-        return redirect_to user_path(@user, anchor: 'settings')
-      end
 
-      failure.html do
-        flash[:error] = @user.errors.full_messages.to_sentence
-        return redirect_to user_path(@user, anchor: 'settings')
-      end
+    @user_update = User::Update.new(user: resource, params: permitted_params[:user])
 
-      success.js do
-        head :no_content
-      end
-
-      failure.js do
-        render json: { errors: @user.errors.full_messages.to_sentence }, status: :bad_request
+    respond_to do |format|
+      if @user_update.process
+        format.json { head :no_content }
+        format.html do
+          flash[:notice] = t('users.current_user_fields.updated')
+          redirect_to user_path(@user_update.resource, anchor: 'settings')
+        end
+      else
+        format.json { render json: { errors: @user_update.resource.errors.full_messages.to_sentence }, status: :bad_request }
+        format.html do
+          flash[:error] = @user_update.resource.errors.full_messages.to_sentence
+          redirect_to user_path(@user_update.resource, anchor: 'settings')
+        end
       end
     end
   end
