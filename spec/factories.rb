@@ -463,6 +463,12 @@ FactoryGirl.define do
     end
   end
 
+  factory :user_authorization_document do
+    expires_at Date.current
+    category :uncategorized
+    association :attachment
+  end
+
   factory :authorization_document do
     expires_at Date.current
     category :uncategorized
