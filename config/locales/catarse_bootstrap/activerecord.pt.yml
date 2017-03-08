@@ -216,6 +216,10 @@ pt:
         attachment: 'Relatório anterior'
     errors:
       models:
+        user/authorization_documents_validator:
+          attributes:
+            authorization_documents:
+              without_attachment: "%{category} precisa ser enviado"
         contribution: "Erro ao salvar apoio"
         subscription:
           attributes:
