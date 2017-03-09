@@ -4,3 +4,8 @@ pt:
       list:
         title: 'Documentação necessária'
         subtitle: 'Antes do seu projeto ficar online, precisamos de alguns documentos sobre sua organização:'
+        update: '+ Atualizar documentação'
+        documents: 'Documento'
+        status: 'Status'
+        sent: 'Enviado'
+        not_sent: 'Não enviado'

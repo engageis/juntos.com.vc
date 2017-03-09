@@ -1,3 +1,7 @@
+.w-row
+  .w-col.w-col-12
+    h3 = t('users.authorization_documents.new.title')
+
 = simple_form_for user, remote: true,
                   html: { id: 'user-authorization-documents-form', class: 'w-form authorization_documents association-form' } do |form|
   .section
@@ -33,6 +37,8 @@
               .w-row
                 .w-col.w-col-4
                   = form.button :submit, t('users.authorization_documents.form.submit'), class:'btn btn-small'
+                .w-col.w-col-4.u-marginleft-5
+                  a.btn.btn-small.btn-secondary#close-form = t('users.bank_accounts.form.cancel')
                 .w-col.w-col-4
                   = render 'shared/form_notifications', success: t('users.authorization_documents.new.success'),
                     fail: t('users.bank_accounts.new.success')

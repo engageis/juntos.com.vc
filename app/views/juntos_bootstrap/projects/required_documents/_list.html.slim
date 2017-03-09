@@ -1,13 +1,28 @@
-#authorization-documents-list
+.authorization-documents-list
   .w-row
     .w-row
-      .w-col.w-col-12.u-text-center
+      .w-col.w-col-11.u-text-center
         h3 = t('users.required_documents.list.title')
     .w-row
-      .w-col.w-col-12.u-text-center
+      .w-col.w-col-11.u-text-center
         p = t('users.required_documents.list.subtitle')
-
+  .w-row.u-marginbottom-20
     .w-row
-      .w-col.w-col-12
-        .form
-          = render '/users/authorization_documents/form', user: user
+      table.standard-table.documents
+        thead
+          th= t('users.required_documents.list.documents')
+          th= t('users.required_documents.list.status')
+          - project_documentation.user_authorization_documents.each do |document|
+            tr
+              td
+                span.category = document.category_i18n
+              td = document.visualization
+  .w-row.u-marginbottom-20
+    .w-col.w-col-12
+      a.link.font-tiny#open-form data-target='#user-authorization-documents-form'
+        = t('users.required_documents.list.update')
+
+  .w-row.w-hidden.content
+    .w-col.w-col-12
+      .form
+        = render '/users/authorization_documents/form', user: project_documentation.user
