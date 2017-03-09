@@ -76,6 +76,7 @@ gem 'mail_form'
 gem "auto_html",    '= 1.6.4'
 gem "RedCloth"
 gem 'kaminari'
+gem 'virtus'
 
 # Uploads
 gem 'carrierwave', '~> 0.10.0'

@@ -145,6 +145,10 @@ en:
         plans: 'Plans'
     errors:
       models:
+        user/authorization_documents_validator:
+          attributes:
+            authorization_documents:
+              without_attachment: "%{category} needs to be sent"
         contribution: 'An error occurred while trying to save the contribution'
         subscription:
           attributes:
