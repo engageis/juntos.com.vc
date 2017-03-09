@@ -68,7 +68,7 @@ class User < ActiveRecord::Base
   has_many   :category_followers
   has_many   :categories, through: :category_followers
   has_many   :recurring_contributions, class_name: 'Subscription'
-  has_many   :authorization_documents, as: :authable
+  has_many   :authorization_documents, as: :authable, class_name: 'UserAuthorizationDocument'
   has_and_belongs_to_many :recommended_projects, join_table: :recommendations, class_name: 'Project'
   has_and_belongs_to_many :subscriptions, join_table: :channels_subscribers, class_name: 'Channel'
 

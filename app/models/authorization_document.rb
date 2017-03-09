@@ -26,6 +26,8 @@ class AuthorizationDocument < ActiveRecord::Base
                   :manager_id
                 ]
 
+  protected
+
   def attachment_present
     assign_document_error(category_i18n) unless attachment.url.present?
   end
