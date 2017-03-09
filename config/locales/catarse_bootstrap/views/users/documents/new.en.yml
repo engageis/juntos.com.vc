@@ -2,6 +2,7 @@ en:
   users:
     authorization_documents:
       new:
+        title: "Attach documents"
         success: "The documents are sent"
       form:
-        submit: "Send"
+        submit: "Update"

@@ -1,10 +1,10 @@
  #bank-account-associate
   .w-row
     .w-row
-      .w-col.w-col-12.u-text-center
+      .w-col.w-col-11.u-text-center
         h3 = t('users.bank_accounts.new.title')
     .w-row
-      .w-col.w-col-12.u-text-center
+      .w-col.w-col-11.u-text-center
         p = t('users.bank_accounts.new.subtitle')
 
   .w-row
@@ -27,7 +27,7 @@
                     - if project_documentation.user_without_bank_accounts?
                       span.u-marginbottom-10.font-tiny.label-helper = t('users.bank_accounts.management.notification.no_accounts_registered')
                   .w-col.w-col-1.u-marginleft-5
-                    a.btn.btn-small.btn-secondary#new-account
+                    a.btn.btn-small.btn-secondary#new-account data-target='#user-bank-account-form'
                       i.fa.fa-plus.new-account
                 .w-row
                   .w-col.w-col-4

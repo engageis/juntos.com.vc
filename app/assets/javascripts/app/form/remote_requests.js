@@ -27,4 +27,17 @@ var RemoteRequestsForm = function (el) {
   this.appendErrorMessage = function (message) {
     this.$errorCard.find('.message').empty().append(message);
   };
+
+  this.showForm = function (e) {
+    var targetForm = $(e.target).data('target');
+    var $form = $(targetForm);
+
+    $form.closest('.content').removeClass('w-hidden');
+  };
+
+  this.hideForm = function (e) {
+    var $form = $(e.target).closest('form');
+
+    $form.closest('.content').addClass('w-hidden');
+  };
 };

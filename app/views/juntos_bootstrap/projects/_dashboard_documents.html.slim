@@ -11,7 +11,7 @@
                   span.bold = t('projects.show.dashboard_nav.documents')
             .w-row
               .w-col.w-col-12
-                = link_to '#bank-accounts', id: 'bank-accounts', class: 'link' , data: { target: '#project_bank_info' } do
+                = link_to '#bank-accounts', id: 'bank-accounts', class: 'link' , data: { target: '#project-bank-info' } do
                   span
                     span.bold = t('projects.show.dashboard_nav.bank_info')
     .dashboard-content.w-col.w-col-9
@@ -21,8 +21,8 @@
             .w-row
               .w-col.w-col-12
                 #project_authorization_documents.content.w-hidden
-                  = render "projects/required_documents/list", user: project_documentation.user
+                  = render "projects/required_documents/list", project_documentation: project_documentation
             .w-row
               .w-col.w-col-12
-                #project_bank_info.content.w-hidden
+                #project-bank-info.content.w-hidden
                   = render "projects/bank_accounts/associate", project_documentation: project_documentation

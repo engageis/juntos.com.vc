@@ -1,16 +1,12 @@
 .dashboard {
   position: relative;
 
-  &.user-authorization-documents {
-    background-color: $border-gray;
-    border: .3px solid $border-gray;
-    border-radius: 4px;
-
+  .dashboard-menu {
     .link {
       border-bottom: .3px solid $border-strong;
       color: $trout;
-      opacity: .6;
       display: block;
+      opacity: .6;
       padding: rem-calc(10);
     }
 
@@ -20,10 +16,16 @@
       opacity: 1;
       text-decoration: none;
     }
+  }
+
+  &.user-authorization-documents {
+    background-color: $border-gray;
+    border: .9px solid $border-gray;
+    border-radius: 4px;
 
     .dashboard-content {
       background-color: $white;
-      border-left: .3px solid $border-gray;
+      border-left: .9px solid $border-gray;
     }
   }
 }
