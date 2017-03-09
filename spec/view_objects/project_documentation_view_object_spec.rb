@@ -33,7 +33,7 @@ RSpec.describe ProjectDocumentationViewObject do
     end
   end
 
-  describe "#user_bank_accounts" do
+  describe ".user_bank_accounts" do
     let(:project) { build(:project, user: user) }
     let(:project_documentation) { described_class.new(project: project, banks: []) }
 
@@ -58,7 +58,20 @@ RSpec.describe ProjectDocumentationViewObject do
     end
   end
 
-  describe "#user_without_bank_accounts?" do
+  describe ".user_authorization_documents" do
+    let(:user) { create(:user) }
+    let(:project) { build(:project, user: user) }
+    let(:project_documentation) { described_class.new(project: project, banks: []) }
+
+    subject { project_documentation.user_authorization_documents }
+
+    it "returns a list with all the user's authorization_documents" do
+      categories = subject.map { |doc| doc.category.to_sym }
+      expect(categories).to match_array User::LEGAL_ENTITY_AUTHORIZATION_DOCUMENTS
+    end
+  end
+
+  describe ".user_without_bank_accounts?" do
     let(:project) { build(:project, user: user) }
     let(:project_documentation) { described_class.new(project: project, banks: []) }
 
@@ -81,7 +94,7 @@ RSpec.describe ProjectDocumentationViewObject do
     end
   end
 
-  describe "#project_id" do
+  describe ".project_id" do
     let(:project) { double('Project', id: 10, user: build(:user)) }
     let(:project_documentation) { described_class.new(project: project, banks: []) }
 

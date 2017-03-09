@@ -20,6 +20,10 @@ class ProjectDocumentationViewObject
     user.bank_accounts.decorate
   end
 
+  def user_authorization_documents
+    decorate_documents(user.authorization_documents)
+  end
+
   def user_without_bank_accounts?
     user.bank_accounts.empty?
   end
@@ -39,5 +43,9 @@ class ProjectDocumentationViewObject
     end
 
     resource
+  end
+
+  def decorate_documents(documents)
+    AuthorizationDocumentDecorator.decorate_collection(documents)
   end
 end
