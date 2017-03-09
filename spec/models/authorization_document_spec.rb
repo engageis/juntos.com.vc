@@ -57,4 +57,22 @@ RSpec.describe AuthorizationDocument, type: :model do
       end
     end
   end
+
+  describe ".uploaded?" do
+    let(:authorization_document) { build(:authorization_document, attachment: attachment) }
+
+    subject { authorization_document.uploaded? }
+
+    context "when the attachment is present" do
+      let(:attachment) { build(:attachment, url: 'http://valid.com') }
+
+      it { is_expected.to eq true }
+    end
+
+    context "when the attachment is empty" do
+      let(:attachment) { build(:attachment, url: '') }
+
+      it { is_expected.to eq false }
+    end
+  end
 end
