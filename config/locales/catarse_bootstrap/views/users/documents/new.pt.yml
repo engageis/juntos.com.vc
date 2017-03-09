@@ -2,6 +2,7 @@ pt:
   users:
     authorization_documents:
       new:
+        title: "Anexar documentos"
         success: "Documentos enviados"
       form:
-        submit: "Enviar"
+        submit: "Atualizar"

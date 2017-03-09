@@ -283,13 +283,12 @@ p {
   background-color: white;
 }
 .link {
-  -webkit-transition: all 500ms ease;
-  -o-transition: all 500ms ease;
-  transition: all 500ms ease;
-  color: #f69219;
-  font-size: 16px;
+  color: $tree-poppy;
+  cursor: pointer;
+  font-size: rem-calc($base-font-size);
   font-weight: 600;
   text-decoration: none;
+  transition: all 500ms ease;
 }
 .link:hover {
   text-decoration: underline;
@@ -426,6 +425,22 @@ p {
     display: block;
     font-size: 12px;
     font-weight: normal;
+  }
+}
+
+.authorization-documents-list {
+  .documents {
+    .category {
+      display: block;
+      max-width: rem-calc(380);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .not-sent {
+      color: $tree-poppy;
+    }
   }
 }
 

@@ -2,8 +2,8 @@ App.addChild('BankAccountAssociate', _.extend({
   el: '#bank-account-associate',
 
   events: {
-    'click #new-account': 'showNewBankAccountForm',
-    'click #close-form':  'hideNewBankAccountForm',
+    'click #new-account': 'showForm',
+    'click #close-form':  'hideForm',
     'ajax:success':       'onAjaxPostSuccess',
     'ajax:error':         'onAjaxError',
   },
@@ -27,14 +27,6 @@ App.addChild('BankAccountAssociate', _.extend({
       this.$associationButton.prop('disabled', false);
       this.hideNewBankAccountForm();
     }
-  },
-
-  showNewBankAccountForm: function () {
-    this.$bankAccountForm.closest('.content').removeClass('w-hidden');
-  },
-
-  hideNewBankAccountForm: function () {
-    this.$bankAccountForm.closest('.content').addClass('w-hidden');
   },
 
   appendNewAccount: function (bankAccount) {
