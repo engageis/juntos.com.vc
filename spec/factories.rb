@@ -477,6 +477,10 @@ FactoryGirl.define do
 
   factory :attachment do
     url 'http://foo.link.com'
+
+    trait :with_empty_url do
+      url ''
+    end
   end
 
   factory :transaction do |f|
