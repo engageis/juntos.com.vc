@@ -18,11 +18,21 @@
         .w-col.w-col-6.w-col-tiny-12.donation.section
           h3 = t('.donation')
           p = t('.plan_selection')
-          .w-row
+          .w-row.u-marginbottom-20
             .w-col.w-col-12.plans-container
               = form.collection_radio_buttons :plan_id, @project.plans, :id, :formatted_amount, checked: @project.standard_plan_id do |input|
                 .w-col.w-col-4.w-col-small-3.w-col-tiny-4.u-marginbottom-10
                   = render 'projects/plans/select_plans', input: input, type: :radio_button
+          .w-row
+            .w-row
+              .w-col.w-col-12
+                h3 = t('.personal_information')
+            .w-row
+              .w-col.w-col-12
+                h4 = t('.form.cpf')
+            .w-row
+              .w-col.w-col-12.w-col-tiny-12
+                = form.input_field :donator_cpf, value: current_user.cpf, class: 'u-marginbottom-5 positive w-input'
           .w-row
             .w-col.w-col-12.user-payment-preferences
               h3 = t('.user_preferences')
@@ -49,7 +59,7 @@
                       = rb.radio_button
                     .w-col.w-col-11.w-col-tiny-11.left
                       = rb.text
-          .w-row
+          .w-row.u-marginbottom-40
             .w-col.w-col-12.w-col-tiny-12.payment-method
               h4 = t('.payment_methods')
               = form.collection_radio_buttons :payment_method,
@@ -62,7 +72,7 @@
                     .w-col.w-col-11.w-col-tiny-11.left
                       = rb.text
           .w-row
-            #credit-card-fields.u-margintop-20
+            #credit-card-fields
               = render partial: 'projects/contributions/recurring_payment', locals: { form: form }
           .w-row
             = form.input :project_id, value: @subscription.project, as: :hidden
