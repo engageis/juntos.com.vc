@@ -422,6 +422,7 @@ FactoryGirl.define do
     f.payment_method :credit_card
     f.status :paid
     f.charging_day 5
+    f.donator_cpf '777.777.777-77'
     f.association :project, factory: :project
     f.association :plan, factory: :plan
     f.association :user, factory: :user
