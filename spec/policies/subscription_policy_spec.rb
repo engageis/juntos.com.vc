@@ -29,7 +29,7 @@ RSpec.describe SubscriptionPolicy do
       let(:resource_name) { :subscription }
 
       let(:permitted_attributes) do
-        [:plan_id, :project_id, :user_id, :payment_method, :charging_day, :charges]
+        [:plan_id, :project_id, :user_id, :payment_method, :charging_day, :charges, :donator_cpf]
       end
     end
   end

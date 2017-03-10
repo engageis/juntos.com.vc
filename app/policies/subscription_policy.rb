@@ -1,6 +1,14 @@
 class SubscriptionPolicy < ApplicationPolicy
   CARD_PERMITTED_PARAMS = [:card_hash]
-  SUBSCRIPTION_PERMITTED_PARAMS = [:plan_id, :project_id, :user_id, :payment_method, :charging_day, :charges]
+  SUBSCRIPTION_PERMITTED_PARAMS = [
+    :plan_id,
+    :project_id,
+    :user_id,
+    :payment_method,
+    :charging_day,
+    :charges,
+    :donator_cpf
+  ]
 
   def create?
     done_by_owner_or_admin?
