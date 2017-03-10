@@ -80,6 +80,7 @@ App.addChild('SubscriptionForm', _.extend({
   },
 
   maskFields: function () {
+    this.$('#subscription_donator_cpf').mask('999.999.999-99');
     this.$('.payment_card_date').mask('99');
   },
 
