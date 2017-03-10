@@ -1,6 +1,10 @@
 class Subscription < ActiveRecord::Base
+  attr_accessor :donator_cpf
+
   validates_presence_of :status, :payment_method, :charging_day,
                         :plan_id, :user_id, :project_id
+
+  validates_presence_of :donator_cpf, on: :create
 
   validates_inclusion_of :payment_method, in: 'permitted_payment_methods',
                                           unless: 'plan.nil?'
@@ -19,7 +23,7 @@ class Subscription < ActiveRecord::Base
   }
 
   has_many   :transactions
-  belongs_to :user
+  belongs_to :user, autosave: true
   belongs_to :project
   belongs_to :plan
 
