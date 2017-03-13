@@ -51,6 +51,7 @@ pt:
         user_id: Usuário
         project_id: Projeto
         charging_day: Dia de cobrança
+        donator_cpf: CPF
       authorization_documents:
         attachment: Documento
       authorization_document:

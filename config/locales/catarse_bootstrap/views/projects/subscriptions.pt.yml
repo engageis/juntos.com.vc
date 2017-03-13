@@ -5,6 +5,7 @@ pt:
         page_title: Apoie o %{name}
         donation: 'Sua doação'
         plan_selection: 'Selecione um plano:'
+        personal_information: 'Informações pessoais:'
         submit: 'Criar assinatura'
         payment_methods: 'Formas de pagamento:'
         user_preferences: 'Suas preferências:'
@@ -17,6 +18,7 @@ pt:
           card_expiration_month: 'Mês de expiração:'
           card_expiration_year: 'Ano de expiração:'
           card_expiration_cvv: 'Código de segurança:'
+          cpf: 'CPF'
           charging_day: 'Qual o melhor dia para realizar sua primeira contribuição?'
           charging_day_observation: '* Suas contribuições serão realizadas a cada 30 dias (1 mês).'
           expires_at: 'Por quantos meses você gostaria de doar?'

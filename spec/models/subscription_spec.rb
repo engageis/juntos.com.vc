@@ -25,6 +25,7 @@ RSpec.describe Subscription, type: :model do
     it { is_expected.to validate_presence_of(:plan_id) }
     it { is_expected.to validate_presence_of(:user_id) }
     it { is_expected.to validate_presence_of(:project_id) }
+    it { is_expected.to validate_presence_of(:donator_cpf).on(:create) }
 
     it { is_expected.not_to allow_value(0).for(:charging_day) }
     it { is_expected.not_to allow_value(32).for(:charging_day) }

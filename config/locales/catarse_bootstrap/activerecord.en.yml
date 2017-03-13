@@ -53,6 +53,7 @@ en:
         user_id: User
         project_id: Project
         charging_day: Charging day
+        donator_cpf: CPF
       authorization_documents:
         attachment: Document
       authorization_document:

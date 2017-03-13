@@ -54,6 +54,7 @@ class RecurringContribution::Subscriptions::Processor
 
   def assign_attributes(with_save, attributes)
     subscription.assign_attributes(attributes)
+    subscription.user.cpf = subscription.donator_cpf
 
     subscription.save if with_save && !has_errors?
   end
