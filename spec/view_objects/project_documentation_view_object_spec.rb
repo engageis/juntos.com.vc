@@ -94,14 +94,38 @@ RSpec.describe ProjectDocumentationViewObject do
     end
   end
 
+  describe ".project" do
+    let(:user) { build(:user) }
+    let(:project) { build(:project, user: user) }
+    let(:project_documentation) { described_class.new(project: project, banks: []) }
+
+    subject { project_documentation.project }
+
+    it { is_expected.to be_decorated }
+  end
+
   describe ".project_id" do
     let(:project) { double('Project', id: 10, user: build(:user)) }
     let(:project_documentation) { described_class.new(project: project, banks: []) }
+
+    before { allow(project).to receive(:decorate).and_return(project) }
 
     subject { project_documentation.project_id }
 
     it "returns the project id" do
       expect(subject).to eq 10
+    end
+  end
+
+  describe ".associated_bank_account" do
+    let(:bank_account) { build(:bank_account) }
+    let(:project) { create(:project, bank_account: bank_account) }
+    let(:project_documentation) { described_class.new(project: project, banks: []) }
+
+    subject { project_documentation.associated_bank_account }
+
+    it "returns the project's bank account" do
+      expect(subject).to eq bank_account
     end
   end
 end
