@@ -64,11 +64,7 @@ class ProjectsController < ApplicationController
   def send_to_analysis
     authorize resource
 
-    if resource.recurring? && !resource.recipient
-      flash[:alert] = t('projects.recurring.send_to_analysis_error')
-      redirect_to project_by_slug_path(@project.reload.permalink,
-                                       anchor: 'basics')
-    elsif resource.send_to_analysis
+    if resource.send_to_analysis
       resource.update_attribute(:referal_link, referal_link) if referal_link.present?
 
       flash[:notice] = t('projects.send_to_analysis')
