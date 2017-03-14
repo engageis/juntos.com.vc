@@ -18,6 +18,7 @@ pt:
           manager_id: 'RG e CPF ou CNH da pessoa responsável pela ONG, o nome da pessoa precisa constar no estatuto ou atas'
   activerecord:
     models:
+      bank: Banco
       channel: Canal
       project: Projeto
       plan: Plano

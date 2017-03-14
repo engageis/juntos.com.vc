@@ -1,5 +1,5 @@
 App.addChild('BankAccountAssociate', _.extend({
-  el: '#bank-account-associate',
+  el: '.bank-account-associate',
 
   events: {
     'click #new-account': 'showForm',
@@ -37,4 +37,4 @@ App.addChild('BankAccountAssociate', _.extend({
       })
     );
   },
-}, new RemoteRequestsForm($('#bank-account-associate'))));
+}, new RemoteRequestsForm($('.bank-account-associate'))));
