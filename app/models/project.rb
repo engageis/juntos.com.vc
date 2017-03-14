@@ -42,6 +42,7 @@ class Project < ActiveRecord::Base
   has_many :project_partners
   has_many :subgoals, -> { order 'value DESC' }
   has_many :subscriptions
+  has_many :subscription_reports, dependent: :destroy
 
   accepts_nested_attributes_for :project_images,
     limit: -> { CatarseSettings[:project_images_limit].to_i },

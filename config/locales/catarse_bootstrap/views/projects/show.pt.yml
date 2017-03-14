@@ -100,6 +100,7 @@ pt:
     send_to_analysis: 'Obrigado pelo envio do projeto. Em breve a nossa equipe entrará em contato por e-mail.'
     recurring:
       send_to_analysis_error: 'Por favor, insira os dados bancários.'
+      report_waiting_to_be_ready: 'O relatório está sendo gerado. Por favor, recarregue a página em poucos minutos para baixar o relatório.'
     twitter:
       take_a_look: Confira o projeto %{name}
     video_embed:
@@ -122,6 +123,8 @@ pt:
     dashboard_reports:
       all_contributions_without_reward: Baixar relatório de todos os apoiadores
         que não selecionaram uma recompensa
+      link_generate_recurrent_report: Gerar relatório de contribuições recorrentes
+      link_recurrent_report: Baixar relatório de contribuições recorrentes gerado em %{generated_at}
       link_reports_confirmed: Baixar relatório de todos os apoiadores confirmados
       link_reports_waiting_confirmation: Baixar relatório de todos os apoiadores
         com boleto impresso

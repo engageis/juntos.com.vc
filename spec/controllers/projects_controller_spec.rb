@@ -300,7 +300,42 @@ RSpec.describe ProjectsController, type: :controller do
       it { expect(subject["available_permalink"]).to be_truthy }
     end
   end
-  
+
+  describe "GET generate_subscriptions_report" do
+    let(:channel) { create(:channel, :recurring) }
+    let(:user)    { create(:user) }
+    let(:project) { create(:project, channels: [channel], user: user) }
+
+    context "when the user is permitted to download the projects report" do
+      let(:subscriptions) { create_list(:subscription, 2, project_id: project.id) }
+      let(:file_path)     { "file_path" }
+
+      before do
+        request.env["HTTP_REFERER"] = "back"
+        allow(controller).to receive(:current_user).and_return(user)
+        allow(Reports::SubscriptionWorker).to receive(:perform_async)
+
+        get :generate_subscriptions_report, project_id: project.id, locale: :pt
+      end
+
+      it { expect(Reports::SubscriptionWorker).to have_received(:perform_async) }
+      it { is_expected.to redirect_to("back") }
+      it { expect(flash[:notice]).to eq("O relatório está sendo gerado. Por favor, recarregue a página em poucos minutos para baixar o relatório.") }
+    end
+
+    context "when the user is unpermitted to download the projects report" do
+      let(:current_user) { create(:user, admin: false) }
+
+      before do
+        allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(current_user)
+
+        get :generate_subscriptions_report, project_id: project.id, locale: :pt
+      end
+
+      it { expect(response.status).to eq(401) }
+    end
+  end
+
   describe "online_days" do
     context "when has a value greater than 60" do
       let(:online_days_error_message) {

@@ -99,6 +99,7 @@ en:
     send_to_analysis: 'Thank you to send this project. Our team will contact you soon.'
     recurring:
       send_to_analysis_error: 'Pease, insert yout bank account info.'
+      report_waiting_to_be_ready: 'The report is being generated. Please, reload the page in few minutes to download it.'
     twitter:
       take_a_look: 'Take a look at %{name}'
     video_embed:
@@ -119,6 +120,8 @@ en:
         warning: 'Every notice goes directly to your donors email. So, review your text before you send it'
     dashboard_reports:
       all_contributions_without_reward: 'Download report from all donors that did not select a reward'
+      link_generate_recurrent_report: 'Generate the recurring contributions report'
+      link_recurrent_report: Download recurring contributions report generated on %{generated_at}
       link_reports_confirmed: 'Download confirmed donors report'
       link_reports_waiting_confirmation: 'Download reports from billet payment'
       link_reward: 'Download report from donors that have chosen the %{value} reward'

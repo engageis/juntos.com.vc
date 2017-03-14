@@ -312,6 +312,27 @@ pt:
     address_state: Estado
     zip_code: CEP
     anonymous: Anônimo
+  subscription_report_to_project_owner:
+    subscription:
+      charges: Período escolhido
+      confirmed_at: Data da confirmação do pagamento
+      payment_method: Meio de pagamento
+    reward:
+      description: Descrição da recompensa
+    user:
+      name: Nome do apoiador
+      email: Email perfil juntos.com.vc
+      phone_number: Telefone
+      cpf: CPF/CNPJ
+      address_street: Rua
+      address_number: Número
+      address_complement: Complemento
+      address_neighbourhood: Bairro
+      address_city: Cidade
+      address_state: Estado
+      address_zip_code: CEP
+    plan:
+      formatted_amount: Valor escolhido
   user:
     bank_account:
       create:

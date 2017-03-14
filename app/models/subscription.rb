@@ -1,5 +1,17 @@
 class Subscription < ActiveRecord::Base
   attr_accessor :donator_cpf
+  delegate :name,
+           :email,
+           :phone_number,
+           :cpf,
+           :address_street,
+           :address_number,
+           :address_complement,
+           :address_neighbourhood,
+           :address_city,
+           :address_state,
+           :address_zip_code, to: :user, prefix: true
+  delegate :formatted_amount, to: :plan, prefix: true
 
   validates_presence_of :status, :payment_method, :charging_day,
                         :plan_id, :user_id, :project_id
@@ -29,6 +41,8 @@ class Subscription < ActiveRecord::Base
 
   scope :charging_day_reached,  -> { waiting_for_charging_day.where(charging_day: DateTime.current.day) }
   scope :expired,               -> { paid.where("expires_at <= ?", Date.current) }
+  scope :available,             -> { where.not(status: 'waiting_for_charging_day') }
+  scope :by_project,            -> (project_id) { where(project_id: project_id) }
 
   def self.accepted_charge_options
     {}.tap do |h|

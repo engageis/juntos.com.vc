@@ -68,6 +68,9 @@ Rails.application.routes.draw do
     collection do
       get 'video'
     end
+    collection do
+      get 'generate_subscriptions_report'
+    end
     member do
       get :reminder, to: 'projects/reminders#create'
       delete :reminder, to: 'projects/reminders#destroy'

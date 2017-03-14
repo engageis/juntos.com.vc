@@ -1,6 +1,6 @@
 # coding: utf-8
 class ProjectsController < ApplicationController
-  after_filter :verify_authorized, except: %i[index video video_embed embed embed_panel about_mobile supported_by_channel permalink_valid?]
+  after_filter :verify_authorized, except: %i[index video video_embed embed embed_panel about_mobile supported_by_channel permalink_valid? generate_subscriptions_report]
   inherit_resources
   has_scope :pg_search, :by_category_id, :near_of
   has_scope :recent, :expiring, :failed, :successful, :in_funding, :recommended, :not_expired, type: :boolean
@@ -108,6 +108,8 @@ class ProjectsController < ApplicationController
         banks: Bank.order(:code).to_collection,
         project: @project
       )
+
+      @last_subscription_report = @project.subscription_reports.try(:last)
     end
   end
 
@@ -144,6 +146,17 @@ class ProjectsController < ApplicationController
     permalink_available = @projects.empty? || @projects.pluck(:id).include?(params[:project_id].to_i)
 
     render json: { available_permalink: permalink_available }
+  end
+
+  def generate_subscriptions_report
+    if policy(Project.find(params[:project_id])).update?
+      Reports::SubscriptionWorker.perform_async(params[:project_id])
+
+      flash[:notice] = flash[:notice] = t('projects.recurring.report_waiting_to_be_ready')
+      redirect_to :back
+    else
+      head 401
+    end
   end
 
   protected
