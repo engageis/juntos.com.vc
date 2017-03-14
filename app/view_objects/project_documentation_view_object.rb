@@ -13,7 +13,11 @@ class ProjectDocumentationViewObject
     )
 
     @banks = banks
-    @project = project
+    @project = project.decorate
+  end
+
+  def associated_bank_account
+    project.bank_account
   end
 
   def user_bank_accounts
