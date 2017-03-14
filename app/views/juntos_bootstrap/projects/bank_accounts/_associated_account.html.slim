@@ -1,0 +1,38 @@
+.associated-account.card.secondary
+  .w-row
+    .w-col.w-col-12.u-marginleft-5
+      h3.font-medium.fontweight-semibold
+        = t('users.bank_accounts.management.associated_account.title')
+  .w-row
+    .w-col.w-col-12
+      ul
+        .w-row
+          li.w-col.w-col-12
+            span.fontweight-semibold = "#{Bank.model_name.human}:"
+            span.u-marginleft-5 = bank_account.bank_name
+        .w-row
+          li.w-col.w-col-12
+            span.fontweight-semibold = "#{BankAccount.human_attribute_name(:agency)}:"
+            span.u-marginleft-5 = bank_account.agency
+        .w-row
+          li.w-col.w-col-12
+            span.fontweight-semibold = "#{BankAccount.human_attribute_name(:account)}:"
+            span.u-marginleft-5 = bank_account.account
+        .w-row
+          li.w-col.w-col-12
+            span.fontweight-semibold = "#{BankAccount.human_attribute_name(:owner_name)}:"
+            span.u-marginleft-5 = bank_account.owner_name
+  .w-row.u-marginleft-5
+    .w-col.w-col-12
+      .w-row
+        .w-col.w-col-12
+          p.fontweight-semibold.font-default.u-marginleft-5
+            = t('users.bank_accounts.management.associated_account.documents')
+      .w-row
+        .w-col.w-col-12
+          ul
+            .w-row
+              - bank_account.authorization_documents.each do |document|
+                li.w-col.w-col-12
+                  a.link.default href="#{document.attachment.url}" target="_blank"
+                    = document.category_i18n

@@ -428,6 +428,24 @@ p {
   }
 }
 
+.bank-account-associate {
+  .associated-account {
+    ul {
+      list-style: none;
+      padding: rem-calc(5);
+    }
+
+    li {
+      float: left;
+      margin-bottom: rem-calc(5);
+    }
+
+    span {
+      font-size: $base-font-size;
+    }
+  }
+}
+
 .authorization-documents-list {
   .documents {
     .category {
