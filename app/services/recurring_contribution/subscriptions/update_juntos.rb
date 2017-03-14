@@ -26,7 +26,8 @@ class RecurringContribution::Subscriptions::UpdateJuntos
     juntos_subscription.update(
       subscription_code: pagarme_subscription.id,
       status:            pagarme_subscription.status,
-      expires_at:        expires_at
+      expires_at:        expires_at,
+      confirmed_at:      Time.current
     )
   end
 

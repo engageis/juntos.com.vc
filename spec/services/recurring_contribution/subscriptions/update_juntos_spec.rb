@@ -16,6 +16,12 @@ RSpec.describe RecurringContribution::Subscriptions::UpdateJuntos do
       let(:service_response) { juntos_subscription_service.process }
       let(:juntos_created_transaction) { service_response.transactions.first }
 
+      around do |test_case|
+        Timecop.freeze do
+          test_case.run
+        end
+      end
+
       it "should update the subscription with a subscription_code equal to pagarme's subscription id" do
         expect(service_response.subscription_code).to eq(pagarme_subscription.id)
       end
@@ -26,6 +32,10 @@ RSpec.describe RecurringContribution::Subscriptions::UpdateJuntos do
 
       it "should create a transaction model with transaction_code equal to pagarme's transaction id" do
         expect(juntos_created_transaction.transaction_code).to eq(pagarme_subscription.current_transaction.id)
+      end
+
+      it "sets the confirmed_at to the current date" do
+        expect(service_response.confirmed_at).to eq(Time.current)
       end
     end
 
