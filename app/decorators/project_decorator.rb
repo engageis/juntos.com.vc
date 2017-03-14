@@ -1,5 +1,6 @@
 class ProjectDecorator < Draper::Decorator
   delegate_all
+  decorates_association :bank_account
   include Draper::LazyHelpers
 
   def remaining_text
