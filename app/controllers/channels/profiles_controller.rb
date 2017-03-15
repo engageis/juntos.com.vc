@@ -6,6 +6,12 @@ class Channels::ProfilesController < Channels::BaseController
   after_filter :verify_authorized, except: [:how_it_works, :show, :terms, :privacy, :contacts]
   before_action :show_statistics, only: [:show]
 
+  def show
+    if resource.recurring?
+      redirect_to channels_about_path if Channel::RecurringChannelFirstTimeChecker.first_time?(current_user)
+    end
+  end
+
   def edit
     authorize resource
     edit!

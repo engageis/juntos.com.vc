@@ -9,6 +9,46 @@ RSpec.describe Channels::ProfilesController, type: :controller do
       get :show, id: 'sample', locale: 'pt'
       expect(response).to be_success
     end
+
+    context "when it is a recurring channel" do
+      context "when there is a logged user" do
+        let(:user) { create(:user, projects: [project]) }
+        let(:channel) { create(:channel, :recurring) }
+
+        before do
+          allow(request).to receive(:subdomain).and_return(channel.permalink)
+          sign_in user
+          get :show, locale: 'pt'
+        end
+
+        context "and the user is the owner of a recurring project" do
+          let(:project) { build(:project, channels: [channel]) }
+
+          it "redirects to the channel's profile path" do
+            expect(response).to render_template :show
+          end
+        end
+
+        context "and the user does not have recurring projects" do
+          let(:project) { build(:project) }
+
+          it "redirects to the channel's policy path" do
+            expect(response).to redirect_to channels_about_path
+          end
+        end
+      end
+
+      context "when the user is a guest" do
+        before do
+          allow(request).to receive(:subdomain).and_return(channel.permalink)
+          get :show, locale: 'pt'
+        end
+
+        it "redirects to the channel's policy path" do
+          expect(response).to render_template :show
+        end
+      end
+    end
   end
 
   describe "PUT update" do
