@@ -415,6 +415,10 @@ FactoryGirl.define do
     trait :with_bank_billet do
       payment_methods [:bank_billet]
     end
+
+    trait :inactive do
+      active false
+    end
   end
 
   factory :subscription do |f|
