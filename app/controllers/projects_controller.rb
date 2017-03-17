@@ -102,7 +102,7 @@ class ProjectsController < ApplicationController
     @color = (channel.present? && channel.main_color) || @project.color
 
     if @project.recurring?
-      @plans = Plan.all
+      @plans = Plan.active
 
       @project_documentation = ProjectDocumentationViewObject.new(
         banks: Bank.order(:code).to_collection,
