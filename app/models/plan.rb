@@ -12,6 +12,8 @@ class Plan < ActiveRecord::Base
 
   has_and_belongs_to_many :projects, join_table: 'projects_plans'
 
+  scope :active, -> { where(active: true) }
+
   def formatted_amount
     amount / 100
   end

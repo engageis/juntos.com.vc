@@ -33,4 +33,16 @@ RSpec.describe Plan, :type => :model do
       end
     end
   end
+
+  describe "#active" do
+    let(:active_plans) { create_list(:plan, 2) }
+
+    subject { Plan.active }
+
+    before { create(:plan, :inactive) }
+
+    it "returns only the active plans" do
+      expect(subject).to match_array active_plans
+    end
+  end
 end
