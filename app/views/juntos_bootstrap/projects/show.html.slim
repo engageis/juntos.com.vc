@@ -107,10 +107,6 @@ nav.project-nav.w-hidden-main.w-hidden-medium
         span.fa.fa-check-circle
           span.u-marginleft-10 = t('.dashboard_nav.project')
 
-      = link_to '#dashboard_rewards', id: 'dashboard_rewards_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_rewards'} do
-        span.fa.fa-check-circle
-          span.u-marginleft-10 = t('.dashboard_nav.rewards')
-
       - if @project.recurring?
         = link_to '#dashboard_project_documents', id: 'dashboard_project_documents_link', class: 'dashboard-nav-link ' , data: {target: '#project_documentation'} do
           span.fa.fa-check-circle
@@ -118,6 +114,11 @@ nav.project-nav.w-hidden-main.w-hidden-medium
         = link_to '#dashboard_project_plans', id: 'dashboard_project_plans_link', class: 'dashboard-nav-link' , data: {target: '#dashboard_project_plans'} do
           span.fa.fa-check-circle
             span.u-marginleft-10 = t('.dashboard_nav.plans')
+      - else
+        = link_to '#dashboard_rewards', id: 'dashboard_rewards_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_rewards'} do
+          span.fa.fa-check-circle
+            span.u-marginleft-10 = t('.dashboard_nav.rewards')
+
 
       - if current_user.admin?
         = link_to '#dashboard_subgoals', id: 'dashboard_subgoals_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_subgoals'} do
