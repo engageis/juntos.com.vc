@@ -25,7 +25,7 @@
                       = attachment_form.hidden_field :url, data: { document_field: true }
                       = s3_uploader_form callback_param: 'authorization_documents[attachment]',
                         max_file_size: 5.megabytes, data: { s3_uploader: true },
-                        key: "uploads/user/authorization_document/document/#{current_user.id}/${filename}" do
+                        key: "uploads/user/authorization_document/document/#{user.id}/${filename}" do
                           = file_field_tag :file, class: 'w-input text-field file w-col w-col-11',
                           data: { url: s3_uploader_url }
                       .u-marginbottom-10.u-margintop-10

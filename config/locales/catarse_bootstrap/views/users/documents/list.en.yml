@@ -5,7 +5,7 @@ en:
         title: 'Required documentation'
         subtitle: 'Before your project be online, we need some documents about your organization:'
         update: '+ Update documentation'
-        documentation_status: 'Document'
+        documents: 'Document'
         status: 'Status'
         sent: 'Sent'
         not_sent: 'Not sent'
