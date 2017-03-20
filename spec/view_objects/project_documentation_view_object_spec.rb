@@ -117,6 +117,16 @@ RSpec.describe ProjectDocumentationViewObject do
     end
   end
 
+  describe ".project_owner_id" do
+    let(:user) { create(:user) }
+    let(:project) { build(:project, user: user) }
+    let(:project_documentation) { described_class.new(project: project, banks: []) }
+
+    subject { project_documentation.project_owner_id }
+
+    it { is_expected.to eq user.id }
+  end
+
   describe ".associated_bank_account" do
     let(:bank_account) { build(:bank_account) }
     let(:project) { create(:project, bank_account: bank_account) }

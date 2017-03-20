@@ -36,6 +36,10 @@ class ProjectDocumentationViewObject
     project.id
   end
 
+  def project_owner_id
+    project.user.id
+  end
+
   private
 
   def build_authorization_documents(resource:, documents:)
