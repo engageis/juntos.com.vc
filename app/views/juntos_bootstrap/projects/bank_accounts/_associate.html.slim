@@ -31,8 +31,8 @@
                         - if project_documentation.user_without_bank_accounts?
                           span.u-marginbottom-10.font-tiny.label-helper = t('users.bank_accounts.management.notification.no_accounts_registered')
                       .w-col.w-col-1.u-marginleft-5
-                        a.btn.btn-small.btn-secondary#new-account data-target='#user-bank-account-form'
-                          i.fa.fa-plus.new-account
+                        a.btn.btn-small.btn-secondary.new-account data-target='#user-bank-account-form'
+                          i.fa.fa-plus
                     .w-row
                       .w-col.w-col-4
                         = form.button :submit, t('users.bank_accounts.form.associate'), id:'association-button',

@@ -444,6 +444,12 @@ p {
       font-size: $base-font-size;
     }
   }
+
+  .new-account {
+    i {
+      pointer-events: none;
+    }
+  }
 }
 
 .authorization-documents-list {

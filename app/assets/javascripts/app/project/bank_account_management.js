@@ -2,7 +2,7 @@ App.addChild('BankAccountAssociate', _.extend({
   el: '.bank-account-associate',
 
   events: {
-    'click #new-account': 'showForm',
+    'click .new-account': 'showForm',
     'click #close-form':  'hideForm',
     'ajax:success':       'onAjaxPostSuccess',
     'ajax:error':         'onAjaxError',
